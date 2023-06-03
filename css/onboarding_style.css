@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 body {
+    font-family: 'Poppins', sans-serif;
     overflow-x: hidden;
-    background-image: url(../media/bg.jpg);
+    background-image: linear-gradient(0deg, rgba(54,187,189, 0.5), rgba(0, 0, 0, 0.5)), url('../media/bg1.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -19,13 +21,11 @@ body {
     max-width: 750px;
     background-color: white;
     border-radius: 15px;
-    border-top: 5px solid rgb(212, 17, 17, 0.9);
     padding: 1em;
     
 }
 
 .form_title {
-    font-family: cursive;
     text-align: center;
     width: 100%;
     font-size: 32px;
@@ -61,7 +61,6 @@ body {
 .boxes {
     padding: 8px;
     font-size: 16px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     width: 100%;
     display: inline-block;
 }
@@ -75,7 +74,6 @@ body {
 .email {
     padding: 8px;
     font-size: 16px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     width: 100%;
 }
 

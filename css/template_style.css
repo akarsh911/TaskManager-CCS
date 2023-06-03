@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 html {
     margin: 0px;
     padding: 0px;
@@ -14,6 +16,8 @@ html {
 }
 
 body {
+    font-family: 'Poppins', sans-serif;
+
     display: table-cell;
     vertical-align: middle;
 }
@@ -58,7 +62,6 @@ body {
 
 .label {
     margin-top: 5px;
-    font-family: 'Times New Roman', Times, serif;
     float: left;
 }
 
@@ -125,7 +128,6 @@ body {
 
 .fg_pw {
     color: black;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-decoration: underline;
 }
 
