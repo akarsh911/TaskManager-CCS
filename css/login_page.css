@@ -1,0 +1,13 @@
+#login_box{
+
+    margin-top: 20vh;
+}
+body{
+    background-color: rgb(235, 222, 102);
+    background-image: url(../media/bg1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link href="../css/header_style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/onboarding_style.css" />
+</head>
+
+
+<div class="content" id="content">
+    <div class="form_box">
+        <div class="form_title">Registration Form</div>
+        <div class="form_subtitle">Welcome to CCS Task Manager.
+        </div>
+        <hr>
+        <br>
+        <div class="form_content">
+            <form method="post" action="../php/register_user.php">
+                <label class="label">Name: <span class="red_star">*</span></label><br>
+                <div class="field_container">
+                    <div class="input_icons"><i id="f_name_err" class="fa fa-exclamation-circle err"></i><input
+                            class="boxes" type="text" placeholder="First Name" name="f_name" id="f_name"
+                            onblur="f_name_key ()" autocomplete="given-name" required /></div>
+
+                    <div class="input_icons">
+                        <i id="l_name_err" class="fa fa-exclamation-circle err"></i>
+                        <input onblur="l_name_key ()" class="boxes" type="text" placeholder="Last Name" name="l_name"
+                            id="l_name" autocomplete="family-name" required />
+                    </div>
+
+                </div>
+                <span class="error_msg" id="f_name_err_msg"></span><br>
+                <label class="label">Email Address:<span class="red_star">*</span></label><br>
+                <div class="field_container">
+                    <div class="input_icons email"><i id="email_err" class="fa fa-exclamation-circle errem"></i>
+                        <input onblur="email_key();" type="email" placeholder="Email Address" class="email" id="email"
+                            name="email" autocomplete="email" required />
+                    </div>
+                </div>
+                <span class="error_msg" id="email_err_msg"></span><br>
+                <label class="label">Phone Number:<span class="red_star">*</span></label><br>
+                <div class="field_container">
+                    <div class="input_icons email"><i id="ph_no_err" class="fa fa-exclamation-circle errem"></i>
+                        <input onblur="ph_no_key();" type="tel" placeholder="Phone Number (10 Digits only)"
+                            class="email" id="ph_no" name="ph_no" autocomplete="tel" required />
+                    </div>
+                </div>
+                <span class="error_msg" id="ph_no_err_msg"></span><br>
+                <label class="label">Password:<span class="red_star">*</span></label><br>
+                <div class="field_container">
+                    <div class="input_icons"><i id="psw_err" class="fa fa-exclamation-circle err"></i>
+                        <input onblur="psw_key();" class="boxes" type="password" placeholder="Create Password"
+                            name="psw" id="psw" autocomplete="new-password" required />
+                    </div>
+                    <div class="input_icons"><i id="c_psw_err" class="fa fa-exclamation-circle err"></i>
+                        <input onblur="psw_match();" onkeyup="check_all();" class="boxes" type="password"
+                            placeholder="Confirm Password" name="c_psw" id="c_psw" autocomplete="new-password"
+                            required />
+                    </div>
+                </div>
+                <span class="error_msg" id="psw_err_msg"></span><br>
+                <label class="label">User Type:<span class="red_star">*</span></label><br>
+                <div class="field_container">
+                    <div class="input_icons"><i id="user_type" class="fa fa-exclamation-circle err"></i>
+                        <input class="boxes" type="password" placeholder="1->Core 2->Executive 3->Team Member 4->Admin"
+                            name="user_type" id="user_type" required />
+                    </div>
+                </div>
+                <span class="error_msg" id="psw_err_msg"></span><br>
+                <div class="field_container submit">
+                    <button type="submit" class="submit_bt">Create Account <i class="fa fa-key"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="../js/onboarding_js.js"></script>
+</body>
+<style>
+
+</style>
+<script src="../js/onboarding_js.js"></script>
+<!--#include virtual="../html/footer_home_page.html" -->
+</div>

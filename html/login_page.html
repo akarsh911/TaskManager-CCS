@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="../css/template_style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/onboarding_style.css" />
+    <link rel="stylesheet" href="../css/login_page.css">
+    <link href="../css/header_style.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/56f1776af2.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div>
+        <div class="login_box" id="login_box">
+            <h1>Login</h1>
+            <form method="post" action="../php/login_user.php">
+                <label class="label" for="username">Phone Number or Email Address</label><br>
+                <input class="input_box" type="text" name="username" id="uid" autocomplete="username" required />
+                <br><br>
+                <label class="label" for="password">Password</label><br>
+                <div class="wrapper">
+                    <input class="input_box pwd" type="password" name="password" id="pwd"
+                        autocomplete="current-password" required />
+                    <button id="chng" type="button" class="show" onclick="change_pwd(); return false;"><i
+                            class="fa fa-eye"></i></button>
+                </div>
+                <br>
+                <span class="error" id="password_error"></span>
+                <br>
+                <div class="wrapper2">
+                    <a class="fg_pw" href="../html/register_page.html">New User?</a>
+                    <button type="submit" value="Log in" class="login_bt">Log In</button>
+                </div>
+                <script src="../js/login_box.js"></script>
+            </form>
+        </div>
+</body>
+
+</html>

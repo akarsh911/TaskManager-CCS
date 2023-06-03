@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="../css/header_style.css" rel="stylesheet" />
+</head>
+<div class="top_bar">
+    <a href="../html/dashboard.html">
+        <div class="side_logo">
+            <img class="logo_img" src="../media/logo.png" alt="Logo">
+        </div>
+    </a>
+    <div class="right_logo">
+        <a href="../html/loader.html"><button class="stock_btn" id="ip2">Start Training</button></a>
+        <a href="../python/"><button class="expense_btn">Training Data</button></a>
+        <a href="../html/dashboard.html"><button class="community_btn">Statistical Data</button></a>
+        <a href="../php/logout_user.php"><button class="stock_btn" id="ip1">Log Out</button></a>
+    </div>
+</div>
+<br>
+<div class="container69" id="bar">
+    <table>
+        <ul class="header_button" id="pbr"><a href="../php/get_blood_inventory.php">Predict Blood
+                Requirements</a></ul>
+        <ul class="header_button"><a href="../html/blood_inventory.html">Blood Inventory</a></ul>
+        <ul class="header_button"><a href="../html/donor_list.html">Predict Donors</a></ul>
+        <ul class="header_button" id="log"><a href="../html/blood_logistics.html">Blood Logistics</a></ul>
+        <ul class="header_button" id="doc"><a href="../php/get_assigned_duties.php">Doctor Allocation</a></ul>
+        <ul class="header_button" style="margin-right: 0px;" id="ambu"><a href="../html/ambulance.html">Ambulance
+                Placement</a>
+        </ul>
+    </table>
+</div>
+<script src="../js/user_access_level.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
