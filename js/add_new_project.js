@@ -1,7 +1,14 @@
 var names = document.getElementById("name");
 var repo_name = document.getElementById("repo_name");
 var desc = document.getElementById("desc");
-
+var key = "";
+$.ajax({
+    url: "../php/get_keys.php",
+    type: "GET",
+    success: function (data) {
+        key = data;
+    }
+});
 function name_key() {
     if (names.value == "") {
         var msg = "Enter a Project Name";
@@ -25,7 +32,7 @@ function repo_name_key() {
             type: "GET",
             headers: {
                 'Accept': 'application/vnd.github+json',
-                'Authorization': 'Bearer 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',
+                'Authorization': 'Bearer '+key,
                 'X-GitHub-Api-Version': '2022-11-28'
             },
             success: function (data) {

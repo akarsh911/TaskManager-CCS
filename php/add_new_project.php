@@ -1,5 +1,6 @@
 <?php
-$accessToken = "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";
+require_once($_SERVER['DOCUMENT_ROOT'] . "/php/database_get_data.php");
+$accessToken = get_key();
 
 $url = 'https://api.github.com/user/repos';
 $headers = array(
@@ -32,12 +33,12 @@ curl_close($ch);
 if ($response === false) {
     echo 'Error: ' . curl_error($ch);
 } else {
-
-    require_once($_SERVER['DOCUMENT_ROOT'] . "../php/database_set_data.php");
-    if(create_project($_POST["name"],$_POST["repo_name"],$_POST["team_leader_id"],$_POST["desc"],date("Y-m-d h:i"),date("Y-m-d h:i"), 1,"Just Started"))
+    echo $response;
+    require_once($_SERVER['DOCUMENT_ROOT'] . "/php/database_set_data.php");
+    if(create_project($_POST["name"],strtolower($_POST["repo_name"]),$_POST["team_leader_id"],$_POST["desc"],date("Y-m-d h:i"),date("Y-m-d h:i"), 1,"Just Started"))
     {
         echo "<script>alert('Success Creating Project');</script>";
-         echo '<script>window.onload = (event) => {location.replace("/html/dashboard.html")};</script>';
+      //   echo '<script>window.onload = (event) => {location.replace("/html/dashboard.html")};</script>';
     }
     
 }

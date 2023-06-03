@@ -53,6 +53,17 @@ if ($conn->query($sql) === TRUE) {
 
             // Execute the SQL query
             if ($conn->query($sql) === TRUE) {
+
+                $sql = "CREATE TABLE IF NOT EXISTS `keys` (
+                  `token` TEXT
+                )";
+
+                // Execute the SQL query
+                if ($conn->query($sql) === TRUE) {
+                    
+                } else {
+                    echo "Error creating table: " . $conn->error;
+                }
             } else {
                 echo "Error creating table: " . $conn->error;
             }

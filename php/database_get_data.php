@@ -41,4 +41,18 @@ function get_email($email)
     } else {
         return 0;
     }
-}   
+}
+function get_key()
+{
+    $conn=openCon();; 
+    $sql = "SELECT token FROM `keys` LIMIT 1";
+
+    $result = $conn->query($sql);
+
+    if ($result && $result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        return $row['token'];
+    } else {
+        return null;
+    }
+}

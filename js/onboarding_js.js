@@ -1,3 +1,12 @@
+var key = "";
+$.ajax({
+    url: "../php/get_keys.php",
+    type: "GET",
+    success: function (data) {
+        key = data;
+    }
+});
+
 var f_name = document.getElementById("f_name");
 var l_name = document.getElementById("l_name");
 var email = document.getElementById("email");
@@ -161,7 +170,7 @@ function github_key() {
         type: "GET",
         headers: {
             'Accept': 'application/vnd.github+json',
-            'Authorization': 'Bearer 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',
+            'Authorization': 'Bearer ' + key,
             'X-GitHub-Api-Version': '2022-11-28'
         },
         success: function (data) {
@@ -173,11 +182,11 @@ function github_key() {
                 github.setCustomValidity(msg);
                 return;
             }
-            else{
+            else {
                 avatar.value = data.avatar_url;
-                things_good("email",github);
+                things_good("email", github);
             }
-            
+
 
         }
     });
