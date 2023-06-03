@@ -3,8 +3,11 @@ body {
     margin: 0px;
 
 }
-
+a{
+    text-decoration: none;
+}
 .top_bar {
+    text-decoration: none;
     min-width: min-content;
     width: 90vw;
     height: 12vh;
@@ -13,7 +16,7 @@ body {
     left: 0;
     top: 0;
     box-shadow: 2px 3px rgba(4, 4, 4, 0.571);
-    background-color: #fffefc;
+    background-color: #000000;
     backdrop-filter: blur(15px);
     padding-top: 1vh;
     padding-bottom: 1vh;
@@ -140,21 +143,21 @@ h1 {
 }
 
 .community_btn:hover {
-    background-color: #000000;
+    background-color: #1aa0e8f5;
     color: aliceblue;
     border: rgb(255, 255, 255);
     cursor: pointer;
 }
 
 .stock_btn:hover {
-    background-color: #000000;
+    background-color: #1aa0e8f5;
     color: #fffefc;
     border: #ffffff;
     cursor: pointer;
 }
 
 .expense_btn:hover {
-    background-color: #000000;
+    background-color: #1aa0e8f5;
     color: aliceblue;
     text-decoration-color: aliceblue;
     border: #cb9999;
@@ -162,7 +165,6 @@ h1 {
 }
 
 .container69 {
-    display: flex;
     padding-top: 10vh;
     width: 100vw;
     display: flex;
@@ -174,8 +176,7 @@ h1 {
     flex-direction: row;
     flex-wrap: wrap;
     align-content: normal;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: space-evenly;
     background-color: #1aa0e8f5;
     color: aliceblue;
 }
@@ -186,7 +187,7 @@ h1 {
 }
 
 .container69 a:hover {
-    color: #1e00ff;
+    color: black;
 
 
 }

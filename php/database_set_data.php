@@ -1,10 +1,10 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . "/php/database_connect.php");
-function create_user($username, $email, $f_name, $l_name, $ph_no, $psw_hash, $user_state)
+function create_user($username, $email, $f_name, $l_name, $ph_no, $psw_hash,$github,$avatar,$user_state)
 {
     $username = $email;
     $conn = openCon();
-    $sql = "INSERT INTO users (username,f_name,l_name,email,ph_no,psw_hash,user_state) VALUES ('$username','$f_name','$l_name','$email','$ph_no','$psw_hash','$user_state')";
+    $sql = "INSERT INTO users (username,f_name,l_name,email,ph_no,psw_hash,github,avatar,user_state) VALUES ('$username','$f_name','$l_name','$email','$ph_no','$psw_hash','$github','$avatar','$user_state')";
     if ($conn->query($sql) === TRUE) {
         return 1;
     } else {
@@ -12,6 +12,29 @@ function create_user($username, $email, $f_name, $l_name, $ph_no, $psw_hash, $us
     }
 }
 
+function create_project($project_name, $repo_name, $team_leader, $description, $start_date, $update_date, $status, $progress)
+{
+    $conn = openCon();
+    $sql = "INSERT INTO projects (project_name, repo_name, team_leader, description, start_date, update_date, status, progress)
+            VALUES ('$project_name', '$repo_name', '$team_leader', '$description', '$start_date', '$update_date', '$status', '$progress')";
+    if ($conn->query($sql) === TRUE) {
+        return 1;
+    } else {
+        return "Error: " . $sql . "<br>" . $conn->error;
+    }
+}
+
+function create_project_user($project_id, $user_id, $role, $tech_stack, $user_type, $github, $avatar, $f_name, $l_name)
+{
+    $conn = openCon();
+    $sql = "INSERT INTO project_users (project_id, user_id, role, tech_stack, user_type, github, avatar, f_name, l_name)
+            VALUES ('$project_id', '$user_id', '$role', '$tech_stack', '$user_type', '$github', '$avatar', '$f_name', '$l_name')";
+    if ($conn->query($sql) === TRUE) {
+        return 1;
+    } else {
+        return "Error: " . $sql . "<br>" . $conn->error;
+    }
+}
 
 function login($email, $psw_hash)
 {
@@ -22,8 +45,9 @@ function login($email, $psw_hash)
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             $arr = array(
-                "username" => $row["username"], "f_name" =>   $row["f_name"], "l_name" => $row["l_name"], "email" => $row["email"], "ph_no" => $row["ph_no"],
-                "user_type" => $row["user_state"]
+                
+                "username" => $row["username"], "user_id" => $row["id"], "f_name" =>   $row["f_name"], "l_name" => $row["l_name"], "email" => $row["email"], "ph_no" => $row["ph_no"],
+                "user_type" => $row["user_state"], "github" => $row["github"], "avatar" => $row["avatar"]
             );
             $json = json_encode($arr);
             return $json;

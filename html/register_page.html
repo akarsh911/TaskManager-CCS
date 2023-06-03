@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,11 +38,19 @@
                 <label class="label">Email Address:<span class="red_star">*</span></label><br>
                 <div class="field_container">
                     <div class="input_icons email"><i id="email_err" class="fa fa-exclamation-circle errem"></i>
-                        <input onblur="email_key();" type="email" placeholder="Email Address" class="email" id="email"
-                            name="email" autocomplete="email" required />
+                        <input onblur="email_key();" type="email" placeholder="Email Address (One Linked with GitHub)"
+                            class="email" id="email" name="email" autocomplete="email" required />
                     </div>
                 </div>
                 <span class="error_msg" id="email_err_msg"></span><br>
+                <label class="label">GitHub ID:<span class="red_star">*</span></label><br>
+                <div class="field_container">
+                    <div class="input_icons email"><i id="github_err" class="fa fa-exclamation-circle errem"></i>
+                        <input onblur="github_key();" placeholder="GitHub Id" class="email" id="github" name="github"
+                            required />
+                    </div>
+                </div>
+                <span class="error_msg" id="github_err_msg"></span><br>
                 <label class="label">Phone Number:<span class="red_star">*</span></label><br>
                 <div class="field_container">
                     <div class="input_icons email"><i id="ph_no_err" class="fa fa-exclamation-circle errem"></i>
@@ -70,6 +79,7 @@
                             name="user_type" id="user_type" required />
                     </div>
                 </div>
+                <input id="avatar" name="avatar" style="visibility: collapse;" />
                 <span class="error_msg" id="psw_err_msg"></span><br>
                 <div class="field_container submit">
                     <button type="submit" class="submit_bt">Create Account <i class="fa fa-key"></i></button>

@@ -1,0 +1,78 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<style>
+    p {
+        width: 80%;
+        padding-left: 10%;
+        align-items: center;
+        align-self: center;
+    }
+
+    h2,
+    h1 {
+        padding-left: 10%;
+    }
+</style>
+<link href="../css/project.css" rel="stylesheet" />
+<script>
+    $(function () {
+        $("#header").load("../html/header.html");
+    }); 
+</script>
+<script src="../js/projects.js"></script>
+
+<div id="header"></div>
+<div class="project">
+    <h1>Projects (Repositories)</h1>
+    <div class="button_line">
+        <div class="color_grading">
+            <div class="color_yellow">.</div>
+            <h2>In Progress</h2>
+            <div class="color_blue">.</div>
+            <h2>Just Started</h2>
+            <div class="color_green">.</div>
+            <h2>Completed</h2>
+        </div>
+        <a class="add_new" href="./add_new_project.html"><button class="community_btn">Add New</button></a>
+    </div>
+
+
+
+    <div class="app_box">
+
+
+        <div class="app_container">
+            <div class="app_wrapper">
+                <div class="app_data"><span class="app_title">Project Name: </span>
+                    Coding
+                </div>
+                <div class="app_data"><span class="app_title">Repository Name: </span>
+                    Test
+                </div>
+                <div class="app_data"><span class="app_title">Team Leader: </span>
+                    Akarsh
+                </div>
+            </div>
+            <div class="app_wrapper_left">
+                <div class="app_data"><span class="app_title">Project Description: </span>
+                    This jnuibij ubuinuib nbuibniuhn jfnvhjn jijjiu  ui 98 nbui i
+                </div>
+            </div>
+            <div class="app_wrapper">
+                <div class="app_data"><span class="app_title">Start Date: </span>
+                    12/10/23
+                </div>
+                <div class="app_data"><span class="app_title">Last Update: </span>
+                    03/06/23
+                </div>
+                <div class="app_data"><span class="app_title">Status: </span>
+                    Complete
+                </div>
+            </div>
+            <hr>
+            <div class="app_wrapper_right">
+                <button class="incomplete_bt" onclick="start_form(`<?php echo $sm_ar['id'] ?>`);">Apply For Contribution</button>
+                <button class="incomplete_bt" onclick="start_form(`<?php echo $sm_ar['id'] ?>`);">View Project</button>
+            </div>
+        </div>
+    </div>
+</div>  

@@ -4,7 +4,8 @@ var email = document.getElementById("email");
 var ph_no = document.getElementById("ph_no");
 var psw = document.getElementById("psw");
 var c_psw = document.getElementById("c_psw");
-
+var github = document.getElementById("github")
+var avatar = document.getElementById("avatar")
 var f_name_flag = false;
 var l_name_flag = false;
 var psw_flag = false;
@@ -146,7 +147,41 @@ function ph_no_key() {
     }
 
 }
+function github_key() {
+    if (github.value == "") {
+        things_bad("email", github);
+        var msg = "Enter a GitHub ID";
+        var err_msg = document.getElementById("github_err_msg");
+        err_msg.innerHTML = msg;
+        github.setCustomValidity(msg);
+        return;
+    }
+    $.ajax({
+        url: "https://api.github.com/users/" + github.value,
+        type: "GET",
+        headers: {
+            'Accept': 'application/vnd.github+json',
+            'Authorization': 'Bearer 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',
+            'X-GitHub-Api-Version': '2022-11-28'
+        },
+        success: function (data) {
+            if (data == null) {
+                var msg = "Not a valid Github ID";
+                var err_msg = document.getElementById("github_err_msg");
+                err_msg.innerHTML = msg;
+                things_bad("email", github);
+                github.setCustomValidity(msg);
+                return;
+            }
+            else{
+                avatar.value = data.avatar_url;
+                things_good("email",github);
+            }
+            
 
+        }
+    });
+}
 function email_verify(emailv) {
     return String(emailv)
         .toLowerCase()
