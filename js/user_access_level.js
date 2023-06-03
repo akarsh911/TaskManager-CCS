@@ -13,6 +13,7 @@ if (data3 != null) {
         document.getElementById("log").style.display = "none";
         document.getElementById("doc").style.display = "none";
         document.getElementById("ip2").style.display = "none";
+        document.getElementById("ip3").style.display = "none"
     }
     else if (user == 2) {
         document.getElementById("pbr").style.visibility = "collapse";
@@ -24,6 +25,7 @@ if (data3 != null) {
         document.getElementById("log").style.display = "none";
         document.getElementById("doc").style.display = "none";
         document.getElementById("ip2").style.display = "none";
+        document.getElementById("ip3").style.display = "none"
     }
     else if (user == 3) {
         document.getElementById("pbr").style.visibility = "collapse";
@@ -33,6 +35,7 @@ if (data3 != null) {
         document.getElementById("ambu").style.display = "none";
         document.getElementById("log").style.display = "none";
         document.getElementById("ip2").style.display = "none";
+        document.getElementById("ip3").style.display = "none"
     }
     else if (user == 1) {
         document.getElementById("pbr").style.visibility = "collapse";
@@ -40,10 +43,12 @@ if (data3 != null) {
         document.getElementById("pbr").style.display = "none";
         document.getElementById("doc").style.display = "none";
         document.getElementById("ip2").style.display = "none";
+        document.getElementById("ip3").style.display = "none"
     }
 }
 else {
     document.getElementById("bar").style.visibility = "hidden";
     document.getElementById("ip1").style.display = "none";
     document.getElementById("ip2").style.display = "none";
+    document.getElementById("ip3").style.display = "block"
 }

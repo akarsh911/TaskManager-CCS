@@ -141,7 +141,6 @@ h1 {
 
 .community_btn:hover {
     background-color: #000000;
-
     color: aliceblue;
     border: rgb(255, 255, 255);
     cursor: pointer;
@@ -150,7 +149,7 @@ h1 {
 .stock_btn:hover {
     background-color: #000000;
     color: #fffefc;
-    border: #636804;
+    border: #ffffff;
     cursor: pointer;
 }
 
@@ -158,7 +157,6 @@ h1 {
     background-color: #000000;
     color: aliceblue;
     text-decoration-color: aliceblue;
-
     border: #cb9999;
     cursor: pointer;
 }
@@ -171,7 +169,6 @@ h1 {
     align-items: center;
     padding-bottom: 0.5vh;
     object-fit: scale-down;
-
     margin-left: 0%;
     font-weight: bold;
     flex-direction: row;
@@ -179,7 +176,7 @@ h1 {
     align-content: normal;
     justify-content: space-between;
     align-items: center;
-    background-color: #000a61f5;
+    background-color: #1aa0e8f5;
     color: aliceblue;
 }
 
@@ -189,7 +186,7 @@ h1 {
 }
 
 .container69 a:hover {
-    color: #ff0000;
+    color: #1e00ff;
 
 
 }
