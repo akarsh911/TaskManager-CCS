@@ -18,7 +18,8 @@ function create_project($project_name, $repo_name, $team_leader, $description, $
     $sql = "INSERT INTO projects (project_name, repo_name, team_leader, description, start_date, update_date, status, progress)
             VALUES ('$project_name', '$repo_name', '$team_leader', '$description', '$start_date', '$update_date', '$status', '$progress')";
     if ($conn->query($sql) === TRUE) {
-        return 1;
+        $last_id = $conn->insert_id;
+        return $last_id;
     } else {
         return "Error: " . $sql . "<br>" . $conn->error;
     }

@@ -1,0 +1,62 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<style>
+    p {
+        width: 80%;
+        padding-left: 10%;
+        align-items: center;
+        align-self: center;
+    }
+
+    h2,
+    h1 {
+        padding-left: 10%;
+    }
+</style>
+<link href="../css/project.css" rel="stylesheet" />
+<script>
+    $(function () {
+        $("#header").load("../html/header.html");
+    }); 
+</script>
+
+<div id="header"></div>
+<div class="project view">
+    <div class="left_nav_bar">
+        <div class="tabs first">Project</div>
+        <div class="tabs"><i class="fa-solid fa-circle-info"></i> About Project</div>
+        <div class="tabs"><i class="fa-solid fa-chart-column"></i>Project Stats</div>
+        <div class="tabs"><i class="fa-solid fa-people-group"></i>Project Team</div>
+        <div class="tabs"><i class="fa-solid fa-list-check"></i>Assigned Tasks</div>
+        <div class="tabs"><i class="fa-solid fa-clipboard"></i>Notice Board</div>
+        <div class="tabs"><i class="fa-solid fa-code"></i>My Role</div>
+    </div>
+    <div class="content">
+        <div class="bar1">
+            <h4>Project:<span  id="project_name"></span></h4>
+            <div class="innerbar">
+                <div class="elem"><b>Team Leader:</b> <span id="team_leader_id">Akarsh</span></div>
+                <div class="elem"><b>Progress:</b> <span id="Progress">In Progress</span></div>
+            </div>
+            <div class="innerbar">
+                <div class="elem"><b>Started On:</b> <span id="startDate">10/12/22</span></div>
+                <div class="elem"><b>Updated On:</b> <span id="updateDate">10/12/22</span></div>
+            </div>
+        </div>
+        <div class="bar2">
+            <div class="elem"><b>GitHub:</b> <a id="url" href="https://github.com/ccs-tiet-task/"><span
+                        id="repo_url">https://github.com/ccs-tiet-task/akarsh_test_2120/</span></a></div>
+            <div class="elem"><b>Description:</b> <span id="descripton">This is a very good project to work on with you
+                    and your own progress</span></div>
+        </div>
+        <hr>
+        <br>
+        <div class="bar3">
+            <h4 style="font-size: 24px;">Contribution Heat Map</h4>
+        </div>
+        <div class="heatmap-container"></div>
+        <script src="../js/load_heat_map.js"></script>
+    </div>
+
+
+</div>
+<script src="../js/view_project.js"></script>

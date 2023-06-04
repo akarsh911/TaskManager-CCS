@@ -18,7 +18,7 @@ h1 {
 
 .community_btn {
     display: inline;
-   
+
 }
 
 .project {
@@ -26,17 +26,32 @@ h1 {
     background-image: linear-gradient(0deg, rgba(54,187,189, 0.5), rgba(0, 0, 0, 0.5)), url('../media/bg1.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 80vh;
+    min-height: 80.3vh;
 }
-.project.new{
+
+.project.new {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     text-align: start;
 }
+
+.project.view {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: start;
+}
+
 .app_box {
     display: flex;
     justify-content: center;
+    width: 100vw;
+    flex-wrap: wrap;
+    padding-bottom: 10vh;
+}
+
+html,
+body {
     width: 100vw;
 }
 
@@ -47,8 +62,8 @@ h1 {
     padding: 20px;
     padding-bottom: 20px;
     border-radius: 15px;
-    background-color: white;
-    border: 2px solid green;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 5px solid green;
     padding-left: 17px;
     border-left: 8px solid green;
     margin-top: 20px;
@@ -143,7 +158,7 @@ h2 {
     max-width: 800px;
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
-    border-radius: 15px; 
+    border-radius: 15px;
     padding: 1em;
 
 }
@@ -385,3 +400,91 @@ h2 {
         max-width: 85vw;
     }
 }
+
+.left_nav_bar {
+    min-height: 80.3vh;
+    min-width: 250px;
+    max-width: 250px;
+    background-color: #1aa0e8;
+}
+
+.tabs {
+    padding: 10px;
+    font-size: 20px;
+    min-width: 225px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.358);
+    border-top: 2px solid rgba(255, 255, 255, 0.378);
+    color: white;
+}
+
+i {
+    margin-right: 15px;
+}
+
+.tabs:hover {
+    background-color: white;
+    color: #1aa0e8;
+    cursor: pointer;
+}
+.tabs.first{
+    background-color: #c0e7fd;;
+    color: #1aa0e8;
+    border: none;
+    text-align: center;
+    font-size: 22px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.content{
+    all: unset;
+    background-color: rgba(255, 255, 255, 0.777);
+    min-width: calc(100vw - 280px);
+    margin: 15px;
+    border-radius: 15px;
+}
+.bar1{
+    height: fit-content;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 50px;
+    display: flex;
+        align-items: center;
+            justify-content: space-between;
+}
+h4{
+    font-size:36px;
+    padding: 5px;
+    margin: 0px;
+    
+    margin-top: 10px;
+    
+}
+.elem{
+    font-size: 18px;
+}
+b{
+    font-size: 19px;
+}
+.bar2{
+    padding: 10px;
+        padding-left: 30px;
+        padding-right: 50px;
+}
+ .heatmap-container {
+    
+     display: grid;
+     grid-template-columns: repeat(52, 1fr);
+     grid-template-rows: repeat(7, 1fr);
+     gap: 1px;
+ }
+
+ .heatmap-block {
+     width: 20px;
+     height: 20px;
+     background-color: #ebedf0;
+ }
+ .bar3{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+ }
