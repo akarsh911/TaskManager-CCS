@@ -471,3 +471,21 @@ b{
         padding-left: 30px;
         padding-right: 50px;
 }
+ .heatmap-container {
+    
+     display: grid;
+     grid-template-columns: repeat(52, 1fr);
+     grid-template-rows: repeat(7, 1fr);
+     gap: 1px;
+ }
+
+ .heatmap-block {
+     width: 20px;
+     height: 20px;
+     background-color: #ebedf0;
+ }
+ .bar3{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+ }
