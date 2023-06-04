@@ -92,14 +92,40 @@ body {
     margin-left: 10px;
 }
 
-.input_icons i {
-    color: #686868;
-}
-
 .error_msg {
     color: red;
     font-size: 12px;
 }
+
+.err {
+    visibility: hidden;
+    color: red;
+    right: 30px;
+    position: absolute;
+    opacity: 50%;
+
+}
+
+.errem {
+    visibility: hidden;
+    right: 30px;
+    color: red;
+    position: absolute;
+    opacity: 50%;
+
+}
+
+.err.good {
+    visibility: visible;
+    color: green;
+}
+
+.errem.good {
+    visibility: visible;
+    color: green;
+}
+
+
 
 .submit_bt {
     width: 100%;
@@ -115,4 +141,25 @@ body {
 .submit_bt:hover {
     background-color: rgb(39, 131, 133);
     cursor: pointer;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-1%);
+    }
+
+    50% {
+        transform: translateX(0);
+    }
+
+    75% {
+        transform: translateX(1%);
+    }
+
 }
