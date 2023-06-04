@@ -14,6 +14,20 @@ function check_user_exists($email)
         return 0;
     }
 }
+function get_user_name($user_id)
+{
+    $conn = openCon();
+    $sql = "SELECT f_name,l_name FROM users WHERE id='$user_id' ";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            return $row["f_name"]." ". $row["l_name"];
+        }
+    } else {
+        return 0;
+    }
+}
 function get_user_state($email)
 {
     $conn = openCon();
@@ -28,7 +42,37 @@ function get_user_state($email)
         return 0;
     }
 }
-
+function get_all_users()
+{
+    $conn = openCon();
+    $sql = "SELECT * FROM users";
+    $result = $conn->query($sql);
+    $arr=array();$i=0;
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $array[$i++]=$row;
+        }
+    } else {
+        return 0;
+    }
+    return $arr;
+}
+function get_user_by_id($id)
+{
+    $conn = openCon();
+    $sql = "SELECT * FROM users WHERE id='$id'";
+    $result = $conn->query($sql);
+    $arr = array();
+    $i = 0;
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            return $row;
+        }
+    } else {
+        return 0;
+    }
+    return $arr;
+}
 function get_email($email)
 {
     $conn = openCon();
@@ -55,4 +99,17 @@ function get_key()
     } else {
         return null;
     }
+}
+function get_projects()
+{
+    $conn=openCon();
+    $sql = "SELECT * FROM projects";
+    $result = $conn->query($sql);
+    $projects = array();
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $projects[] = $row;
+        }
+    }
+    return json_encode($projects);
 }

@@ -1,17 +1,67 @@
-function fetch() {
+$(document).ready(function () {
     $.ajax({
-        url: "https://api.github.com/user/repos",
-        type: "GET",
-        headers: {
-            'Accept': 'application/vnd.github+json',
-            'Authorization': 'Bearer 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',
-            'X-GitHub-Api-Version': '2022-11-28'
+        url: '../php/get_projects.php',
+        method: 'GET',
+        dataType: 'json',
+        success: function (projects) {
+            // Iterate over each project
+            projects.forEach(function (project) {
+                // Create the HTML content for the project
+                var htmlContent = `
+          <div class="app_container" style="border-color: ${getStatusColor(project.status)};">
+            <div class="app_wrapper">
+                <div class="app_data"><span class="app_title">Project Name: </span>
+                    ${project.project_name}
+                </div>
+                <div class="app_data"><span class="app_title">Repository Name: </span>
+                    ${project.repo_name}
+                </div>
+                <div class="app_data"><span class="app_title">Team Leader: </span>
+                    ${project.team_leader}
+                </div>
+            </div>
+            <div class="app_wrapper_left">
+                <div class="app_data"><span class="app_title">Project Description: </span>
+                    ${project.description}
+                </div>
+            </div>
+            <div class="app_wrapper">
+                <div class="app_data"><span class="app_title">Start Date: </span>
+                    ${project.start_date}
+                </div>
+                <div class="app_data"><span class="app_title">Last Update: </span>
+                    ${project.update_date}
+                </div>
+                <div class="app_data"><span class="app_title">Status: </span>
+                    ${project.status}
+                </div>
+            </div>
+            <hr>
+            <div class="app_wrapper_right">
+                <button class="incomplete_bt" onclick="start_form(${project.id});">Apply For Contribution</button>
+                <button class="incomplete_bt" onclick="start_form(${project.id});">View Project</button>
+            </div>
+        </div>
+        `;
+
+                // Append the HTML content to the app_container element
+                $('.app_box').append(htmlContent);
+            });
         },
-        success: function (msg) {
-            if (msg != null) {
-                alert(msg.toString());
-            }
+        error: function (xhr, status, error) {
+            console.error(error);
         }
     });
+});
+
+function getStatusColor(status) {
+    if (status === '1') {
+        return 'blue';
+    } else if (status === '2') {
+        return 'green';
+    } else if (status === '0') {
+        return 'yellow';
+    } else {
+        return 'black'; // Default color if status is not recognized
+    }
 }
-fetch();

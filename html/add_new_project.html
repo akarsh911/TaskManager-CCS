@@ -35,7 +35,7 @@
             <form method="post" action="../php/add_new_project.php">
                 <label class="label">Project Name: <span class="red_star">*</span></label><br>
                 <div class="field_container">
-                    <div class="input_icons email"><i id="email_err" class="fa fa-exclamation-circle errem"></i>
+                    <div class="input_icons email"><i id="name_err" class="fa fa-exclamation-circle errem"></i>
                         <input onblur="name_key();" placeholder="Project Name" class="email" id="name" name="name"
                             required />
                     </div>
@@ -54,13 +54,13 @@
 
                 <label class="label">Description:<span class="red_star">*</span></label><br>
                 <div class="field_container">
-                    <div class="input_icons email"><i id="ph_no_err" class="fa fa-exclamation-circle errem"></i>
-                        <input onblur="desc_key();" type="tel" placeholder="Project Description" class="email" id="desc"
+                    <div class="input_icons email"><i id="desc_err" class="fa fa-exclamation-circle errem"></i>
+                        <input onblur="desc_key();"  placeholder="Project Description" class="email" id="desc"
                             name="desc" required />
                     </div>
                 </div>
                 <span class="error_msg" id="desc_err_msg"></span><br>
-
+                        <input style="visibility: hidden;" id="team_leader_id" name="team_leader_id" required />
                 <div class="field_container">
                     <button type="submit" class="submit_bt">Start Project <i class="fa fa-key"></i></button>
                 </div>
