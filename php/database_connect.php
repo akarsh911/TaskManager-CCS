@@ -35,7 +35,7 @@ if ($conn->query($sql) === TRUE) {
               status INT,
               progress TEXT
             )";
-//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
+
         // Execute the SQL query
         if ($conn->query($sql) === TRUE) {
             $sql = "CREATE TABLE IF NOT EXISTS project_users (
