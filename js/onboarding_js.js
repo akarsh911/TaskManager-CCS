@@ -158,7 +158,7 @@ function ph_no_key() {
 }
 function github_key() {
     if (github.value == "") {
-        things_bad("email", github);
+        things_bad("github", github);
         var msg = "Enter a GitHub ID";
         var err_msg = document.getElementById("github_err_msg");
         err_msg.innerHTML = msg;
@@ -178,16 +178,27 @@ function github_key() {
                 var msg = "Not a valid Github ID";
                 var err_msg = document.getElementById("github_err_msg");
                 err_msg.innerHTML = msg;
-                things_bad("email", github);
+                things_bad("github", github);
                 github.setCustomValidity(msg);
                 return;
             }
             else {
                 avatar.value = data.avatar_url;
-                things_good("email", github);
+                things_good("github", github);
+                msg="";
+                var err_msg = document.getElementById("github_err_msg");
+               err_msg.innerHTML = msg;
+                github.setCustomValidity("");
             }
 
 
+        }, error: function (XMLHttpRequest, textStatus, errorThrown) {
+            var msg = "This gitHub id does not exists";
+            var err_msg = document.getElementById("github_err_msg");
+            err_msg.innerHTML = msg;
+            things_bad("github", github);
+            github.setCustomValidity(msg);
+            return;
         }
     });
 }
