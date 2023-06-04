@@ -1,6 +1,8 @@
 var project_id = getParameterByName('id');
 var page = getParameterByName('page');
 if (page == 1) {
+   
+    document.getElementById("about").style.display ="block";
     var xhr = new XMLHttpRequest();
 
     // Define the URL and request method
@@ -32,7 +34,11 @@ if (page == 1) {
     // Send the AJAX request
     xhr.send();
 }
-
+if(page==3)
+{
+    document.getElementById("team").style.display = "block";
+    getProjectUsers();
+}
 
 
 
@@ -115,4 +121,65 @@ function getDateString(weekIndex, dayIndex) {
         month = "0" + month;
     return year + '-' + month + '-' + day;
 }
+
+// Create a function to make the AJAX call
+function getProjectUsers() {
+    // Create a new XMLHttpRequest object
+    var xhr = new XMLHttpRequest();
+
+    // Set up the request
+    xhr.open('GET', 'http://localhost/php/get_project_users.php?id='+project_id, true);
+
+    // Set the response type
+    xhr.responseType = 'json';
+
+    // Set up the onload function to handle the response
+    xhr.onload = function () {
+        // Check if the request was successful
+        if (xhr.status === 200) {
+            // Get the response data
+            var responseData = xhr.response;
+
+            // Get the card holder element
+            var cardHolder = document.getElementById('card_holder');
+
+            // Iterate over the response data
+            responseData.forEach(function (user) {
+                // Create a new card element
+                var card = document.createElement('div');
+                card.className = 'card';
+
+                // Create the card content
+                var cardContent = `
+          <div class="card_left">
+            <img class="card_avatar" id="avatar" src="${user.avatar}"/>
+            <div class="card_name_block">
+              <div class="card_name" id="card_name">${user.f_name} ${user.l_name}</div>
+              <div><b1>Github:</b1><a id="card_github" href="https://github.com/${user.github}">https://github.com/${user.github}</a></div>
+            </div>
+          </div>
+          <div>
+            <div><b1>Role:</b1> <span id="startDate">${user.role}</span></div>
+            <div><b1>Tech Stack:</b1> <span id="updateDate">${user.tech_stack}</span></div>
+          </div>
+          <div>
+            <div><b1>Joined On:</b1> <span id="startDate">${user.joined_on}</span></div>
+            <div><b1>Last Contribution On:</b1> <span id="updateDate"></span></div>
+          </div>
+        `;
+
+                // Set the card content
+                card.innerHTML = cardContent;
+
+                // Append the card to the card holder
+                cardHolder.appendChild(card);
+            });
+        }
+    };
+
+    // Send the request
+    xhr.send();
+}
+
+// Call the function to fetch project users and populate the card holders
 
