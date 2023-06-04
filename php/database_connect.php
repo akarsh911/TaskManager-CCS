@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "Premium#119";
+$password = "";
 $dbname = "task_manager";
 $conn = new mysqli($servername, $username, $password);
 if ($conn->connect_error) {
