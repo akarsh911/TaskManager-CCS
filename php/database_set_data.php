@@ -36,6 +36,37 @@ function create_project_user($project_id, $user_id, $role, $tech_stack, $user_ty
         return "Error: " . $sql . "<br>" . $conn->error;
     }
 }
+function create_task($user_id, $project_id, $leader_id, $title, $description, $status, $deadline)
+{
+    $conn = openCon();
+    $sql = "INSERT INTO user_tasks (user_id, project_id, leader_id, title, description, status, deadline) VALUES ('$user_id', '$project_id', '$leader_id', '$title', '$description', '$status', '$deadline')";
+    if ($conn->query($sql) === TRUE) {
+        return 1;
+    } else {
+        return "Error: " . $sql . "<br>" . $conn->error;
+    }
+}
+function mark_task_complete($id)
+{
+    $conn = openCon();
+    $completed_on = date("Y-m-d"); // Get current date
+    $sql = "UPDATE user_tasks SET completed_on = '$completed_on', status = 1 WHERE id = '$id'";
+    if ($conn->query($sql) === TRUE) {
+        return 1;
+    } else {
+        return "Error: " . $sql . "<br>" . $conn->error;
+    }
+}
+function delete_task($id)
+{
+    $conn = openCon();
+    $sql = "DELETE FROM user_tasks WHERE id = '$id'";
+    if ($conn->query($sql) === TRUE) {
+        return 1;
+    } else {
+        return "Error: " . $sql . "<br>" . $conn->error;
+    }
+}
 
 function login($email, $psw_hash)
 {

@@ -48,7 +48,7 @@ if ($conn->query($sql) === TRUE) {
               github TEXT,
               avatar TEXT,
               f_name TEXT,
-              l_name TEXT
+              l_name TEXT,
               joined_on DATE DEFAULT CURRENT_DATE
         )";
 
@@ -67,6 +67,7 @@ if ($conn->query($sql) === TRUE) {
                      id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                      user_id INT(6) UNSIGNED NOT NULL,
                      project_id INT(6) UNSIGNED NOT NULL,
+                     github TEXT,
                      date DATE DEFAULT CURRENT_DATE,
                      time TIME DEFAULT CURRENT_TIME
                      );  ";

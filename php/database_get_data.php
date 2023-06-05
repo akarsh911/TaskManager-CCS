@@ -144,3 +144,52 @@ function get_all_project_users($id)
    
     return $arr;
 }
+
+function get_user_tasks_for_project($user_id, $project_id)
+{
+    $conn = openCon();
+    $sql = "SELECT * FROM user_tasks WHERE user_id = '$user_id' AND project_id = '$project_id'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // Fetch the row data
+        $row = $result->fetch_assoc();
+        return $row;
+    } else {
+        return null; // No matching row found
+    }
+}
+function get_user_tasks_by_user_id($user_id)
+{
+    $conn = openCon();
+    $sql = "SELECT * FROM user_tasks WHERE user_id = '$user_id'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // Fetch all the rows into an array
+        $rows = array();
+        while ($row = $result->fetch_assoc()) {
+            $rows[] = $row;
+        }
+        return $rows;
+    } else {
+        return null; // No matching rows found
+    }
+}
+
+function get_user_tasks_by_project_id($project_id)
+{
+    $conn = openCon();
+    $sql = "SELECT * FROM user_tasks WHERE project_id = '$project_id'";
+    $result = $conn->query($sql);
+        
+    if ($result->num_rows > 0) {
+        $rows = array();
+        while ($row = $result->fetch_assoc()) {
+            $rows[] = $row;
+        }
+        return $rows;
+    } else {
+        return null; // No matching rows found
+    }
+}
