@@ -35,8 +35,8 @@ function fetch_response($repo)
     curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
     $response = curl_exec($ch);
     curl_close($ch);
-
-    if (json_decode($response)[0]->sha != "") {
+    $arr = json_decode($response);
+    if ($arr[0]->sha != "") {
         return $response;
     } else {
         echo "Failed to create webhook.";
