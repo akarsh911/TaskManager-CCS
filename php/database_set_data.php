@@ -88,3 +88,14 @@ function login($email, $psw_hash)
         return "nf";
     }
 }
+function create_user_contribution($user_id, $project_id, $commit_id, $github,$message)
+{
+    $conn = openCon();
+    $sql = "INSERT INTO user_contributions (user_id, project_id, commit_id, github,message)
+            VALUES ('$user_id', '$project_id', '$commit_id', '$github','$message')";
+    if ($conn->query($sql) === TRUE) {
+        return 1;
+    } else {
+        return "Error: " . $sql . "<br>" . $conn->error;
+    }
+}

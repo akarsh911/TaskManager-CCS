@@ -93,7 +93,7 @@ function webhook_query($token, $repo)
     $data = array(
         'name' => 'web',
         'active' => true,
-        'events' => array('push', 'pull_request'),
+        'events' => array('push'),
         'config' => array(
             'url' => 'http://getnode.xyz:49160/php/github_webhook.php?repo=' . $repo,
             'content_type' => 'json',

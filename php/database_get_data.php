@@ -22,7 +22,7 @@ function get_user_name($user_id)
 
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            return $row["f_name"]." ". $row["l_name"];
+            return $row["f_name"] . " " . $row["l_name"];
         }
     } else {
         return 0;
@@ -47,10 +47,11 @@ function get_all_users()
     $conn = openCon();
     $sql = "SELECT * FROM users";
     $result = $conn->query($sql);
-    $arr=array();$i=0;
+    $arr = array();
+    $i = 0;
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            $arr[$i++]=$row;
+            $arr[$i++] = $row;
         }
     } else {
         return 0;
@@ -73,6 +74,22 @@ function get_user_by_id($id)
     }
     return $arr;
 }
+function get_user_by_github($id)
+{
+    $conn = openCon();
+    $sql = "SELECT * FROM users WHERE github='$id'";
+    $result = $conn->query($sql);
+    $arr = array();
+    $i = 0;
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            return json_encode($row);;
+        }
+    } else {
+        return 0;
+    }
+    return json_encode($arr);
+}
 function get_email($email)
 {
     $conn = openCon();
@@ -88,7 +105,8 @@ function get_email($email)
 }
 function get_key()
 {
-    $conn=openCon();; 
+    $conn = openCon();
+    ;
     $sql = "SELECT token FROM `keys` LIMIT 1";
 
     $result = $conn->query($sql);
@@ -102,7 +120,7 @@ function get_key()
 }
 function get_projects()
 {
-    $conn=openCon();
+    $conn = openCon();
     $sql = "SELECT * FROM projects";
     $result = $conn->query($sql);
     $projects = array();
@@ -118,7 +136,20 @@ function get_project_by_id($id)
     $conn = openCon();
     $sql = "SELECT * FROM projects WHERE id='$id'";
     $result = $conn->query($sql);
-    $projects="";
+    $projects = "";
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $projects = $row;
+        }
+    }
+    return json_encode($projects);
+}
+function get_project_by_repo_name($name)
+{
+    $conn = openCon();
+    $sql = "SELECT * FROM projects WHERE repo_name='$name'";
+    $result = $conn->query($sql);
+    $projects = "";
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             $projects = $row;
@@ -131,18 +162,17 @@ function get_all_project_users($id)
     $conn = openCon();
     $sql = "SELECT * FROM project_users WHERE project_id='$id'";
     $result = $conn->query($sql);
-    $arr=array();
-    $i=0;
+    $arr = "";
+    $i = 0;
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            $arr[$i++]=$row;
-            
+            return $row;
         }
     } else {
         return 0;
     }
-   
-    return $arr;
+
+
 }
 
 function get_user_tasks_for_project($user_id, $project_id)
@@ -182,7 +212,7 @@ function get_user_tasks_by_project_id($project_id)
     $conn = openCon();
     $sql = "SELECT * FROM user_tasks WHERE project_id = '$project_id'";
     $result = $conn->query($sql);
-        
+
     if ($result->num_rows > 0) {
         $rows = array();
         while ($row = $result->fetch_assoc()) {
@@ -192,4 +222,19 @@ function get_user_tasks_by_project_id($project_id)
     } else {
         return null; // No matching rows found
     }
+}
+
+function does_commit_exist($commit_id)
+{
+    $conn = openCon();
+    $sql = "SELECT COUNT(*) as count FROM user_contributions WHERE commit_id = '$commit_id'";
+    $result = $conn->query($sql);
+
+    if ($result && $result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $count = $row['count'];
+        return ($count > 0) ? true : false;
+    }
+
+    return false;
 }

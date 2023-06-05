@@ -67,7 +67,9 @@ if ($conn->query($sql) === TRUE) {
                      id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                      user_id INT(6) UNSIGNED NOT NULL,
                      project_id INT(6) UNSIGNED NOT NULL,
+                     commit_id TEXT,
                      github TEXT,
+                     message TEXT,
                      date DATE DEFAULT CURRENT_DATE,
                      time TIME DEFAULT CURRENT_TIME
                      );  ";
