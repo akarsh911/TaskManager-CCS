@@ -26,8 +26,15 @@ class Chat implements MessageComponentInterface
 
     public function onMessage(ConnectionInterface $from, $msg)
     {
-        $message = json_decode($msg, true);
-
+        $message = json_decode($msg);
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "task_manager";
+        $conn = new mysqli($servername, $username, $password);
+        $conn->select_db($dbname);
+        $sql = "INSERT INTO chats (user, message,project_id, created_at) VALUES ('$message->user', '$message->message','$message->project_id', NOW())";
+        $conn->query($sql);
         // Broadcast the received message to all connected clients
         foreach ($this->clients as $client) {
             $client->send(json_encode($message));

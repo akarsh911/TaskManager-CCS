@@ -72,7 +72,7 @@ function get_user_by_id($id)
     } else {
         return 0;
     }
-    return $arr;
+    return json_encode($arr);
 }
 function get_user_by_github($id)
 {
@@ -83,7 +83,8 @@ function get_user_by_github($id)
     $i = 0;
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            return json_encode($row);;
+            return json_encode($row);
+            ;
         }
     } else {
         return 0;
@@ -162,19 +163,35 @@ function get_all_project_users($id)
     $conn = openCon();
     $sql = "SELECT * FROM project_users WHERE project_id='$id'";
     $result = $conn->query($sql);
-    $arr = "";
+    $arr = array();
     $i = 0;
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            return $row;
+            $arr[$i] = $row;
         }
     } else {
         return 0;
     }
 
+    return $arr;
+}
+function get_all_user_projects($id)
+{
+    $conn = openCon();
+    $sql = "SELECT * FROM project_users WHERE user_id='$id'";
+    $result = $conn->query($sql);
+    $arr = array();
+    $i = 0;
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $arr[$i++] = $row;
+        }
+    } else {
+        return 0;
+    }
+    return $arr;
 
 }
-
 function get_user_tasks_for_project($user_id, $project_id)
 {
     $conn = openCon();

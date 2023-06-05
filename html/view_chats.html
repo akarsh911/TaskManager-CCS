@@ -1,0 +1,51 @@
+<link rel="icon" sizes="180x180" href="../media/icon.png">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<link href="../css/project.css" rel="stylesheet" />
+<link href="../css/view_chats.css" rel="stylesheet" />
+
+<script>
+  $(function () {
+    $("#header").load("../html/header.html");
+  }); 
+</script>
+
+
+<div id="header"></div>
+
+<div class="project chat">
+  <h1>Live Chats</h1>
+  <div class="main-container">
+    <div class="left-container">
+      <div class="chat-list" id="chat_list">
+        <div class="chat-box">
+          <div class="chat-details">
+            <div class="text-head">
+              <h4>General</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="right-container">
+      <!--chat-container -->
+      <div class="chat-container" id="chat_0">
+        <div class="message-box my-message">
+          <p>I've been waiting to see that show asap!<br><span>07:43</span></p>
+        </div>
+        <div class="message-box friend-message">
+          <p>
+            <b1>what</b1><br>Ahh, I can't believe you do too!<br><span>07:45</span>
+          </p>
+        </div>
+      </div>
+      <!--input-bottom -->
+      <form id="chat-form" class="chatbox-input">
+        <input type="text" id="message" placeholder="Type a message">
+        <button type="submit" class="bt_chat"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="../js/view_chats.js"></script>

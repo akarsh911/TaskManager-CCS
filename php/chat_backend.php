@@ -1,27 +1,8 @@
 <?php
 // Establish database connection
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "task_manager";
-
-$conn = new mysqli($servername, $username, $password);
-$conn->select_db($dbname);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Handle incoming messages
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    
-    $user = $_POST['user'];
-    $message = $_POST['message'];
-    $data=json_encode($message);
-    // Save message to database
-    $sql = "INSERT INTO chats (user, message, created_at) VALUES ('$data', '$message', NOW())";
-    $conn->query($sql);
-}
-
+require_once($_SERVER['DOCUMENT_ROOT'] . "../php/database_connect.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "../php/database_get_data.php");
+$conn=openCon();
 // Fetch chat history
 $sql = "SELECT * FROM chats ORDER BY created_at ASC";
 $result = $conn->query($sql);
@@ -29,6 +10,8 @@ $result = $conn->query($sql);
 $chatHistory = [];
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
+        $arr=json_decode(get_user_by_id($row["user"]));
+        $row["user_name"]=$arr->f_name." ".$arr->l_name;
         $chatHistory[] = $row;
     }
 }
@@ -37,5 +20,5 @@ if ($result->num_rows > 0) {
 header('Content-Type: application/json');
 echo json_encode($chatHistory);
 
-$conn->close();
+
 ?>

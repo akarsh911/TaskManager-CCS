@@ -93,6 +93,21 @@ if ($conn->query($sql) === TRUE) {
 
                         // Execute the SQL query
                         if ($conn->query($sql) === TRUE) {
+                            $sql = "CREATE TABLE IF NOT EXISTS chats (
+                             id INT PRIMARY KEY,
+                             user INT,
+                             message TEXT,
+                             created_at DATETIME,
+                             project_id INT
+                            
+                          );";
+
+                            // Execute the SQL query
+                            if ($conn->query($sql) === TRUE) {
+
+                            } else {
+                                echo "Error creating table: " . $conn->error;
+                            }
 
                         } else {
                             echo "Error creating table: " . $conn->error;

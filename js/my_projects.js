@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $.ajax({
-        url: '../php/get_project_users.php?='+JSON.parse(localStorage.getItem("user_data")).user_id,
+        url: '../php/get_user_projects.php?id=' + JSON.parse(localStorage.getItem("user_data")).user_id,
         method: 'GET',
         dataType: 'json',
         success: function (projects) {
