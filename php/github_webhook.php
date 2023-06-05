@@ -17,7 +17,7 @@ if (does_commit_exist($data[0]->sha) == false) {
 function fetch_response($repo)
 {
 
-    $owner = 'PromtEngineer';
+    $owner = 'ccs-tiet-task';
     $ch = curl_init('https://api.github.com/repos/' . $owner . '/' . $repo . '/commits');
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_HTTPGET, true);
