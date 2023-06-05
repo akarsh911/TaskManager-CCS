@@ -16,9 +16,7 @@ if ($hash !== $calculatedHash) {
 }
 $repoPath = getcwd();
 $branch = 'master';
-
 $command = "cd ".$repoPath ."&& git pull origin ".$branch;
-
 exec($command, $output, $returnCode);
 echo "Output: " . implode("\n", $output) . "\n";
 echo "Return code: " . $returnCode . "\n";
