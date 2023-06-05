@@ -16,11 +16,12 @@ if ($hash !== $calculatedHash) {
 }
 $repoPath = getcwd();
 $branch = 'master';
-echo "Return code: " . $returnCode . "\n";
+
 $command = "cd ".$repoPath ."&& git pull origin ".$branch;
 
 exec($command, $output, $returnCode);
-
+echo "Output: " . implode("\n", $output) . "\n";
+echo "Return code: " . $returnCode . "\n";
 if ($returnCode !== 0) {
     echo "Error: Git command failed";
 } else {
