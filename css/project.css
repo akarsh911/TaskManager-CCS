@@ -106,7 +106,7 @@ body {
     color: white;
     justify-content: center;
     align-items: center;
-    background-color: rgba(3, 0, 0, 0.5);
+    /* background-color: rgba(3, 0, 0, 0.5); */
 }
 
 .color_grading {
@@ -127,7 +127,7 @@ body {
     min-width: 5px;
     min-height: 5px;
     padding: 5px;
-    background-color: green;
+    background-color: #05BFDB;
 }
 
 h2 {
@@ -141,7 +141,7 @@ h2 {
     min-width: 5px;
     min-height: 5px;
     padding: 5px;
-    background-color: rgb(13, 0, 128);
+    background-color: #002B5B;
 }
 
 .color_yellow {
@@ -149,7 +149,8 @@ h2 {
     min-width: 5px;
     min-height: 5px;
     padding: 5px;
-    background-color: yellow;
+    background-color: #00FFCA;
+    
 }
 
 .form_box {

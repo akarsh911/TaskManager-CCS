@@ -70,6 +70,8 @@ a{
     width: 150px;
     margin-right: 10px;
     border-radius: 25px;
+    background: rgb(54, 187, 189);
+    color: white;
 }
 
 .log_in_bt {
@@ -81,6 +83,8 @@ a{
     width: 150px;
     margin-right: 10px;
     border-radius: 25px;
+    background: rgb(54, 187, 189);
+    color: white;
 }
 
 .stock_btn {
@@ -93,6 +97,8 @@ a{
     width: 150px;
     margin-right: 10px;
     border-radius: 25px;
+    background: rgb(54, 187, 189);
+    color: white;
 }
 
 .register {
@@ -104,6 +110,8 @@ a{
     width: 150px;
     margin-right: 10px;
     border-radius: 25px;
+    background: rgb(54, 187, 189);
+    color: white;
 }
 
 .container_yt {
@@ -131,39 +139,32 @@ h1 {
     width: 150px;
     margin-right: 10px;
     border-radius: 25px;
+    background: rgb(54, 187, 189);
+    color: white;
 }
 
 .log_in_bt:hover {
-    background-color: #cb9999;
-    border: #106409;
+    background-color: rgb(39, 131, 133);
     cursor: pointer;
 }
 
 .register:hover {
-    background-color: #cb9999;
-    border: #106409;
+    background-color: rgb(39, 131, 133);
     cursor: pointer;
 }
 
 .community_btn:hover {
-    background-color: #1aa0e8f5;
-    color: aliceblue;
-    border: rgb(255, 255, 255);
+    background-color: rgb(39, 131, 133);
     cursor: pointer;
 }
 
 .stock_btn:hover {
-    background-color: #1aa0e8f5;
-    color: #fffefc;
-    border: #ffffff;
+    background-color: rgb(39, 131, 133);
     cursor: pointer;
 }
 
 .expense_btn:hover {
-    background-color: #1aa0e8f5;
-    color: aliceblue;
-    text-decoration-color: aliceblue;
-    border: #cb9999;
+    background-color: rgb(39, 131, 133);
     cursor: pointer;
 }
 
