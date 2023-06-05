@@ -26,8 +26,6 @@ exec($command, $output, $returnCode);
 
 if ($returnCode !== 0) {
     echo "Error: Git command failed";
-    // Handle the error as needed
 } else {
     echo "Git pull successful";
-    // Handle the success as needed
 }
