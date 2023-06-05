@@ -21,14 +21,17 @@ if ($hash !== $calculatedHash) {
     header('HTTP/1.0 403 Forbidden');
     die('Invalid signature.');
 }
+$repoPath = getcwd(); // get the current working directory as the repository path
+$branch = 'master'; // replace with the branch you want to pull from
 
-// Pull changes from the repository
-chdir($repoPath);
-exec('git pull');
+$command = "cd $repoPath && git pull origin $branch";
 
-// Optional: Perform additional actions or notifications
-// ...
+exec($command, $output, $returnCode);
 
-// Return a response
-http_response_code(200);
-echo 'Sync complete.';
+if ($returnCode !== 0) {
+    echo "Error: Git command failed";
+    // Handle the error as needed
+} else {
+    echo "Git pull successful";
+    // Handle the success as needed
+}

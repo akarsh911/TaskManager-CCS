@@ -1,6 +1,13 @@
 var project_id = getParameterByName('id');
 var page = getParameterByName('page');
-
+var key = "";
+$.ajax({
+    url: "../php/get_keys.php",
+    type: "GET",
+    success: function (data) {
+        key = data;
+    }
+});
 
 if (page == 1) {
 
@@ -62,7 +69,7 @@ function load_chart(repoName) {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', apiUrl);
     xhr.setRequestHeader('Accept', 'application/vnd.github+json');
-
+    xhr.setRequestHeader('Authorization', 'Bearer ' + key);
     xhr.setRequestHeader('X-GitHub-Api-Version', '2022-11-28');
     xhr.onreadystatechange = function () {
         if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
@@ -110,16 +117,36 @@ function getHeatmapColor(contributions) {
 }
 
 function getDateString(weekIndex, dayIndex) {
-    var startDate = new Date();
-    startDate.setDate(startDate.getDate() - (52 * 7 - (weekIndex * 7 + dayIndex)));
-    var day = startDate.getDate();
-    var month = startDate.getMonth() + 1;
-    var year = startDate.getFullYear();
-    if (day < 10)
-        day = "0" + day;
-    if (month < 10)
-        month = "0" + month;
-    return year + '-' + month + '-' + day;
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    const currentMonth = currentDate.getMonth();
+    const currentDay = currentDate.getDate();
+    const currentDayOfWeek = currentDate.getDay();
+
+    // Calculate the date of the first day of the year
+    const firstDayOfYear = new Date(currentYear, 0, 1);
+
+    // Calculate the offset for the first day of the week
+    const firstDayOfWeekOffset = (7 + currentDayOfWeek - 1) % 7;
+
+    // Calculate the number of days to subtract to get the first day of the week
+    const daysToSubtract = (currentDayOfWeek + 7 - dayIndex) % 7;
+
+    // Calculate the date of the first day of the target week
+    const firstDayOfTargetWeek = new Date(
+        currentYear,
+        currentMonth,
+        currentDay - firstDayOfWeekOffset - daysToSubtract + 1
+    );
+
+    // Calculate the date of the target day within the target week
+    const targetDate = new Date(
+        firstDayOfTargetWeek.getFullYear(),
+        firstDayOfTargetWeek.getMonth(),
+        firstDayOfTargetWeek.getDate() + (weekIndex * 7) + dayIndex
+    );
+
+    return targetDate;
 }
 
 // Create a function to make the AJAX call
