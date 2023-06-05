@@ -39,7 +39,7 @@ $(document).ready(function () {
             <hr>
             <div class="app_wrapper_right">
                 <button class="incomplete_bt" onclick="start_form(${project.id});">Apply For Contribution</button>
-                <button class="incomplete_bt" onclick="javascript:location.href='http://localhost/html/view_project.html?page=1&id=${project.id}';">View Project</button>
+                <button class="incomplete_bt" onclick="javascript:location.href='../html/view_project.html?page=1&id=${project.id}';">View Project</button>
             </div>
         </div>
         `;
