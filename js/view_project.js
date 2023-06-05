@@ -6,7 +6,7 @@ if (page == 1) {
     var xhr = new XMLHttpRequest();
 
     // Define the URL and request method
-    var url = 'http://localhost/php/get_project.php?id=' + project_id;
+    var url = '../php/get_project.php?id=' + project_id;
     xhr.open('GET', url, true);
 
     // Set the response type to JSON
@@ -128,7 +128,7 @@ function getProjectUsers() {
     var xhr = new XMLHttpRequest();
 
     // Set up the request
-    xhr.open('GET', 'http://localhost/php/get_project_users.php?id='+project_id, true);
+    xhr.open('GET', '../php/get_project_users.php?id='+project_id, true);
 
     // Set the response type
     xhr.responseType = 'json';
