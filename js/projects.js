@@ -56,11 +56,11 @@ $(document).ready(function () {
 
 function getStatusColor(status) {
     if (status === '1') {
-        return 'blue';
+        return '#002B5B';
     } else if (status === '2') {
-        return 'green';
+        return '#05BFDB';
     } else if (status === '0') {
-        return 'yellow';
+        return '#00FFCA';
     } else {
         return 'black'; // Default color if status is not recognized
     }

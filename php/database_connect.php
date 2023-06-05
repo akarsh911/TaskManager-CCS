@@ -49,6 +49,7 @@ if ($conn->query($sql) === TRUE) {
               avatar TEXT,
               f_name TEXT,
               l_name TEXT
+              joined_on DATE DEFAULT CURRENT_DATE
         )";
 
             // Execute the SQL query
@@ -60,7 +61,42 @@ if ($conn->query($sql) === TRUE) {
 
                 // Execute the SQL query
                 if ($conn->query($sql) === TRUE) {
-                    
+
+
+                    $sql = "CREATE TABLE IF NOT EXISTS user_contributions (
+                     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                     user_id INT(6) UNSIGNED NOT NULL,
+                     project_id INT(6) UNSIGNED NOT NULL,
+                     date DATE DEFAULT CURRENT_DATE,
+                     time TIME DEFAULT CURRENT_TIME
+                     );  ";
+
+                    // Execute the SQL query
+                    if ($conn->query($sql) === TRUE) {
+
+                        $sql = "CREATE TABLE IF NOT EXISTS user_tasks (
+                        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                        user_id INT(6) UNSIGNED NOT NULL,
+                         project_id INT(6) UNSIGNED NOT NULL,
+                         leader_id INT(6) UNSIGNED NOT NULL,
+                         title VARCHAR(255) NOT NULL,
+                          description TEXT NOT NULL,
+                          status VARCHAR(20) NOT NULL,
+                          assigned_date DATE DEFAULT CURRENT_DATE,
+                          assigned_time TIME DEFAULT CURRENT_TIME,
+                         deadline DATE,
+                        completed_on DATE
+                          );";
+
+                        // Execute the SQL query
+                        if ($conn->query($sql) === TRUE) {
+
+                        } else {
+                            echo "Error creating table: " . $conn->error;
+                        }
+                    } else {
+                        echo "Error creating table: " . $conn->error;
+                    }
                 } else {
                     echo "Error creating table: " . $conn->error;
                 }
