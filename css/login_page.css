@@ -26,11 +26,6 @@ body {
     grid-template-areas: "login";
     box-shadow: 0 0 17px 10px rgb(0 0 0 / 30%);
     border-radius: 20px;
-    background-color: rgba(255, 255, 255, 0.8);
-    background-image: url("../media/logo.png");
-    background-size: 50% ;
-    background-position: 0%;
-    background-repeat: no-repeat;
     overflow: hidden;
 }
 
@@ -38,6 +33,11 @@ body {
     grid-area: design;
     display: none;
     position: relative;
+    background-color: rgba(255, 255, 255, 0.8);
+    background-image: url("../media/logo.png");
+    background-size: 80%;
+    background-position:center;
+    background-repeat: no-repeat;
 }
 
 .login {
@@ -47,12 +47,12 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
-    background: 		#FAF9F6;
+    background: #ffffff;
     backdrop-filter: blur(90px);
 }
 
 .login h3.title {
-    margin: 20px 20px;
+    margin: 10px;
     font-weight: bolder;
     color:rgb(54, 187, 189);
     font-size: 27px;
@@ -123,7 +123,7 @@ a {
     margin-left: 10px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1000px) {
     .container {
         grid-template-columns: 50% 50%;
         grid-template-areas: "design login";

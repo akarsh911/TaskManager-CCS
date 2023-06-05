@@ -2,7 +2,14 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    overflow-x: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(0deg, rgba(54, 187, 189, 0.5), rgba(0, 0, 0, 0.5)), url('../media/bg1.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
 }
 
 h1 {
@@ -23,9 +30,7 @@ h1 {
 
 .project {
     text-align: center;
-    background-image: linear-gradient(0deg, rgba(54, 187, 189, 0.5), rgba(0, 0, 0, 0.5)), url('../media/bg1.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
+
     min-height: calc(100vh - 158px);
 }
 

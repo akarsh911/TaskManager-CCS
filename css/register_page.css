@@ -102,19 +102,19 @@ body {
 
 .err {
     visibility: hidden;
-    color: red;
+    color: rgb(255, 112, 112);
     right: 30px;
     position: absolute;
-    opacity: 50%;
+
 
 }
 
 .errem {
     visibility: hidden;
     right: 30px;
-    color: red;
+    color: rgb(255, 112, 112);;
     position: absolute;
-    opacity: 50%;
+
 
 }
 
