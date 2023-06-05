@@ -35,6 +35,7 @@ body {
     width: 50vw;
     position: relative;
     top: 50%;
+    
     /* margin-top: 150px;
     margin-bottom: 50px; */
 }
@@ -42,7 +43,7 @@ body {
 
 .form_title {
     margin-bottom: 10px;
-    font-size: 24px;
+    font-size: 28px;
     font-weight: 600;
 }
 
@@ -57,7 +58,7 @@ body {
 }
 
 .label {
-    font-size: 14px;
+    font-size: 16px;
     margin-top: 10px;
     margin-bottom: 5px;
 }
@@ -81,6 +82,8 @@ body {
     border-radius: 10px;
     padding: 0 15px;
     margin-bottom: 0;
+    margin-left: 4px;
+    margin-right: 4px;
 }
 
 .input_icons input {
@@ -131,7 +134,7 @@ body {
     width: 100%;
     padding: 10px;
     color: white;
-    background: rgb(54, 187, 189);
+    background: rgb(41, 164, 166);
     border: none;
     border-radius: 10px;
     cursor: pointer;
