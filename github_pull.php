@@ -2,11 +2,6 @@
 
 // GitHub Webhook Secret
 $secret = 'hello';
-
-// Path to your repository on the server
-$repoPath = 'D:\ApacheServer';
-
-// Headers
 $signature = $_SERVER['HTTP_X_HUB_SIGNATURE'];
 if (!isset($signature)) {
     header('HTTP/1.0 403 Forbidden');
