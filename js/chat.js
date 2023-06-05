@@ -1,4 +1,4 @@
-const socket = io('wss://localhost:8080');
+const socket = io('wss://getnode.xyz:49161');
 
 socket.on('connect', () => {
     console.log('Connected to server');

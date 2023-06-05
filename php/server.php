@@ -1,5 +1,5 @@
 <?php
-require '../vendor/autoload.php';
+require_once($_SERVER['DOCUMENT_ROOT'] . "/vendor/autoload.php0");
 
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
@@ -33,7 +33,8 @@ class Chat implements MessageComponentInterface
         $dbname = "task_manager";
         $conn = new mysqli($servername, $username, $password);
         $conn->select_db($dbname);
-        $sql = "INSERT INTO chats (user, message,project_id, created_at) VALUES ('$message->user', '$message->message','$message->project_id', NOW())";
+        echo json_encode($message);
+        $sql = "INSERT INTO chats (user, message,project_id, created_at) VALUES ('$message->user', '$message->message','$message->project_id', '$message->created_at')";
         $conn->query($sql);
         // Broadcast the received message to all connected clients
         foreach ($this->clients as $client) {
