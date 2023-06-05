@@ -26,7 +26,7 @@ h1 {
     background-image: linear-gradient(0deg, rgba(54, 187, 189, 0.5), rgba(0, 0, 0, 0.5)), url('../media/bg1.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 80.3vh;
+    min-height: calc(100vh - 158px);
 }
 
 .project.new {
@@ -38,7 +38,6 @@ h1 {
 
 .project.view {
     display: flex;
-    
     text-align: start;
 }
 
@@ -53,6 +52,7 @@ h1 {
 html,
 body {
     width: 100vw;
+    min-height: 100vh;
 }
 
 .app_container {
@@ -457,11 +457,20 @@ i {
     justify-content: space-between;
 }
 
+.members {
+    min-width: 100vw;
+    max-height: 75vh;
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 h4 {
     font-size: 36px;
     padding: 5px;
     margin: 0px;
-    margin-top: 10px;
+    padding-top: 10px;
 }
 
 .elem {
@@ -503,15 +512,17 @@ b {
     height: 100%;
     display: none;
 }
-.card_holder{
+
+.card_holder {
     width: 100%;
     flex-wrap: wrap;
     justify-content: center;
-    overflow-y: scroll;
+    overflow-y: auto;
     min-height: 70%;
     max-height: 400px;
 }
-.card{
+
+.card {
     display: flex;
     padding: 10px;
     font-size: 14px;
@@ -523,23 +534,31 @@ b {
     align-items: center;
     justify-content: space-around;
 }
-
-.card_left{
+.card.members1{
+    text-align: start;
+    max-width: 60%;
+    max-height: 90px;
+}
+.card_left {
     display: flex;
 }
-.card_avatar{
+
+.card_avatar {
     height: 50px;
     width: 50px;
     border-radius: 50%;
 }
-.card_name_block{
+
+.card_name_block {
     margin-left: 15px;
 }
-.card_name{
-    
+
+.card_name {
+
     font-size: 18px;
     font-weight: bold;
 }
-b1{
+
+b1 {
     font-weight: bold;
 }
