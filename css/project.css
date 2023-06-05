@@ -23,7 +23,7 @@ h1 {
 
 .project {
     text-align: center;
-    background-image: linear-gradient(0deg, rgba(54,187,189, 0.5), rgba(0, 0, 0, 0.5)), url('../media/bg1.jpg');
+    background-image: linear-gradient(0deg, rgba(54, 187, 189, 0.5), rgba(0, 0, 0, 0.5)), url('../media/bg1.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 80.3vh;
@@ -410,6 +410,7 @@ h2 {
 
 .tabs {
     padding: 10px;
+    padding-left: 15px;
     font-size: 20px;
     min-width: 225px;
     border-bottom: 2px solid rgba(255, 255, 255, 0.358);
@@ -426,8 +427,10 @@ i {
     color: #1aa0e8;
     cursor: pointer;
 }
-.tabs.first{
-    background-color: #c0e7fd;;
+
+.tabs.first {
+    background-color: #c0e7fd;
+    ;
     color: #1aa0e8;
     border: none;
     text-align: center;
@@ -435,56 +438,108 @@ i {
     padding-top: 20px;
     padding-bottom: 20px;
 }
-.content{
+
+.content {
     all: unset;
     background-color: rgba(255, 255, 255, 0.777);
     min-width: calc(100vw - 280px);
     margin: 15px;
     border-radius: 15px;
 }
-.bar1{
+
+.bar1 {
     height: fit-content;
     padding: 10px;
     padding-left: 30px;
     padding-right: 50px;
     display: flex;
-        align-items: center;
-            justify-content: space-between;
+    align-items: center;
+    justify-content: space-between;
 }
-h4{
-    font-size:36px;
+
+h4 {
+    font-size: 36px;
     padding: 5px;
     margin: 0px;
-    
     margin-top: 10px;
-    
 }
-.elem{
+
+.elem {
     font-size: 18px;
 }
-b{
+
+b {
     font-size: 19px;
 }
-.bar2{
-    padding: 10px;
-        padding-left: 30px;
-        padding-right: 50px;
-}
- .heatmap-container {
-    
-     display: grid;
-     grid-template-columns: repeat(52, 1fr);
-     grid-template-rows: repeat(7, 1fr);
-     gap: 1px;
- }
 
- .heatmap-block {
-     width: 20px;
-     height: 20px;
-     background-color: #ebedf0;
- }
- .bar3{
+.bar2 {
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 50px;
+}
+
+.heatmap-container {
+
+    display: grid;
+    grid-template-columns: repeat(52, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+    gap: 1px;
+}
+
+.heatmap-block {
+    width: 20px;
+    height: 20px;
+    background-color: #ebedf0;
+}
+
+.bar3 {
     text-align: center;
     margin-top: 10px;
     margin-bottom: 10px;
- }
+}
+
+.about {
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+.card_holder{
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-y: scroll;
+    min-height: 70%;
+    max-height: 400px;
+}
+.card{
+    display: flex;
+    padding: 10px;
+    font-size: 14px;
+    min-width: 70%;
+    min-height: 80px;
+    background-color: #ffffff;
+    margin: 10px;
+    border-radius: 15px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.card_left{
+    display: flex;
+}
+.card_avatar{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+.card_name_block{
+    margin-left: 15px;
+}
+.card_name{
+    
+    font-size: 18px;
+    font-weight: bold;
+}
+b1{
+    font-weight: bold;
+}

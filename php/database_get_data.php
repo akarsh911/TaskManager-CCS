@@ -50,7 +50,7 @@ function get_all_users()
     $arr=array();$i=0;
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            $array[$i++]=$row;
+            $arr[$i++]=$row;
         }
     } else {
         return 0;
@@ -125,4 +125,22 @@ function get_project_by_id($id)
         }
     }
     return json_encode($projects);
+}
+function get_all_project_users($id)
+{
+    $conn = openCon();
+    $sql = "SELECT * FROM project_users WHERE project_id='$id'";
+    $result = $conn->query($sql);
+    $arr=array();
+    $i=0;
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $arr[$i++]=$row;
+            
+        }
+    } else {
+        return 0;
+    }
+   
+    return $arr;
 }

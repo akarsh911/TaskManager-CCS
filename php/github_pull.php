@@ -4,7 +4,7 @@
 $secret = 'hello';
 
 // Path to your repository on the server
-$repoPath = 'https://github.com/akarsh911/TaskManager-CCS';
+$repoPath = 'D:\ApacheServer';
 
 // Headers
 $signature = $_SERVER['HTTP_X_HUB_SIGNATURE'];
