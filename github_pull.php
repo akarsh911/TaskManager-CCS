@@ -8,7 +8,7 @@ if (!isset($signature)) {
     die('Access denied.');
 }
 
-// Verify the signature
+
 list($algo, $hash) = explode('=', $signature, 2);
 $payload = file_get_contents('php://input');
 $calculatedHash = hash_hmac($algo, $payload, $secret);
