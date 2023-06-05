@@ -3,8 +3,8 @@ var page = getParameterByName('page');
 
 
 if (page == 1) {
-   
-    document.getElementById("about").style.display ="block";
+
+    document.getElementById("about").style.display = "block";
     var xhr = new XMLHttpRequest();
 
     // Define the URL and request method
@@ -36,8 +36,7 @@ if (page == 1) {
     // Send the AJAX request
     xhr.send();
 }
-if(page==3)
-{
+if (page == 3) {
     document.getElementById("team").style.display = "block";
     getProjectUsers();
 }
@@ -56,8 +55,8 @@ function getParameterByName(name, url = window.location.href) {
 
 
 function load_chart(repoName) {
-    var repoOwner = 'akarsh911';
-    repoName='adb-dino-skinned';
+    var repoOwner = 'ccs-tiet-task';
+
     var apiUrl = 'https://api.github.com/repos/' + repoOwner + '/' + repoName + '/stats/commit_activity';
 
     var xhr = new XMLHttpRequest();
@@ -81,8 +80,7 @@ function load_chart(repoName) {
                     heatmapBlock.classList.add('heatmap-block');
                     heatmapBlock.style.backgroundColor = getHeatmapColor(contributions);
                     heatmapBlock.title = getDateString(weekIndex, dayIndex) + ": " + contributions + " contributions";
-                    if(contributions!=0)
-                    {
+                    if (contributions != 0) {
                         document.getElementById('updateDate').innerHTML = getDateString(weekIndex, dayIndex);
                     }
                     heatmapContainer.appendChild(heatmapBlock);
@@ -117,9 +115,9 @@ function getDateString(weekIndex, dayIndex) {
     var day = startDate.getDate();
     var month = startDate.getMonth() + 1;
     var year = startDate.getFullYear();
-    if(day<10)
-    day="0"+day;
-    if (month< 10)
+    if (day < 10)
+        day = "0" + day;
+    if (month < 10)
         month = "0" + month;
     return year + '-' + month + '-' + day;
 }
@@ -130,7 +128,7 @@ function getProjectUsers() {
     var xhr = new XMLHttpRequest();
 
     // Set up the request
-    xhr.open('GET', '../php/get_project_users.php?id='+project_id, true);
+    xhr.open('GET', '../php/get_project_users.php?id=' + project_id, true);
 
     // Set the response type
     xhr.responseType = 'json';
@@ -185,12 +183,11 @@ function getProjectUsers() {
 
 // Call the function to fetch project users and populate the card holders
 
-window.onload=function()
-{
+window.onload = function () {
     for (var i = 1; i <= 6; i++) {
         var temp = document.getElementById(i);
         var url = '../html/view_project.html?page=' + i + '&id=' + project_id;
-        temp.href=url;
+        temp.href = url;
 
     }
 }
