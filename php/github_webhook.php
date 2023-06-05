@@ -17,7 +17,7 @@ if (does_commit_exist($data[0]->sha) == false) {
 function fetch_response($repo)
 {
 
-    $owner = 'PromtEngineer';
+    $owner = 'ccs-tiet-task';
     $ch = curl_init('https://api.github.com/repos/' . $owner . '/' . $repo . '/commits');
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_HTTPGET, true);
@@ -35,8 +35,8 @@ function fetch_response($repo)
     curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
     $response = curl_exec($ch);
     curl_close($ch);
-    $arr = json_decode($response);
-    if ($arr[0]->sha != "") {
+
+    if (json_decode($response)[0]->sha != "") {
         return $response;
     } else {
         echo "Failed to create webhook.";
