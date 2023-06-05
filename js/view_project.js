@@ -1,5 +1,7 @@
 var project_id = getParameterByName('id');
 var page = getParameterByName('page');
+
+
 if (page == 1) {
    
     document.getElementById("about").style.display ="block";
@@ -183,3 +185,12 @@ function getProjectUsers() {
 
 // Call the function to fetch project users and populate the card holders
 
+window.onload=function()
+{
+    for (var i = 1; i <= 6; i++) {
+        var temp = document.getElementById(i);
+        var url = '../html/view_project.html?page=' + i + '&id=' + project_id;
+        temp.href=url;
+
+    }
+}

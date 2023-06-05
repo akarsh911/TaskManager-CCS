@@ -563,3 +563,6 @@ b {
 b1 {
     font-weight: bold;
 }
+.tabs a{
+    all:unset;
+}
