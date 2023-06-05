@@ -1,6 +1,4 @@
 <?php
-
-// GitHub Webhook Secret
 $secret = 'hello';
 $signature = $_SERVER['HTTP_X_HUB_SIGNATURE'];
 if (!isset($signature)) {
