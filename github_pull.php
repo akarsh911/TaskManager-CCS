@@ -24,7 +24,7 @@ if ($hash !== $calculatedHash) {
 $repoPath = getcwd();
 $branch = 'master';
 
-$command = "cd $repoPath && git pull origin $branch";
+$command = "cd ".$repoPath ."&& git pull origin ".$branch;
 
 exec($command, $output, $returnCode);
 
