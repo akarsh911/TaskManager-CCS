@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Live Chat</title>
+    <style>
+        #chat-messages {
+            height: 300px;
+            overflow-y: scroll;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Live Chat</h1>
+
+    <div id="chat-messages"></div>
+
+    <form id="chat-form">
+        <input type="text" id="user" placeholder="Your Name" required>
+        <input type="text" id="message" placeholder="Type your message" required>
+        <button type="submit">Send</button>
+    </form>
+
+    <script>
+        // Establish websocket connection
+        const socket = new WebSocket('ws://localhost:8080');
+
+        socket.addEventListener('message', function (event) {
+            const message = JSON.parse(event.data);
+
+            // Append new message to chat history
+            const chatMessages = document.getElementById('chat-messages');
+            const chatMessage = document.createElement('p');
+            chatMessage.innerText = `${message.user}: ${message.message}`;
+            chatMessages.appendChild(chatMessage);
+
+            // Scroll to bottom of chat
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        });
+
+        // Submit form and send message
+        document.getElementById('chat-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const user = document.getElementById('user').value;
+            const message = document.getElementById('message').value;
+
+            // Send message to backend
+            const data = {
+                user: user,
+                message: message
+            };
+
+            socket.send(JSON.stringify(data));
+
+            // Clear input field
+            document.getElementById('message').value = '';
+        });
+
+        // Fetch chat history from backend
+        fetch('../php/chat_backend.php')
+            .then(response => response.json())
+            .then(messages => {
+                const chatMessages = document.getElementById('chat-messages');
+
+                messages.forEach(message => {
+                    const chatMessage = document.createElement('p');
+                    chatMessage.innerText = `${message.user}: ${message.message}`;
+                    chatMessages.appendChild(chatMessage);
+                });
+
+                // Scroll to bottom of chat
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            });
+    </script>
+</body>
+
+</html>
