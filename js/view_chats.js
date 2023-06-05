@@ -1,6 +1,6 @@
 load_projects();
 load_chats();
-const socket = new WebSocket('ws://localhost:8080/');
+const socket = new WebSocket('ws://getnode.xyz:49161');
 
 var sel = 0;
 
