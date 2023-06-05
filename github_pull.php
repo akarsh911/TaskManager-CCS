@@ -21,8 +21,8 @@ if ($hash !== $calculatedHash) {
     header('HTTP/1.0 403 Forbidden');
     die('Invalid signature.');
 }
-$repoPath = getcwd(); // get the current working directory as the repository path
-$branch = 'master'; // replace with the branch you want to pull from
+$repoPath = getcwd();
+$branch = 'master';
 
 $command = "cd $repoPath && git pull origin $branch";
 
