@@ -1,8 +1,12 @@
-const socket = new WebSocket('ws://getnode.xyz:49161');
+load_projects();
+load_chats();
+const socket = new WebSocket('ws://localhost:8080/');
 
-var sel=0;
+var sel = 0;
 
 socket.addEventListener('message', function (event) {
+    const message = JSON.parse(event.data);
+    console.log(message);
     if (message.user == JSON.parse(localStorage.getItem("user_data")).user_id) {
         const chatMessage = document.createElement('div');
         chatMessage.classList.add("message-box", "my-message");
@@ -37,6 +41,7 @@ socket.addEventListener('message', function (event) {
         chatMessagep.appendChild(chatMessagebr2);
         chatMessagep.appendChild(chatMessagespan);
         var chatMessages = document.getElementById('chat_' + `${message.project_id}`);
+        console.log('chat_' + `${message.project_id}`)
         chatMessages.appendChild(chatMessage);
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
@@ -48,12 +53,14 @@ document.getElementById('chat-form').addEventListener('submit', function (event)
 
     const user = JSON.parse(localStorage.getItem("user_data"));
     const message = document.getElementById('message').value;
-    
+
     // Send message to backend
     const data = {
-        user: user,
+        user: user.user_id,
         message: message,
-        project_id:sel
+        project_id: sel,
+        user_name:user.f_name+" "+user.l_name,
+        created_at: new Date().toLocaleString()
     };
 
     socket.send(JSON.stringify(data));
@@ -62,17 +69,16 @@ document.getElementById('chat-form').addEventListener('submit', function (event)
     document.getElementById('message').value = '';
 });
 
-function load_projects()
-{
+function load_projects() {
     $.ajax({
-        url: '../php/get_project_users.php?=' + JSON.parse(localStorage.getItem("user_data")).user_id,
+        url: '../php/get_user_projects.php?id=' + JSON.parse(localStorage.getItem("user_data")).user_id,
         method: 'GET',
         dataType: 'json',
         success: function (projects) {
             // Iterate over each project
             projects.forEach(function (project) {
                 // Create the HTML content for the project
-                var htmlContent = `<div class="chat-box" id="tab_${project.id}"
+                var htmlContent = `<div class="chat-box" id="tab_${project.id}">
                         <div class="chat-details">
                             <div class="text-head">
                                 <h4> ${project.project_name}</h4>
@@ -81,11 +87,11 @@ function load_projects()
                     </div> `;
 
                 // Append the HTML content to the app_container element
-                $('.chat_list').append(htmlContent);
+                $('#chat_list').append(htmlContent);
 
                 var chatBox = `  <div class="chat-container" style="display:none;" id="chat_${project.id}"></div>`
             });
-            load_chats();
+            
         },
         error: function (xhr, status, error) {
             console.error(error);
@@ -94,18 +100,16 @@ function load_projects()
 
 }
 
-function load_chats()
-{
+function load_chats() {
     fetch('../php/chat_backend.php')
         .then(response => response.json())
         .then(messages => {
-            
+
 
             messages.forEach(message => {
-                if (message.user == JSON.parse(localStorage.getItem("user_data")).user_id)
-                {
+                if (message.user == JSON.parse(localStorage.getItem("user_data")).user_id) {
                     const chatMessage = document.createElement('div');
-                    chatMessage.classList.add("message-box","my-message");
+                    chatMessage.classList.add("message-box", "my-message");
                     const chatMessagep = document.createElement('p');
                     chatMessagep.innerText = `${message.message}`;
                     const chatMessageb = document.createElement('br');
@@ -113,12 +117,12 @@ function load_chats()
                     chatMessagesp.innerText = `${message.created_at}`;
                     chatMessage.appendChild(chatMessagep);
                     chatMessagep.appendChild(chatMessageb);
-                    chatMessagep.appendChild(chatMessagesp);        
-                    var chatMessages = document.getElementById('chat_' + `${message.project_id}`);  
+                    chatMessagep.appendChild(chatMessagesp);
+                    var chatMessages = document.getElementById('chat_' + `${message.project_id}`);
                     chatMessages.appendChild(chatMessage);
                     chatMessages.scrollTop = chatMessages.scrollHeight;
                 }
-                else{
+                else {
                     const chatMessage = document.createElement('div');
                     chatMessage.classList.add("message-box", "friend-message");
                     const chatMessagep = document.createElement('p');
@@ -136,11 +140,12 @@ function load_chats()
                     chatMessagep.appendChild(chatMessageText1);
                     chatMessagep.appendChild(chatMessagebr2);
                     chatMessagep.appendChild(chatMessagespan);
-                    var chatMessages = document.getElementById('chat_' + `${message.project_id}`);    
+                    var chatMessages = document.getElementById('chat_' + `${message.project_id}`);
+                    console.log(chatMessages)
                     chatMessages.appendChild(chatMessage);
                     chatMessages.scrollTop = chatMessages.scrollHeight;
-                }                
+                }
             });
-           
+
         });
 }
