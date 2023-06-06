@@ -93,13 +93,14 @@
             <hr>
             <div class="dropdown">
 
-                <form id="add_user">
+                <form id="add_user" action="../php/add_new_user_to_project.php" method="post">
                     <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
                     <div id="myDropdown" class="dropdown-content"></div>
                      <div id="user_params" style="display: none;">
                      <input type="text" placeholder="Role"  name="role" required>
                       <input type="text" placeholder="Tech Stack" name="tech_stack" required>
                         <input type="text" style="visibility: hidden;" name="user_id" id="user_id">
+                         <input type="text" style="visibility: hidden;" name="project_id" id="project_id">
                         <input type="submit"/>
                     </div>   
                 </form>
