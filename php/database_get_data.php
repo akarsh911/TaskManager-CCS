@@ -56,7 +56,7 @@ function get_all_users()
     } else {
         return 0;
     }
-     return $arr;
+    return $arr;
 }
 function get_user_by_id($id)
 {
@@ -198,13 +198,17 @@ function get_user_tasks_for_project($user_id, $project_id)
     $arr = array();
     $i = 0;
     if ($result->num_rows > 0) {
-        // Fetch the row data
-        $arr[$i++] = $result->fetch_assoc();
-
+        // Fetch all the rows into an array
+        $rows = array();
+        while ($row = $result->fetch_assoc()) {
+            $rows[] = $row;
+        }
+        return $rows;
     } else {
-        return null; // No matching row found
+        return null; // No matching rows found
     }
-    return $arr;
+    // return $arr;
+
 }
 function get_user_tasks_by_user_id($user_id)
 {
@@ -254,4 +258,20 @@ function does_commit_exist($commit_id)
     }
 
     return false;
+}
+function get_user_contributions_by_project_id($project_id)
+{
+    $conn = openCon();
+    $sql = "SELECT * FROM user_contributions WHERE project_id = '$project_id'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $rows = array();
+        while ($row = $result->fetch_assoc()) {
+            $rows[] = $row;
+        }
+        return $rows;
+    } else {
+        return null; // No matching rows found
+    }
 }
