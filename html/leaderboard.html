@@ -1,5 +1,5 @@
 <link rel="icon" sizes="180x180" href="../media/icon.png">
-
+<link href="../css/project.css" rel="stylesheet" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <style>
     p {
@@ -20,3 +20,90 @@
     }); 
 </script>
 <div id="header"></div>
+<div class="project">
+    <h1>Leader Board</h1>
+    <div class="center_content">
+        <div class="card_holder" style="width: 70%;" id="card_holders">
+
+
+        </div>
+    </div>
+</div>
+<script>
+    // Make API request
+    fetch('../php/leaderboard.php')
+        .then(response => response.json())
+        .then(data => {
+            // Access the card_holders div
+            const cardHolders = document.getElementById('card_holders');
+
+            // Iterate over the response data
+            data.forEach((user, index) => {
+                // Create card elements
+                const card = document.createElement('div');
+                card.className = 'card';
+
+                const serialNumber = document.createElement('span');
+                const serialNumberLabel = document.createElement('b1');
+                serialNumberLabel.textContent = `${index + 1}.`;
+                serialNumber.appendChild(serialNumberLabel);
+
+                const cardLeft = document.createElement('div');
+                cardLeft.className = 'card_left';
+
+                const avatar = document.createElement('img');
+                avatar.className = 'card_avatar';
+                avatar.src = user.avatar;
+
+                const cardNameBlock = document.createElement('div');
+                cardNameBlock.className = 'card_name_block';
+
+                const cardName = document.createElement('div');
+                cardName.className = 'card_name';
+                cardName.textContent = `${user.f_name} ${user.l_name}`;
+
+                const emailBlock = document.createElement('div');
+                const emailLabel = document.createElement('b1');
+                emailLabel.textContent = 'Email: ';
+                const email = document.createTextNode(user.email);
+                emailBlock.appendChild(emailLabel);
+                emailBlock.appendChild(email);
+
+                const tasksBlock = document.createElement('div');
+                const tasksLabel = document.createElement('b1');
+                tasksLabel.textContent = 'Tasks Completed: ';
+                const tasks = document.createElement('span');
+                tasks.id = 'startDate';
+                tasks.textContent = user.tasks;
+                tasksBlock.appendChild(tasksLabel);
+                tasksBlock.appendChild(tasks);
+
+                const contributionsBlock = document.createElement('div');
+                const contributionsLabel = document.createElement('b1');
+                contributionsLabel.textContent = 'Contributions: ';
+                const contributions = document.createElement('span');
+                contributions.id = 'updateDate';
+                contributions.textContent = user.contributions;
+                contributionsBlock.appendChild(contributionsLabel);
+                contributionsBlock.appendChild(contributions);
+
+                // Append elements to the card
+                card.appendChild(serialNumber);
+                cardLeft.appendChild(avatar);
+                cardLeft.appendChild(cardNameBlock);
+                cardNameBlock.appendChild(cardName);
+                cardNameBlock.appendChild(emailBlock);
+                card.appendChild(cardLeft);
+
+                card.appendChild(tasksBlock);
+                card.appendChild(contributionsBlock);
+
+                // Append card to the card_holders div
+                cardHolders.appendChild(card);
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+
+</script>
