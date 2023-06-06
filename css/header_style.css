@@ -60,10 +60,11 @@ a{
 }
 
 .community_btn {
+    font-family: 'Poppins', sans-serif;
     border: #ffffff;
     font-weight: bold;
     font-size: 15px;
-    padding: 10px;
+    padding: 0px;
     max-height: 10vh;
     height: 35px;
     width: 110px;
@@ -74,10 +75,11 @@ a{
 }
 
 .log_in_bt {
+    font-family: 'Poppins', sans-serif;
     border: #ffffff;
     font-weight: bold;
     font-size: 15px;
-    padding: 10px;
+    padding: 0px;
     max-height: 10vh;
     height: 35px;
     width: 110px;
@@ -88,10 +90,11 @@ a{
 }
 
 .stock_btn {
+    font-family: 'Poppins', sans-serif;
     border: #ffffff;
     font-weight: bold;
     font-size: 15px;
-    padding: 10px;
+    padding: 0px;
     max-height: 10vh;
     height: 35px;
     width: 110px;
@@ -102,10 +105,11 @@ a{
 }
 
 .register {
+    font-family: 'Poppins', sans-serif;
     border: #ffffff;
     font-weight: bold;
     font-size: 15px;
-    padding: 10px;
+    padding: 0px;
     max-height: 10vh;
     height: 35px;
     width: 110px;
@@ -132,10 +136,11 @@ h1 {
 }
 
 .expense_btn {
+    font-family: 'Poppins', sans-serif;
     border: #ffffff;
     font-weight: bold;
     font-size: 15px;
-    padding: 10px;
+    padding: 0px;
     max-height: 10vh;
     height: 35px;
     width: 110px;
