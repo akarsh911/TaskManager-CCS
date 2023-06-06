@@ -1,9 +1,16 @@
-load_projects();
-load_chats();
+addEventListener("load", (event) => { });
+
+onload = (event) => {
+    load_projects();
+    load_chats();
+
+};
+
+
 const socket = new WebSocket('ws://getnode.xyz:49161');
 
 var sel = 0;
-
+var count = 0;
 socket.addEventListener('message', function (event) {
     const message = JSON.parse(event.data);
     console.log(message);
@@ -59,7 +66,7 @@ document.getElementById('chat-form').addEventListener('submit', function (event)
         user: user.user_id,
         message: message,
         project_id: sel,
-        user_name:user.f_name+" "+user.l_name,
+        user_name: user.f_name + " " + user.l_name,
         created_at: new Date().toLocaleString()
     };
 
@@ -77,8 +84,9 @@ function load_projects() {
         success: function (projects) {
             // Iterate over each project
             projects.forEach(function (project) {
+                count++;
                 // Create the HTML content for the project
-                var htmlContent = `<div class="chat-box" id="tab_${project.id}">
+                var htmlContent = `<div class="chat-box" id="tab_${project.id}" onclick="load(${project.id});">
                         <div class="chat-details">
                             <div class="text-head">
                                 <h4> ${project.project_name}</h4>
@@ -89,9 +97,14 @@ function load_projects() {
                 // Append the HTML content to the app_container element
                 $('#chat_list').append(htmlContent);
 
-                var chatBox = `  <div class="chat-container" style="display:none;" id="chat_${project.id}"></div>`
+                var card = document.createElement('div');
+                card.setAttribute('id', "chat_" + count);
+                card.classList.add("chat-container", "invis");
+
+
+                document.getElementById('chats').appendChild(card);
             });
-            
+
         },
         error: function (xhr, status, error) {
             console.error(error);
@@ -148,4 +161,11 @@ function load_chats() {
             });
 
         });
+}
+function load(id) {
+    for (var i = 0; i <= count; i++) {
+        document.getElementById("chat_" + i).style.display = "none";
+    }
+    document.getElementById("chat_" + id).style.display = "block";
+    sel = id;
 }
