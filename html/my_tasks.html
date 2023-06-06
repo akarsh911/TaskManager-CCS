@@ -1,0 +1,82 @@
+<link rel="icon" sizes="180x180" href="../media/icon.png">
+<link href="../css/project.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<style>
+    p {
+        width: 80%;
+        padding-left: 10%;
+        align-items: center;
+        align-self: center;
+    }
+
+    h2,
+    h1 {
+        padding-left: 10%;
+    }
+</style>
+<script>
+    $(function () {
+        $("#header").load("../html/header.html");
+    }); 
+</script>
+<div id="header"></div>
+
+<div class="project">
+    <h1>My Tasks</h1>
+    <div class="center_content">
+    <div class="card_holder" style="width: 70%;"id="card_holders">
+        </div>
+    </div>
+</div>
+<script>
+
+    const cardHolder1 = document.getElementById('card_holders');
+    console.log(cardHolder1);
+    // Make an API call to retrieve the data
+    fetch('http://localhost/php/get_my_tasks.php?user_id=' + JSON.parse(localStorage.getItem("user_data")).user_id)
+        .then(response => response.json())
+        .then(responseData => {
+
+
+            for (let i = 0; i < responseData.length; i++) {
+                const task = responseData[i];
+                const card = document.createElement('div');
+                card.classList.add('card');
+                const cardContent1 = document.createElement('div');
+                const cardName = document.createElement('div');
+                cardName.classList.add('card_name');
+                cardName.innerText = task.title;
+                cardContent1.appendChild(cardName);
+                const description = document.createElement('div');
+                description.innerHTML = `<b1>Description:</b1>${task.description}`;
+                cardContent1.appendChild(description);
+                card.appendChild(cardContent1);
+                const cardContent2 = document.createElement('div');
+                const assignedOn = document.createElement('div');
+                assignedOn.innerHTML = `<b1>Assigned On:</b1> <span>${task.assigned_date}</span>`;
+                cardContent2.appendChild(assignedOn);
+                const deadline = document.createElement('div');
+                deadline.innerHTML = `<b1>Deadline:</b1> <span>${task.deadline}</span>`;
+                cardContent2.appendChild(deadline);
+                const assignedBy = document.createElement('div');
+                assignedBy.innerHTML = `<b1>Assigned By:</b1> <span>${task.leader_name}</span>`;
+                cardContent2.appendChild(assignedBy);
+                card.appendChild(cardContent2);
+                const cardContent3 = document.createElement('div');
+                const markTaskDoneLink = document.createElement('a');
+                markTaskDoneLink.href = `../php/mark_task_done.php?id=${task.id}`;
+                const doneButton = document.createElement('button');
+                doneButton.classList.add('done');
+                const icon = document.createElement('i');
+                icon.classList.add('fa', 'fa-check');
+                doneButton.appendChild(icon);
+                markTaskDoneLink.appendChild(doneButton);
+                cardContent3.appendChild(markTaskDoneLink);
+                card.appendChild(cardContent3);
+                cardHolder1.appendChild(card);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+</script>
