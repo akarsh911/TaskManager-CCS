@@ -92,14 +92,20 @@ body {
 }
 
 .app_data {
+    background-color: white;
+    border-radius: 5px;
     padding: 5px;
     display: inline-block;
     word-break: keep-all;
 }
 
 .incomplete_bt {
+    font-family: 'Poppins', sans-serif;
     margin: 5px;
+    background-color: white;
     padding: 5px;
+    color: black;
+    border-radius: 5px;
 }
 
 .app_wrapper {
