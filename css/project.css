@@ -687,3 +687,9 @@ b1 {
 .show {
     display: block;
 }
+
+.Search{
+    margin-left: 125%;
+    width: 225%;
+    border-radius:25px ;
+}
