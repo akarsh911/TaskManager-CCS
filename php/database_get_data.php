@@ -224,10 +224,10 @@ function get_user_tasks_by_user_id($user_id)
     }
 }
 
-function get_user_tasks_by_project_id($project_id)
+function get_user_tasks_by_project_id($project_id, $status)
 {
     $conn = openCon();
-    $sql = "SELECT * FROM user_tasks WHERE project_id = '$project_id'";
+    $sql = "SELECT * FROM user_tasks WHERE project_id = '$project_id' AND status='$status'";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
