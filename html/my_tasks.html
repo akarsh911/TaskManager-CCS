@@ -33,7 +33,7 @@
     const cardHolder1 = document.getElementById('card_holders');
     console.log(cardHolder1);
     // Make an API call to retrieve the data
-    fetch('http://localhost/php/get_my_tasks.php?user_id=' + JSON.parse(localStorage.getItem("user_data")).user_id)
+    fetch('../php/get_my_tasks.php?user_id=' + JSON.parse(localStorage.getItem("user_data")).user_id)
         .then(response => response.json())
         .then(responseData => {
 

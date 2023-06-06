@@ -13,6 +13,7 @@ body {
 }
 
 .center_content {
+    text-align: start;
     display: flex;
     justify-content: center;
 
@@ -830,4 +831,24 @@ b1 {
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {
     display: block;
+}
+
+.Search {
+    margin-left: 125%;
+    width: 225%;
+    border-radius: 25px;
+}
+
+.Search2 {
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    height: 6%;
+    width: 80%;
+
+}
+
+.Button1 {
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    height: 6%;
 }

@@ -56,7 +56,7 @@ function get_all_users()
     } else {
         return 0;
     }
-    //  return $arr;
+    return $arr;
 }
 function get_user_by_id($id)
 {
@@ -120,7 +120,7 @@ function get_key()
 function get_projects()
 {
     $conn = openCon();
-    $sql = "SELECT * FROM projects";
+    $sql = "SELECT * FROM projects ORDER BY id DESC";
     $result = $conn->query($sql);
     $projects = array();
     if ($result->num_rows > 0) {
@@ -176,7 +176,7 @@ function get_all_project_users($id)
 function get_all_user_projects($id)
 {
     $conn = openCon();
-    $sql = "SELECT * FROM project_users WHERE user_id='$id'";
+    $sql = "SELECT * FROM project_users WHERE user_id='$id' ORDER BY id DESC";
     $result = $conn->query($sql);
     $arr = array();
     $i = 0;
@@ -193,23 +193,27 @@ function get_all_user_projects($id)
 function get_user_tasks_for_project($user_id, $project_id)
 {
     $conn = openCon();
-    $sql = "SELECT * FROM user_tasks WHERE user_id = '$user_id' AND project_id = '$project_id'";
+    $sql = "SELECT * FROM user_tasks WHERE user_id = '$user_id' AND project_id = '$project_id' ORDER BY id DESC";
     $result = $conn->query($sql);
     $arr = array();
     $i = 0;
     if ($result->num_rows > 0) {
-        // Fetch the row data
-        $arr[$i++] = $result->fetch_assoc();
-
+        // Fetch all the rows into an array
+        $rows = array();
+        while ($row = $result->fetch_assoc()) {
+            $rows[] = $row;
+        }
+        return $rows;
     } else {
-        return null; // No matching row found
+        return null; // No matching rows found
     }
-    return $arr;
+    // return $arr;
+
 }
 function get_user_tasks_by_user_id($user_id)
 {
     $conn = openCon();
-    $sql = "SELECT * FROM user_tasks WHERE user_id = '$user_id'";
+    $sql = "SELECT * FROM user_tasks WHERE user_id = '$user_id'  ORDER BY id DESC";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -227,7 +231,7 @@ function get_user_tasks_by_user_id($user_id)
 function get_user_tasks_by_project_id($project_id, $status)
 {
     $conn = openCon();
-    $sql = "SELECT * FROM user_tasks WHERE project_id = '$project_id' AND status='$status'";
+    $sql = "SELECT * FROM user_tasks WHERE project_id = '$project_id' AND status='$status'  ORDER BY id DESC";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -254,4 +258,37 @@ function does_commit_exist($commit_id)
     }
 
     return false;
+}
+function get_user_contributions_by_project_id($project_id)
+{
+    $conn = openCon();
+    $sql = "SELECT * FROM user_contributions WHERE project_id = '$project_id'  ORDER BY id DESC ";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $rows = array();
+        while ($row = $result->fetch_assoc()) {
+            $rows[] = $row;
+        }
+        return $rows;
+    } else {
+        return null; // No matching rows found
+    }
+}
+
+function get_user_contributions_by_user_id($user_id)
+{
+    $conn = openCon();
+    $sql = "SELECT * FROM user_contributions WHERE user_id = '$user_id' ORDER BY id DESC";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $rows = array();
+        while ($row = $result->fetch_assoc()) {
+            $rows[] = $row;
+        }
+        return $rows;
+    } else {
+        return null; // No matching rows found
+    }
 }

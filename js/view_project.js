@@ -422,7 +422,11 @@ window.onload = function () {
         document.getElementById("tasks").style.display = "block";
         load_my_assigned_tasks();
     }
+    if (page == 5) {
 
+        document.getElementById("commits").style.display = "block";
+        load_contributions();
+    }
     if (page == 7) {
 
         document.getElementById("add_team").style.display = "block";
@@ -591,13 +595,17 @@ function load_my_assigned_tasks() {
     const cardHolder1 = document.getElementById('card_holders');
     console.log(cardHolder1);
     // Make an API call to retrieve the data
-    fetch('http://localhost/php/get_my_tasks_project.php?user_id=1&project_id=1')
+    fetch('../php/get_my_tasks_project.php?user_id=' + JSON.parse(localStorage.getItem("user_data")).user_id + '&project_id=' + project_id)
         .then(response => response.json())
         .then(responseData => {
 
 
             for (let i = 0; i < responseData.length; i++) {
+
                 const task = responseData[i];
+                if (task.status == 1)
+                    continue;
+
                 const card = document.createElement('div');
                 card.classList.add('card');
                 const cardContent1 = document.createElement('div');
@@ -638,5 +646,79 @@ function load_my_assigned_tasks() {
             console.error('Error:', error);
         });
 
+
+}
+
+function load_contributions() {
+    // Make API request
+    fetch('http://localhost/php/get_project_contributions.php?id=' + project_id)
+        .then(response => response.json())
+        .then(data => {
+            // Access the card_holderc div
+            const cardHolder = document.getElementById('card_holderc');
+
+            // Iterate over the response data
+            data.forEach(contribution => {
+                // Create card elements
+                const card = document.createElement('div');
+                card.className = 'card';
+                const br = document.createElement('br');
+                const cardLeft = document.createElement('div');
+                cardLeft.className = 'card_left';
+
+                const avatar = document.createElement('img');
+                avatar.className = 'card_avatar';
+                avatar.src = contribution.user_avatar;
+
+                const cardNameBlock = document.createElement('div');
+                cardNameBlock.className = 'card_name_block';
+
+                const cardName = document.createElement('div');
+                cardName.className = 'card_name';
+                cardName.textContent = contribution.user_name;
+
+                const messageBlock = document.createElement('div');
+                const messageLabel = document.createElement('b1');
+                messageLabel.textContent = 'Message: ';
+                const messageText = document.createTextNode(contribution.message);
+                messageBlock.appendChild(messageLabel);
+                messageBlock.appendChild(messageText);
+
+                const commitDateBlock = document.createElement('div');
+                const commitDateLabel = document.createElement('b1');
+                commitDateLabel.textContent = 'Commit Date: ';
+                const commitDate = document.createElement('span');
+                commitDate.id = 'startDate';
+                commitDate.textContent = contribution.date;
+                commitDateBlock.appendChild(commitDateLabel);
+                commitDateBlock.appendChild(commitDate);
+
+                const commitTimeBlock = document.createElement('div');
+                const commitTimeLabel = document.createElement('b1');
+                commitTimeLabel.textContent = 'Commit Time: ';
+                const commitTime = document.createElement('span');
+                commitTime.id = 'updateDate';
+                commitTime.textContent = contribution.time;
+                commitTimeBlock.appendChild(commitTimeLabel);
+                commitTimeBlock.appendChild(commitTime);
+
+                // Append elements to the card
+                cardNameBlock.appendChild(cardName);
+                cardLeft.appendChild(avatar);
+                cardNameBlock.appendChild(messageBlock);
+                cardLeft.appendChild(cardNameBlock);
+
+
+                card.appendChild(cardLeft);
+                card.appendChild(commitDateBlock);
+                card.appendChild(commitTimeBlock);
+
+                // Append card to the card_holderc div
+                cardHolder.appendChild(card);
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 
 }

@@ -15,12 +15,12 @@
         <div class="tabs"><a id="3"><i class="fa-solid fa-people-group"></i>Project Team</a></div>
         <div class="tabs"><a id="4"><i class="fa-solid fa-list-check"></i>Assigned Tasks</a></div>
         <div class="tabs"><a id="5"><i class="fa-solid fa-clock-rotate-left"></i>Commit History</a></div>
-        <div class="tabs"><a id="6"><i class="fa-solid fa-code"></i>My Role</a></div>
         <div class="tabs first">Settings</div>
         <div class="tabs"><a id="7"><i class="fa-solid fa-plus"></i>Add Member</a></div>
         <div class="tabs"><a id="8"><i class="fa-solid fa-user-xmark"></i>Remove Member</a></div>
         <div class="tabs"><a id="9"><i class="fa-solid fa-bars-progress"></i>Assign Task</a></div>
-        <div class="tabs"><a id="10"><i class="fa-solid fa-pen-to-square"></i>Edit Project</a></div>
+        <div class="tabs"><a id="10"><i class="fa-solid fa-pen-to-square"></i>Assigned Tasks</a></div>
+        <div class="tabs"><a id="10"><i class="fa-solid fa-pen-to-square"></i>Completed Tasks</a></div>
     </div>
     <div class="content">
         <div class="about" id="about">
@@ -89,7 +89,15 @@
 
             </div>
         </div>
+        <div class="about" id="commits">
+            <h4 style="width:100%;text-align: center;">Commit History</h4>
+            <hr>
+            <div class="center_content">
+                <div class="card_holder" id="card_holderc" style="width:80%">
 
+                </div>
+            </div>
+        </div>
 
         <div class="about" id="add_team">
             <h4 style="width:100%;text-align: center;">Add Team Member</h4>
@@ -109,6 +117,7 @@
                         </div>
 
 
+                    <input class="Search" type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
                     <div id="myDropdown" class="dropdown-content"></div>
                     <div id="user_params" style="display: none;">
                         <input type="text" placeholder="Role" name="role" required>
@@ -127,8 +136,8 @@
             <div class="dropdown">
 
                 <form id="add_user" action="../php/remove_user_from_project.php" method="post">
-                    <input type="text" placeholder="Search.." id="myInput2" onkeyup="filterFunction2()">
-                    <input type="submit" />
+                    <input class="Search2" type="text" placeholder="Search.." id="myInput2" onkeyup="filterFunction2()">
+                    <input class="Button1" type="submit" />
                     <div id="myDropdown2" class="dropdown-content"></div>
                     <input type="text" style="visibility: hidden;" name="user_id" id="user_id2">
                     <input type="text" style="visibility: hidden;" name="project_id" id="project_id2">
