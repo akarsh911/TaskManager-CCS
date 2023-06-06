@@ -167,7 +167,7 @@ function get_all_project_users($id)
     $i = 0;
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            $arr[$i] = $row;
+            $arr[$i++] = $row;
         }
     } else {
         return 0;

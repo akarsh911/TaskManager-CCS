@@ -475,6 +475,6 @@ function select_user(id, text) {
     document.getElementById("myInput").value = text;
     document.getElementById("user_params").style.display = "block";
     document.getElementById("user_id").value = id.substr(8);
-
+    document.getElementById("project_id").value = project_id;
     // 
 }
