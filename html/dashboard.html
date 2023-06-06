@@ -21,21 +21,98 @@
   }); 
 </script>
 <div id="header"></div>
-    <div class="stats">
-      <div class="panel">
-        <h2>GitHub Insights - Contributors Graph</h2>
-        <canvas id="chart"></canvas>
-      </div>
-      <div class="panel">
-        <h2>GitHub Insights - Commit Activity Graph</h2>
-        <canvas id="chart2"></canvas>
-      </div>
-      <div class="panel">
-        <h2>GitHub Insights - Activity Chart</h2>
-        <canvas id="chart3"></canvas>
-      </div>
-      <div class="panel">
-        <h2>GitHub Insights - Languages Chart</h2>
-        <canvas id="chart4" style="max-height: 200px;"></canvas>
-      </div>
-    </div>
+<div class="stats">
+  <div class="panel">
+    <h2> Contribution in Projects Graph</h2>
+    <canvas id="chart"></canvas>
+  </div>
+  <div class="panel">
+    <h2>Tasks Graph</h2>
+    <canvas id="chart2" style="max-height: 300px;"></canvas>
+  </div>
+  <div class="panel">
+    <h2>GitHub Insights - Activity Chart</h2>
+    <canvas id="chart3"></canvas>
+  </div>
+  <div class="panel">
+    <h2>GitHub Insights - Languages Chart</h2>
+    <canvas id="chart4"></canvas>
+  </div>
+</div>
+
+
+<script>
+  // Make API request
+  fetch('../php/get_stats_projects.php?id=' + JSON.parse(localStorage.getItem("user_data")).user_id)
+    .then(response => response.json())
+    .then(data => {
+      const projectNames = [];
+      const contributions = [];
+
+      // Extract data from the API response
+      data.forEach(project => {
+        projectNames.push(project.name);
+        contributions.push(project.contributions);
+      });
+
+      // Create the bar chart
+      const ctx = document.getElementById('chart').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: projectNames,
+          datasets: [{
+            label: 'Contributions',
+            data: contributions,
+            backgroundColor: 'rgba(0, 123, 255, 0.5)', // Customize the bar color here
+            borderColor: 'rgba(0, 123, 255, 1)', // Customize the bar border color here
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  fetch('../php/get_stats_user_tasks.php?id=' + JSON.parse(localStorage.getItem("user_data")).user_id)
+    .then(response => response.json())
+    .then(data => {
+      const completed = data.completed;
+      const pending = data.pending;
+
+      // Create the doughnut chart
+      const ctx = document.getElementById('chart2').getContext('2d');
+      new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Completed Tasks', 'Pending Tasks'],
+          datasets: [{
+            data: [completed, pending],
+            backgroundColor: ['rgba(0, 123, 255, 0.5)', 'rgba(255, 0, 0, 0.5)'], // Customize the doughnut slice colors here
+            borderColor: ['rgba(0, 123, 255, 1)', 'rgba(255, 0, 0, 1)'], // Customize the doughnut slice border colors here
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          cutout: '70%', // Adjust the size of the central hole here
+          plugins: {
+            legend: {
+              position: 'bottom'
+            }
+          }
+        }
+      });
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+</script>
