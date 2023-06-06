@@ -10,7 +10,7 @@ $result = $conn->query($sql);
 $chatHistory = [];
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        $arr = json_decode(json_encode(get_user_by_id($row["user"])));
+        $arr = json_decode(json_encode(json_decode(get_user_by_id($row["user"]))));
         $row["user_name"] = $arr->f_name . " " . $arr->l_name;
         $chatHistory[] = $row;
     }

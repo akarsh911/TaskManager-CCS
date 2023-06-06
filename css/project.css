@@ -12,6 +12,14 @@ body {
     background-attachment: fixed;
 }
 
+.invis {
+    display: none;
+}
+
+#chats {
+    text-align: start;
+}
+
 .center_content {
     text-align: start;
     display: flex;

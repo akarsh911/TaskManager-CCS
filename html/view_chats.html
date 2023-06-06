@@ -17,7 +17,7 @@
   <div class="main-container">
     <div class="left-container">
       <div class="chat-list" id="chat_list">
-        <div class="chat-box">
+        <div class="chat-box" onclick="load(0);">
           <div class="chat-details">
             <div class="text-head">
               <h4>General</h4>
@@ -27,16 +27,18 @@
       </div>
     </div>
 
-    <div class="right-container">
+    <div class="right-container" id="right-container">
       <!--chat-container -->
-      <div class="chat-container" id="chat_0">
-        <div class="message-box my-message">
-          <p>I've been waiting to see that show asap!<br><span>07:43</span></p>
-        </div>
-        <div class="message-box friend-message">
-          <p>
-            <b1>what</b1><br>Ahh, I can't believe you do too!<br><span>07:45</span>
-          </p>
+      <div id="chats">
+        <div class="chat-container" id="chat_0">
+          <div class=" message-box my-message">
+            <p>I've been waiting to see that show asap!<br><span>07:43</span></p>
+          </div>
+          <div class="message-box friend-message">
+            <p>
+              <b1>what</b1><br>Ahh, I can't believe you do too!<br><span>07:45</span>
+            </p>
+          </div>
         </div>
       </div>
       <!--input-bottom -->
