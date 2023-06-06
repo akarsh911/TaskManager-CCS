@@ -2,7 +2,6 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-
     display: block;
     margin: 0px;
 
@@ -11,6 +10,7 @@ a{
     text-decoration: none;
 }
 .top_bar {
+    font-family: 'Poppins', sans-serif;
     text-decoration: none;
     min-width: min-content;
     width: 90vw;
@@ -60,10 +60,11 @@ a{
 }
 
 .community_btn {
-border: #ffffff;
+    border: #ffffff;
     font-weight: bold;
     font-size: 15px;
     padding: 10px;
+    max-height: 10vh;
     height: 35px;
     width: 110px;
     margin-right: 10px;
@@ -77,6 +78,7 @@ border: #ffffff;
     font-weight: bold;
     font-size: 15px;
     padding: 10px;
+    max-height: 10vh;
     height: 35px;
     width: 110px;
     margin-right: 10px;
@@ -86,11 +88,11 @@ border: #ffffff;
 }
 
 .stock_btn {
-
     border: #ffffff;
     font-weight: bold;
     font-size: 15px;
     padding: 10px;
+    max-height: 10vh;
     height: 35px;
     width: 110px;
     margin-right: 10px;
@@ -104,6 +106,7 @@ border: #ffffff;
     font-weight: bold;
     font-size: 15px;
     padding: 10px;
+    max-height: 10vh;
     height: 35px;
     width: 110px;
     margin-right: 10px;
@@ -133,6 +136,7 @@ h1 {
     font-weight: bold;
     font-size: 15px;
     padding: 10px;
+    max-height: 10vh;
     height: 35px;
     width: 110px;
     margin-right: 10px;
