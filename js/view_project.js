@@ -91,7 +91,12 @@ if (page == 7) {
     document.getElementById("add_team").style.display = "block";
     find_all_users();
 }
+if (page == 8) {
 
+    document.getElementById("remove_team").style.display = "block";
+    // find_all_users();
+    find_all_users2();
+}
 
 function getParameterByName(name, url = window.location.href) {
     name = name.replace(/[\[\]]/g, '\\$&');
@@ -422,7 +427,7 @@ function getProjectUsers() {
 // Call the function to fetch project users and populate the card holders
 
 window.onload = function () {
-    for (var i = 1; i <= 9; i++) {
+    for (var i = 1; i <= 10; i++) {
         var temp = document.getElementById(i);
         var url = '../html/view_project.html?page=' + i + '&id=' + project_id;
         temp.href = url;
@@ -449,12 +454,12 @@ function filterFunction() {
 }
 
 function find_all_users() {
-   
+
     fetch('../php/get_all_users.php')
         .then(response => response.json())
         .then(users => {
             users.forEach(user => {
-                
+
                 const card = document.createElement('a');
                 card.setAttribute('id', "user_id_" + user.id);
                 card.onclick = function () {
@@ -476,5 +481,52 @@ function select_user(id, text) {
     document.getElementById("user_params").style.display = "block";
     document.getElementById("user_id").value = id.substr(8);
     document.getElementById("project_id").value = project_id;
+    // 
+}
+
+function filterFunction2() {
+    document.getElementById("myDropdown2").classList.toggle("show");
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput2");
+    filter = input.value.toUpperCase();
+    div = document.getElementById("myDropdown2");
+    a = div.getElementsByTagName("a");
+    for (i = 0; i < a.length; i++) {
+        txtValue = a[i].textContent || a[i].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            a[i].style.display = "";
+        } else {
+            a[i].style.display = "none";
+        }
+    }
+}
+
+function find_all_users2() {
+
+    fetch('../php/get_project_users.php?id='+project_id)
+        .then(response => response.json())
+        .then(users => {
+            users.forEach(user => {
+
+                const card = document.createElement('a');
+                card.setAttribute('id', "dser_id_" + user.user_id);
+                card.onclick = function () {
+                    delete_user(card.id, card.innerText);
+                }
+                card.textContent = `${user.f_name} ${user.l_name}`;
+                document.getElementById("myDropdown2").appendChild(card);
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+function delete_user(id, text) {
+    filterFunction2();
+    //  alert(id);
+    document.getElementById("myInput2").value = text;
+    document.getElementById("user_id2").value = id.substr(8);
+    document.getElementById("project_id2").value = project_id;
     // 
 }

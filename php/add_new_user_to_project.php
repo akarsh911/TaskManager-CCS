@@ -52,6 +52,6 @@ function add_contributor($accessToken)
     } else if (json_decode($response2)->id != "") {
         create_project_user($id, $_POST["user_id"], $_POST["role"], $_POST["tech_stack"], 0, $user->github, $user->avatar, $user->f_name, $user->l_name);
         echo "<script>alert('Success Adding Collaborator');</script>";
-        echo '<script>window.onload = (event) => {location.replace("../html/view_project.html?page=3&id="' . $id . ')};</script>';
+        echo '<script>window.onload = (event) => {location.replace("../html/view_project.html?page=3&id=' . $id . '")};</script>';
     }
 }
