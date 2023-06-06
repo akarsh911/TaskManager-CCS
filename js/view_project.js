@@ -102,6 +102,7 @@ if (page == 9) {
     document.getElementById("assign_task").style.display = "block";
     // find_all_users();
     //find_all_users2();
+    find_all_users3();
 }
 function getParameterByName(name, url = window.location.href) {
     name = name.replace(/[\[\]]/g, '\\$&');
@@ -508,7 +509,7 @@ function filterFunction2() {
 
 function find_all_users2() {
 
-    fetch('../php/get_project_users.php?id='+project_id)
+    fetch('../php/get_project_users.php?id=' + project_id)
         .then(response => response.json())
         .then(users => {
             users.forEach(user => {
@@ -533,5 +534,53 @@ function delete_user(id, text) {
     document.getElementById("myInput2").value = text;
     document.getElementById("user_id2").value = id.substr(8);
     document.getElementById("project_id2").value = project_id;
+    // 
+}
+
+function filterFunction3() {
+    document.getElementById("myDropdown3").classList.toggle("show");
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput3");
+    filter = input.value.toUpperCase();
+    div = document.getElementById("myDropdown3");
+    a = div.getElementsByTagName("a");
+    for (i = 0; i < a.length; i++) {
+        txtValue = a[i].textContent || a[i].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            a[i].style.display = "";
+        } else {
+            a[i].style.display = "none";
+        }
+    }
+}
+
+function find_all_users3() {
+
+    fetch('../php/get_project_users.php?id=' + project_id)
+        .then(response => response.json())
+        .then(users => {
+            users.forEach(user => {
+
+                const card = document.createElement('a');
+                card.setAttribute('id', "lser_id_" + user.user_id);
+                card.onclick = function () {
+                    task_user(card.id, card.innerText);
+                }
+                card.textContent = `${user.f_name} ${user.l_name}`;
+                document.getElementById("myDropdown3").appendChild(card);
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+function task_user(id, text) {
+    filterFunction3();
+    //  alert(id);
+    document.getElementById("myInput3").value = text;
+    document.getElementById("user_id3").value = id.substr(8);
+    document.getElementById("project_id3").value = project_id;
+    document.getElementById("leader_id3").value = JSON.parse(localStorage.getItem("user_data")).user_id;
     // 
 }
