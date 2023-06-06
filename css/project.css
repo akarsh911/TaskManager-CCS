@@ -83,10 +83,9 @@ body {
     padding: 20px;
     padding-bottom: 20px;
     border-radius: 15px;
-    background-color: rgba(255, 255, 255, 0.9);
-    border: 5px solid green;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 10px solid green;
     padding-left: 17px;
-    border-left: 8px solid green;
     margin-top: 20px;
     box-shadow: 5px 2px 5px 5px rgb(0 0 0 / 16%), 7px 2px 10px 7px rgb(0 0 0 / 12%);
 }
