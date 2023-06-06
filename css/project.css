@@ -12,6 +12,23 @@ body {
     background-attachment: fixed;
 }
 
+.stats {
+    width: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    justify-content: space-between;
+}
+
+.panel {
+    margin-top: 25px;
+    background-color: #f6f8fa;
+    border: 1px solid #e1e4e8;
+    padding: 10px;
+    max-width: 50%;
+    min-width: 45%;
+}
+
 h1 {
     all: unset;
     font-size: 32px;
@@ -111,7 +128,7 @@ body {
     color: white;
     justify-content: center;
     align-items: center;
-    background-color: rgba(3, 0, 0, 0.5); 
+    background-color: rgba(3, 0, 0, 0.5);
 }
 
 .color_grading {
@@ -155,7 +172,7 @@ h2 {
     min-height: 5px;
     padding: 5px;
     background-color: #47B5FF;
-    
+
 }
 
 .form_box {
@@ -211,7 +228,7 @@ h2 {
 
 
 .boxes.error {
-    border: 2px solid ;
+    border: 2px solid;
     animation: shake 0.2s 2 backwards linear;
 }
 
@@ -540,11 +557,13 @@ b {
     align-items: center;
     justify-content: space-around;
 }
-.card.members1{
+
+.card.members1 {
     text-align: start;
     max-width: 60%;
     max-height: 90px;
 }
+
 .card_left {
     display: flex;
 }
@@ -568,6 +587,71 @@ b {
 b1 {
     font-weight: bold;
 }
-.tabs a{
-    all:unset;
+
+.tabs a {
+    all: unset;
+}
+
+.dropbtn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover,
+.dropbtn:focus {
+    background-color: #3e8e41;
+}
+
+/* The search field */
+#myInput {
+    box-sizing: border-box;
+    
+    font-size: 16px;
+    padding: 14px 20px 12px 45px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+}
+
+/* The search field when it gets focus/clicked on */
+#myInput:focus {
+    outline: 3px solid #ddd;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f6f6f6;
+    min-width: 230px;
+    border: 1px solid #ddd;
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #f1f1f1
+}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {
+    display: block;
 }

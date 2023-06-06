@@ -47,8 +47,50 @@ if (page == 3) {
     document.getElementById("team").style.display = "block";
     getProjectUsers();
 }
+if (page == 2) {
+    var xhr = new XMLHttpRequest();
+    document.getElementById("stats").style.display = "block";
+    var url = '../php/get_project.php?id=' + project_id;
+    xhr.open('GET', url, true);
 
+    // Set the response type to JSON
+    xhr.responseType = 'json';
 
+    // Define the callback function to handle the AJAX response
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            var response = xhr.response;
+            console.log(response)
+            // Update the HTML elements with the received data
+            /*document.getElementById('project_name').innerHTML = response.project_name;
+            document.getElementById('team_leader_id').innerHTML = response.team_leader;
+            document.getElementById('Progress').innerHTML = response.progress;
+            document.getElementById('startDate').innerHTML = response.start_date;
+            document.getElementById('updateDate').innerHTML = response.update_date;
+            document.getElementById('repo_url').innerHTML = "https://github.com/ccs-tiet-task/" + response.repo_name;
+            document.getElementById('url').href = "https://github.com/ccs-tiet-task/" + response.repo_name;
+            document.getElementById('descripton').innerHTML = response.description;*/
+            $(document).ready(function () { /* code here */
+                get_contributions(response.repo_name);
+            });
+
+        }
+    };
+
+    // Send the AJAX request
+    xhr.send();
+
+}
+
+if (page == 4) {
+    document.getElementById("tasks").style.display = "block";
+}
+
+if (page == 7) {
+
+    document.getElementById("add_team").style.display = "block";
+    find_all_users();
+}
 
 
 function getParameterByName(name, url = window.location.href) {
@@ -62,8 +104,8 @@ function getParameterByName(name, url = window.location.href) {
 
 
 function load_chart(repoName) {
-    var repoOwner = 'ccs-tiet-task';
-
+    var repoOwner = 'akarsh911';
+    repoName = "taskmanager-ccs";
     var apiUrl = 'https://api.github.com/repos/' + repoOwner + '/' + repoName + '/stats/commit_activity';
 
     var xhr = new XMLHttpRequest();
@@ -122,8 +164,6 @@ function getDateString(weekIndex, dayIndex) {
     const currentMonth = currentDate.getMonth();
     const currentDay = currentDate.getDate();
     const currentDayOfWeek = currentDate.getDay();
-
-    // Calculate the date of the first day of the year
     const firstDayOfYear = new Date(currentYear, 0, 1);
 
     // Calculate the offset for the first day of the week
@@ -149,6 +189,177 @@ function getDateString(weekIndex, dayIndex) {
     return targetDate;
 }
 
+function get_contributions(repo) {
+    var owner = 'akarsh911';
+    repo = "taskmanager-ccs";
+    // const repo = 'taskmanager-ccs';
+    const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contributors`;
+    fetch(apiUrl, {
+
+    })
+        .then(response => response.json())
+        .then(data => {
+            const labels = data.map(contributor => contributor.login);
+            const values = data.map(contributor => contributor.contributions);
+            const chart = new Chart('chart', {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Contributions',
+                        data: values,
+                        backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        })
+        .catch(error => console.error(error));
+    const twoWeeksAgo = new Date();
+    twoWeeksAgo.setDate(twoWeeksAgo.getDate() - 14);
+
+    // Create an array to store daily commit data
+    const dailyCommitData = Array.from({ length: 14 }, () => 0);
+
+    const apiUrl2 = `https://api.github.com/repos/${owner}/${repo}/stats/commit_activity`;
+    fetch(apiUrl2, {})
+        .then(response => response.json())
+        .then(data => {
+            // Extract week labels and commit counts for the last two weeks
+            const lastTwoWeeksData = data.slice(-2); // Get the last two elements from the data array
+            const labels = lastTwoWeeksData.map(weekData => {
+                const startDate = new Date(weekData.week * 1000);
+                const endDate = new Date((weekData.week + 6 * 24 * 60 * 60) * 1000);
+                return `${startDate.toLocaleDateString()} - ${endDate.toLocaleDateString()}`;
+            });
+            const values = lastTwoWeeksData.map(weekData => weekData.total);
+
+            // Create a line chart
+            const chart = new Chart('chart2', {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Commit Activity',
+                            data: values,
+                            fill: false,
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1,
+                        },
+                    ],
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                        },
+                    },
+                },
+            });
+        })
+        .catch(error => console.error(error));
+
+
+    const apiUrl3 = `https://api.github.com/repos/${owner}/${repo}/stats/code_frequency`;
+
+    // Fetch code frequency data
+    fetch(apiUrl3, {
+
+    })
+        .then(response => response.json())
+        .then(data => {
+            // Extract week labels and additions/deletions counts
+            const labels = data.map(weekData => {
+                const date = new Date(weekData[0] * 1000);
+                return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+            });
+            const additions = data.map(weekData => weekData[1]);
+            const deletions = data.map(weekData => -weekData[2]); // Convert deletions to negative values for the chart
+
+            // Create a line chart
+            const chart = new Chart('chart3', {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Additions',
+                            data: additions,
+                            fill: false,
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Deletions',
+                            data: deletions,
+                            fill: false,
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        })
+        .catch(error => console.error(error));
+    const apiUrl4 = `https://api.github.com/repos/${owner}/${repo}/languages`;
+
+    // Fetch language data
+    fetch(apiUrl4, {
+        headers: {
+            'Accept': 'application/vnd.github+json',
+            'X-GitHub-Api-Version': '2022-11-28'
+        }
+    })
+        .then(response => response.json())
+        .then(data => {
+            // Extract language names and their respective bytes of code
+            const labels = Object.keys(data);
+            const values = Object.values(data);
+
+            // Create a pie chart
+            const chart = new Chart('chart4', {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: values,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.6)',
+                            'rgba(54, 162, 235, 0.6)',
+                            'rgba(255, 206, 86, 0.6)',
+                            'rgba(75, 192, 192, 0.6)',
+                            'rgba(153, 102, 255, 0.6)',
+                            'rgba(255, 159, 64, 0.6)',
+                            'rgba(245, 66, 222, 0.6)'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true
+                }
+            });
+        })
+        .catch(error => console.error(error));
+
+
+}
 // Create a function to make the AJAX call
 function getProjectUsers() {
     // Create a new XMLHttpRequest object
@@ -211,10 +422,59 @@ function getProjectUsers() {
 // Call the function to fetch project users and populate the card holders
 
 window.onload = function () {
-    for (var i = 1; i <= 6; i++) {
+    for (var i = 1; i <= 9; i++) {
         var temp = document.getElementById(i);
         var url = '../html/view_project.html?page=' + i + '&id=' + project_id;
         temp.href = url;
 
     }
+}
+
+
+function filterFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    div = document.getElementById("myDropdown");
+    a = div.getElementsByTagName("a");
+    for (i = 0; i < a.length; i++) {
+        txtValue = a[i].textContent || a[i].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            a[i].style.display = "";
+        } else {
+            a[i].style.display = "none";
+        }
+    }
+}
+
+function find_all_users() {
+   
+    fetch('../php/get_all_users.php')
+        .then(response => response.json())
+        .then(users => {
+            users.forEach(user => {
+                
+                const card = document.createElement('a');
+                card.setAttribute('id', "user_id_" + user.id);
+                card.onclick = function () {
+                    select_user(card.id, card.innerText);
+                }
+                card.textContent = `${user.f_name} ${user.l_name}`;
+                document.getElementById("myDropdown").appendChild(card);
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+function select_user(id, text) {
+    filterFunction();
+    //  alert(id);
+    document.getElementById("myInput").value = text;
+    document.getElementById("user_params").style.display = "block";
+    document.getElementById("user_id").value = id.substr(8);
+
+    // 
 }

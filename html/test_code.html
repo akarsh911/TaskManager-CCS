@@ -2,98 +2,17 @@
 <html>
 
 <head>
-    <title>GitHub Participation Heat Map</title>
+    <title>GitHub Insights Panel - Contributors Graph</title>
+
     <style>
-        .heat-map {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 500px;
-            width: 850px;
-        }
-
-        .day {
-            stroke: #fff;
-            stroke-width: 2px;
-        }
-
+        /* CSS styles for the panel */
+     
     </style>
 </head>
 
 <body>
-    <div id="heatmap" class="heat-map"></div>
+  
 
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script>
-        // API endpoint URL
-        const apiUrl = "https://api.github.com/repos/akarsh911/adb-dino-skinned/stats/participation";
-
-        // Fetch the participation data from the GitHub API
-        fetch(apiUrl)
-            .then((response) => response.json())
-            .then((data) => {
-                // Extract the last 52 weeks of participation data
-                const participationData = data.all.slice(-52);
-
-                // Create the heat map using D3.js
-                const colorScale = d3.scaleSequential(d3.interpolateGreens).domain([0, d3.max(participationData)]);
-                const size = 25; // Size of each cell in the heat map
-
-                const svg = d3.select("#heatmap").append("svg").attr("width", 52 * size).attr("height", 7 * size);
-
-                svg
-                    .selectAll("rect")
-                    .data(participationData)
-                    .enter()
-                    .append("rect")
-                    .attr("class", "day")
-                    .attr("x", (d, i) => Math.floor(i / 7) * size)
-                    .attr("y", (d, i) => (i % 7) * size)
-                    .attr("width", size)
-                    .attr("height", size)
-                    .style("fill", (d) => (d === 0 ? "#ebedf0" : colorScale(d)))
-                    .on("mouseover", showTooltip)
-                    .on("mouseout", hideTooltip)
-                    .append("title")
-                    .text((d, i) => {
-                        const startDate = new Date();
-                        startDate.setDate(startDate.getDate() - (52 - i) * 7);
-                        const endDate = new Date();
-                        endDate.setDate(endDate.getDate() - (52 - i - 1) * 7 - 1);
-                        return `Week ${i + 1}\nCommits: ${d}\nDate: ${formatDate(startDate)} - ${formatDate(endDate)}`;
-                    });
-
-                const tooltip = d3
-                    .select("body")
-                    .append("div")
-                    .attr("class", "tooltip")
-                    .style("position", "absolute")
-                    .style("pointer-events", "none")
-                    .style("opacity", 0);
-
-                function showTooltip(d, i) {
-                    const startDate = new Date();
-                    startDate.setDate(startDate.getDate() - (52 - i) * 7);
-                    const endDate = new Date();
-                    endDate.setDate(endDate.getDate() - (52 - i - 1) * 7 - 1);
-
-                  
-                    tooltip.html(`Week ${i + 1}<br>Commits: ${d}<br>Date: ${formatDate(startDate)} - ${formatDate(endDate)}`)
-                        .style("left", d3.event.pageX + 10 + "px")
-                        .style("top", d3.event.pageY + "px");
-                }
-
-                function hideTooltip() {
-                    tooltip.transition().duration(200).style("opacity", 0);
-                }
-
-                function formatDate(date) {
-                    const options = { month: "short", day: "numeric", year: "numeric" };
-                    return date.toLocaleDateString(undefined, options);
-                }
-            })
-            .catch((error) => console.error("Error:", error));
-    </script>
 </body>
 
 </html>

@@ -5,55 +5,110 @@
         $("#header").load("../html/header.html");
     }); 
 </script>
-
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <div id="header"></div>
 <div class="project view">
     <div class="left_nav_bar">
         <div class="tabs first">Project</div>
-        <div class="tabs"><a  id="1"><i class="fa-solid fa-circle-info"></i> About Project</a></div>
+        <div class="tabs"><a id="1"><i class="fa-solid fa-circle-info"></i> About Project</a></div>
         <div class="tabs"><a id="2"><i class="fa-solid fa-chart-column"></i>Project Stats</a></div>
-        <div class="tabs" ><a id="3"><i class="fa-solid fa-people-group"></i>Project Team</a></div>
-        <div class="tabs" ><a id="4"><i class="fa-solid fa-list-check"></i>Assigned Tasks</a></div>
-        <div class="tabs" ><a id="5"><i class="fa-solid fa-clipboard"></i>Notice Board</a></div>
+        <div class="tabs"><a id="3"><i class="fa-solid fa-people-group"></i>Project Team</a></div>
+        <div class="tabs"><a id="4"><i class="fa-solid fa-list-check"></i>Assigned Tasks</a></div>
+        <div class="tabs"><a id="5"><i class="fa-solid fa-clipboard"></i>Contribution History</a></div>
         <div class="tabs"><a id="6"><i class="fa-solid fa-code"></i>My Role</a></div>
+        <div class="tabs first">Settings</div>
+        <div class="tabs"><a id="7"><i class="fa-solid fa-plus"></i>Add Member</a></div>
+        <div class="tabs"><a id="8"><i class="fa-solid fa-code"></i>Assign Task</a></div>
+        <div class="tabs"><a id="9"><i class="fa-solid fa-code"></i>Edit Project</a></div>
     </div>
     <div class="content">
         <div class="about" id="about">
-        <div class="bar1">
-            <h4>Project:<span  id="project_name"></span></h4>
-            <div class="innerbar">
-                <div class="elem"><b>Team Leader:</b> <span id="team_leader_id">Akarsh</span></div>
-                <div class="elem"><b>Progress:</b> <span id="Progress">In Progress</span></div>
+            <div class="bar1">
+                <h4>Project:<span id="project_name"></span></h4>
+                <div class="innerbar">
+                    <div class="elem"><b>Team Leader:</b> <span id="team_leader_id">Akarsh</span></div>
+                    <div class="elem"><b>Progress:</b> <span id="Progress">In Progress</span></div>
+                </div>
+                <div class="innerbar">
+                    <div class="elem"><b>Started On:</b> <span id="startDate">10/12/22</span></div>
+                    <div class="elem"><b>Updated On:</b> <span id="updateDate">10/12/22</span></div>
+                </div>
             </div>
-            <div class="innerbar">
-                <div class="elem"><b>Started On:</b> <span id="startDate">10/12/22</span></div>
-                <div class="elem"><b>Updated On:</b> <span id="updateDate">10/12/22</span></div>
+            <div class="bar2">
+                <div class="elem"><b>GitHub:</b> <a id="url" href="https://github.com/ccs-tiet-task/"><span
+                            id="repo_url">https://github.com/ccs-tiet-task/akarsh_test_2120/</span></a></div>
+                <div class="elem"><b>Description:</b> <span id="descripton">This is a very good project to work on with
+                        you
+                        and your own progress</span></div>
             </div>
+            <hr>
+            <br>
+            <div class="bar3">
+                <h4 style="font-size: 24px;">Contribution Heat Map</h4>
+            </div>
+            <div class="heatmap-container"></div>
+            <script src="../js/load_heat_map.js"></script>
         </div>
-        <div class="bar2">
-            <div class="elem"><b>GitHub:</b> <a id="url" href="https://github.com/ccs-tiet-task/"><span
-                        id="repo_url">https://github.com/ccs-tiet-task/akarsh_test_2120/</span></a></div>
-            <div class="elem"><b>Description:</b> <span id="descripton">This is a very good project to work on with you
-                    and your own progress</span></div>
-        </div>
-        <hr>
-        <br>
-        <div class="bar3">
-            <h4 style="font-size: 24px;">Contribution Heat Map</h4>
-        </div>
-        <div class="heatmap-container"></div>
-        <script src="../js/load_heat_map.js"></script>
-        </div>
-<div class="about" id="team">
-    <h4 style="width:100%;text-align: center;">Contributing Team</h4>
-    <hr>
-    <br>
+        <div class="about" id="team">
+            <h4 style="width:100%;text-align: center;">Contributing Team</h4>
+            <hr>
+            <br>
 
-   <div class="card_holder" id="card_holder">
-        
-   </div>
-</div>
+            <div class="card_holder" id="card_holder">
+
+            </div>
+        </div>
+        <div class="about" id="stats">
+            <h4 style="width:100%;text-align: center;">Project Statistics</h4>
+            <hr>
+            <div class="stats">
+                <div class="panel">
+                    <h2>GitHub Insights - Contributors Graph</h2>
+                    <canvas id="chart"></canvas>
+                </div>
+                <div class="panel">
+                    <h2>GitHub Insights - Commit Activity Graph</h2>
+                    <canvas id="chart2"></canvas>
+                </div>
+                <div class="panel">
+                    <h2>GitHub Insights - Activity Chart</h2>
+                    <canvas id="chart3"></canvas>
+                </div>
+                <div class="panel">
+                    <h2>GitHub Insights - Languages Chart</h2>
+                    <canvas id="chart4" style="max-height: 200px;"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="about" id="tasks">
+            <h4 style="width:100%;text-align: center;">Assigned Tasks</h4>
+            <hr>
+
+        </div>
+
+
+        <div class="about" id="add_team">
+            <h4 style="width:100%;text-align: center;">Add Team Member</h4>
+            <hr>
+            <div class="dropdown">
+
+                <form id="add_user">
+                    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                    <div id="myDropdown" class="dropdown-content"></div>
+                     <div id="user_params" style="display: none;">
+                     <input type="text" placeholder="Role"  name="role" required>
+                      <input type="text" placeholder="Tech Stack" name="tech_stack" required>
+                        <input type="text" style="visibility: hidden;" name="user_id" id="user_id">
+                        <input type="submit"/>
+                    </div>   
+                </form>
+            </div>
+        </div>
     </div>
+
+
+</div>
 
 
 </div>
