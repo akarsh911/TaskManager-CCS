@@ -36,6 +36,17 @@ function create_project_user($project_id, $user_id, $role, $tech_stack, $user_ty
         return "Error: " . $sql . "<br>" . $conn->error;
     }
 }
+function delete_project_user($project_id, $user_id)
+{
+    $conn = openCon();
+    $sql = "DELETE FROM project_users WHERE project_id = '$project_id' AND user_id = '$user_id'";
+    if ($conn->query($sql) === TRUE) {
+        return 1;
+    } else {
+        return "Error: " . $sql . "<br>" . $conn->error;
+    }
+}
+
 function create_task($user_id, $project_id, $leader_id, $title, $description, $status, $deadline)
 {
     $conn = openCon();

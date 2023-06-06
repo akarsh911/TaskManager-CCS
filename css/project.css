@@ -618,7 +618,19 @@ b1 {
 .dropbtn:focus {
     background-color: #3e8e41;
 }
+#myInput2 {
+    box-sizing: border-box;
 
+    font-size: 16px;
+    padding: 14px 20px 12px 45px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+}
+
+/* The search field when it gets focus/clicked on */
+#myInput2:focus {
+    outline: 3px solid #ddd;
+}
 /* The search field */
 #myInput {
     box-sizing: border-box;
