@@ -34,7 +34,7 @@ class Chat implements MessageComponentInterface
         $conn = new mysqli($servername, $username, $password);
         $conn->select_db($dbname);
         echo json_encode($message);
-        $sql = "INSERT INTO chats (user, message,project_id, created_at) VALUES ('$message->user', '$message->message','$message->project_id', '$message->created_at')";
+        $sql = "INSERT INTO chats (user, message,project_id) VALUES ('$message->user', '$message->message','$message->project_id')";
         $conn->query($sql);
         // Broadcast the received message to all connected clients
         foreach ($this->clients as $client) {
