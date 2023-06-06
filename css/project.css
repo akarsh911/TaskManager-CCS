@@ -31,11 +31,10 @@ body {
 
 h1 {
     all: unset;
-    font-size: 32px;
+    font-size: 25px;
     font-weight: 600;
     color: white;
     padding: 10px;
-    width: 100vw;
     background-color: rgba(0, 0, 0, 0.5);
     display: inline;
 }
@@ -126,6 +125,7 @@ body {
 .button_line {
     display: flex;
     color: white;
+    height: 8vh;
     justify-content: center;
     align-items: center;
     background-color: rgba(3, 0, 0, 0.5);
@@ -153,7 +153,7 @@ body {
 }
 
 h2 {
-    font-size: 18px;
+    font-size: 15px;
     padding-left: 5px;
     padding-right: 15px;
 }
