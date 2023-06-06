@@ -2,6 +2,7 @@
 <link href="../css/project.css" rel="stylesheet" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment"></script>
 <style>
   p {
     width: 80%;
@@ -31,11 +32,11 @@
     <canvas id="chart2" style="max-height: 300px;"></canvas>
   </div>
   <div class="panel">
-    <h2>GitHub Insights - Activity Chart</h2>
+    <h2>You in LeaderBoard</h2>
     <canvas id="chart3"></canvas>
   </div>
   <div class="panel">
-    <h2>GitHub Insights - Languages Chart</h2>
+    <h2>Last 5 days Contributions</h2>
     <canvas id="chart4"></canvas>
   </div>
 </div>
@@ -107,6 +108,101 @@
           plugins: {
             legend: {
               position: 'bottom'
+            }
+          }
+        }
+      });
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  fetch('../php/get_stats_user_compare.php?id=' + JSON.parse(localStorage.getItem("user_data")).user_id)
+    .then(response => response.json())
+    .then(data => {
+      const labels = [];
+      const totals = [];
+
+      // Extract data from the API response
+      data.forEach(item => {
+        labels.push(item.position + '. ' + item.f_name + ' ' + item.l_name);
+        totals.push(item.total);
+      });
+
+      // Create the bar chart
+      const ctx = document.getElementById('chart3').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Total',
+            data: totals,
+            backgroundColor: 'rgba(0, 123, 255, 0.5)', // Customize the bar color here
+            borderColor: 'rgba(0, 123, 255, 1)', // Customize the bar border color here
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  fetch('../php/get_my_contributions.php?id=' + JSON.parse(localStorage.getItem("user_data")).user_id)
+    .then(response => response.json())
+    .then(data => {
+      // Count the number of array elements with the same date
+      const counts = {};
+      data.forEach(item => {
+        const date = item.date;
+        if (!counts[date]) {
+          counts[date] = 0;
+        }
+        counts[date]++;
+      });
+
+      // Extract the dates and counts into separate arrays
+      const dates = Object.keys(counts);
+      const values = Object.values(counts);
+
+      // Create the line chart
+      const ctx = document.getElementById('chart4').getContext('2d');
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: dates,
+          datasets: [{
+            label: 'Contributions',
+            data: values,
+            fill: false,
+            borderColor: 'rgba(0, 123, 255, 1)', // Customize the line color here
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            x: {
+              display: true,
+              title: {
+                display: true,
+                text: 'Date'
+              }
+            },
+            y: {
+              display: true,
+              title: {
+                display: true,
+                text: 'Count'
+              },
+              beginAtZero: true
             }
           }
         }
