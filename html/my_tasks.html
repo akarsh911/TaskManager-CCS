@@ -24,7 +24,7 @@
 <div class="project">
     <h1>My Tasks</h1>
     <div class="center_content">
-    <div class="card_holder" style="width: 70%;"id="card_holders">
+        <div class="card_holder" style="width: 70%;" id="card_holders">
         </div>
     </div>
 </div>
@@ -37,9 +37,11 @@
         .then(response => response.json())
         .then(responseData => {
 
-
             for (let i = 0; i < responseData.length; i++) {
+
                 const task = responseData[i];
+                if (task.status == 1)
+                    continue;
                 const card = document.createElement('div');
                 card.classList.add('card');
                 const cardContent1 = document.createElement('div');
@@ -47,8 +49,11 @@
                 cardName.classList.add('card_name');
                 cardName.innerText = task.title;
                 cardContent1.appendChild(cardName);
-                const description = document.createElement('div');
+                var description = document.createElement('div');
                 description.innerHTML = `<b1>Description:</b1>${task.description}`;
+                cardContent1.appendChild(description);
+                description = document.createElement('div');
+                description.innerHTML = `<b1>Project:</b1>${task.project_name}`;
                 cardContent1.appendChild(description);
                 card.appendChild(cardContent1);
                 const cardContent2 = document.createElement('div');
