@@ -339,7 +339,10 @@ function getProjectUsers() {
 // Call the function to fetch project users and populate the card holders
 
 window.onload = function () {
+
     for (var i = 1; i <= 10; i++) {
+        if (i == 6)
+            continue;
         var temp = document.getElementById(i);
         var url = '../html/view_project.html?page=' + i + '&id=' + project_id;
         temp.href = url;
