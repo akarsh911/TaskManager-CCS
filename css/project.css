@@ -12,6 +12,12 @@ body {
     background-attachment: fixed;
 }
 
+.center_content {
+    display: flex;
+    justify-content: center;
+
+}
+
 .stats {
     width: 95%;
     display: flex;
@@ -622,7 +628,7 @@ b1 {
 }
 
 .done i {
-   margin-right: 0px;
+    margin-right: 0px;
 }
 
 .done {
@@ -634,7 +640,8 @@ b1 {
     justify-content: center;
     text-align: center;
 }
-.done:hover{
+
+.done:hover {
     cursor: pointer;
     background-color: #29592a;
 }

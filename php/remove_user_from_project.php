@@ -8,8 +8,8 @@ function remove_contributor($accessToken)
 
     $id = $_POST["project_id"];
     $repo = json_decode(get_project_by_id($id))->repo_name;
-    $user = json_decode(json_encode(get_user_by_id($_POST["user_id"])));
-
+    $user = get_user_by_id($_POST["user_id"]);
+    $user= json_decode(json_encode(json_decode($user)));
     $url = 'https://api.github.com/repos/ccs-tiet-task/' . $repo . '/collaborators/' . $user->github;
 
     $headers = array(
@@ -36,6 +36,6 @@ function remove_contributor($accessToken)
         require_once($_SERVER['DOCUMENT_ROOT'] . "/php/database_set_data.php");
         delete_project_user($_POST["project_id"], $_POST["user_id"]);
         echo "<script>alert('Success Removing Collaborator');</script>";
-        echo '<script>window.onload = (event) => {location.replace("../html/view_project.html?page=3&id=' . $id . '");};</script>';
+      echo '<script>window.onload = (event) => {location.replace("../html/view_project.html?page=3&id=' . $id . '");};</script>';
     }
 }
