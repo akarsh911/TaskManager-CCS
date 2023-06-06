@@ -450,7 +450,7 @@ h2 {
 }
 
 .left_nav_bar {
-    min-height: 80.3vh;
+    min-height: calc(100vh - 150px);
     min-width: 250px;
     max-width: 250px;
     background-color: rgb(54, 187, 189);
