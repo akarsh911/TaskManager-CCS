@@ -56,7 +56,7 @@ function get_all_users()
     } else {
         return 0;
     }
-    //  return $arr;
+     return $arr;
 }
 function get_user_by_id($id)
 {
