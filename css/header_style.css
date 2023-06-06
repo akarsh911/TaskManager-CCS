@@ -14,7 +14,7 @@ a{
     text-decoration: none;
     min-width: min-content;
     width: 90vw;
-    height:8vh;
+    height:10vh;
     max-height: 80px;
     position: absolute;
     left: 0;
@@ -62,10 +62,10 @@ a{
 .community_btn {
 border: #ffffff;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 15px;
     padding: 10px;
-    height: 35px;
-    width: 100px;
+    height: 40px;
+    width: 110px;
     margin-right: 10px;
     border-radius: 25px;
     background: rgb(54, 187, 189);
@@ -75,10 +75,10 @@ border: #ffffff;
 .log_in_bt {
     border: #ffffff;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 15px;
     padding: 10px;
-    height: 35px;
-    width: 100px;
+    height: 40px;
+    width: 110px;
     margin-right: 10px;
     border-radius: 25px;
     background: rgb(54, 187, 189);
@@ -89,10 +89,10 @@ border: #ffffff;
 
     border: #ffffff;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 15px;
     padding: 10px;
-    height: 35px;
-    width: 100px;
+    height: 40px;
+    width: 110px;
     margin-right: 10px;
     border-radius: 25px;
     background: rgb(54, 187, 189);
@@ -102,10 +102,10 @@ border: #ffffff;
 .register {
     border: #ffffff;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 15px;
     padding: 10px;
-    height: 35px;
-    width: 100px;
+    height: 40px;
+    width: 110px;
     margin-right: 10px;
     border-radius: 25px;
     background: rgb(54, 187, 189);
@@ -129,12 +129,12 @@ h1 {
 }
 
 .expense_btn {
-    border: #cbd334;
+    border: #ffffff;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 15px;
     padding: 10px;
-    height: 35px;
-    width: 100px;
+    height: 40px;
+    width: 110px;
     margin-right: 10px;
     border-radius: 25px;
     background: rgb(54, 187, 189);
@@ -167,6 +167,7 @@ h1 {
 }
 
 .container69 {
+    height: 10vh;
     padding-top: 10vh;
     width: 100vw;
     display: flex;
