@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 .main-container {
-    position: center;
-    width: 60vw;
+    margin-left: 10vw;
+    width: 80vw;
     max-width: 100%;
     height: 60vh;
     background: none;
@@ -12,18 +12,18 @@
 
 .main-container .left-container {
     position: relative;
-    width: 25%;
+    width: 20%;
     height: 100%;
-    flex: 25%;
+    flex: 20%;
     border-radius: 5px;
     background: rgba(255, 255, 255, 0.8);
 }
 
 .main-container .right-container {
     position: relative;
-    width: 75%;
+    width: 80%;
     height: 100%;
-    flex: 75%;
+    flex: 80%;
     border-radius: 5px;
     background: rgba(0, 0, 0, 0.54);
 }
