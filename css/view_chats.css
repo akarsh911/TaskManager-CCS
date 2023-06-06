@@ -98,19 +98,7 @@ img {
     object-fit: cover;
 }
 
-.chat-list .chat-box .chat-details .text-message b {
-    background: #06e744;
-    color: #fff;
-    min-width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    /*   text-align: center; */
-    font-size: 0.8em;
-    font-weight: 400;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
 
 .chat-list .active {
     background: #ebebeb;
@@ -193,7 +181,7 @@ img {
     right: 0;
     max-width: 65%;
     padding: 12px;
-    background: #dcf8c6;
+    background: rgb(122, 189, 190);
     border-radius: 10px;
     font-size: 0.9em;
 }
@@ -209,7 +197,7 @@ img {
     right: -12px;
     width: 20px;
     height: 20px;
-    background: linear-gradient(135deg, #dcf8c6 0%, #dcf8c6 50%, transparent 50%, transparent);
+    background: linear-gradient(135deg, rgb(122, 189, 190) 0%, rgb(157, 187, 188) 50%, transparent 50%, transparent);
 }
 
 .message-box p span {

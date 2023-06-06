@@ -9,94 +9,6 @@ $.ajax({
     }
 });
 
-if (page == 1) {
-
-    document.getElementById("about").style.display = "block";
-    var xhr = new XMLHttpRequest();
-
-    // Define the URL and request method
-    var url = '../php/get_project.php?id=' + project_id;
-    xhr.open('GET', url, true);
-
-    // Set the response type to JSON
-    xhr.responseType = 'json';
-
-    // Define the callback function to handle the AJAX response
-    xhr.onload = function () {
-        if (xhr.status === 200) {
-            var response = xhr.response;
-            console.log(response)
-            // Update the HTML elements with the received data
-            document.getElementById('project_name').innerHTML = response.project_name;
-            document.getElementById('team_leader_id').innerHTML = response.team_leader;
-            document.getElementById('Progress').innerHTML = response.progress;
-            document.getElementById('startDate').innerHTML = response.start_date;
-            document.getElementById('updateDate').innerHTML = response.update_date;
-            document.getElementById('repo_url').innerHTML = "https://github.com/ccs-tiet-task/" + response.repo_name;
-            document.getElementById('url').href = "https://github.com/ccs-tiet-task/" + response.repo_name;
-            document.getElementById('descripton').innerHTML = response.description;
-            $(document).ready(function () { /* code here */  load_chart(response.repo_name); });
-
-        }
-    };
-
-    // Send the AJAX request
-    xhr.send();
-}
-if (page == 3) {
-    document.getElementById("team").style.display = "block";
-    getProjectUsers();
-}
-if (page == 2) {
-    var xhr = new XMLHttpRequest();
-    document.getElementById("stats").style.display = "block";
-    var url = '../php/get_project.php?id=' + project_id;
-    xhr.open('GET', url, true);
-
-    // Set the response type to JSON
-    xhr.responseType = 'json';
-
-    // Define the callback function to handle the AJAX response
-    xhr.onload = function () {
-        if (xhr.status === 200) {
-            var response = xhr.response;
-            console.log(response)
-            // Update the HTML elements with the received data
-            /*document.getElementById('project_name').innerHTML = response.project_name;
-            document.getElementById('team_leader_id').innerHTML = response.team_leader;
-            document.getElementById('Progress').innerHTML = response.progress;
-            document.getElementById('startDate').innerHTML = response.start_date;
-            document.getElementById('updateDate').innerHTML = response.update_date;
-            document.getElementById('repo_url').innerHTML = "https://github.com/ccs-tiet-task/" + response.repo_name;
-            document.getElementById('url').href = "https://github.com/ccs-tiet-task/" + response.repo_name;
-            document.getElementById('descripton').innerHTML = response.description;*/
-            $(document).ready(function () { /* code here */
-                get_contributions(response.repo_name);
-            });
-
-        }
-    };
-
-    // Send the AJAX request
-    xhr.send();
-
-}
-
-if (page == 4) {
-    document.getElementById("tasks").style.display = "block";
-}
-
-if (page == 7) {
-
-    document.getElementById("add_team").style.display = "block";
-    find_all_users();
-}
-if (page == 8) {
-
-    document.getElementById("remove_team").style.display = "block";
-    // find_all_users();
-    find_all_users2();
-}
 
 function getParameterByName(name, url = window.location.href) {
     name = name.replace(/[\[\]]/g, '\\$&');
@@ -433,6 +345,102 @@ window.onload = function () {
         temp.href = url;
 
     }
+    if (page == 1) {
+
+        document.getElementById("about").style.display = "block";
+        var xhr = new XMLHttpRequest();
+
+        // Define the URL and request method
+        var url = '../php/get_project.php?id=' + project_id;
+        xhr.open('GET', url, true);
+
+        // Set the response type to JSON
+        xhr.responseType = 'json';
+
+        // Define the callback function to handle the AJAX response
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                var response = xhr.response;
+                console.log(response)
+                // Update the HTML elements with the received data
+                document.getElementById('project_name').innerHTML = response.project_name;
+                document.getElementById('team_leader_id').innerHTML = response.team_leader;
+                document.getElementById('Progress').innerHTML = response.progress;
+                document.getElementById('startDate').innerHTML = response.start_date;
+                document.getElementById('updateDate').innerHTML = response.update_date;
+                document.getElementById('repo_url').innerHTML = "https://github.com/ccs-tiet-task/" + response.repo_name;
+                document.getElementById('url').href = "https://github.com/ccs-tiet-task/" + response.repo_name;
+                document.getElementById('descripton').innerHTML = response.description;
+                $(document).ready(function () { /* code here */  load_chart(response.repo_name); });
+
+            }
+        };
+
+        // Send the AJAX request
+        xhr.send();
+    }
+    if (page == 3) {
+        document.getElementById("team").style.display = "block";
+        getProjectUsers();
+    }
+    if (page == 2) {
+        var xhr = new XMLHttpRequest();
+        document.getElementById("stats").style.display = "block";
+        var url = '../php/get_project.php?id=' + project_id;
+        xhr.open('GET', url, true);
+
+        // Set the response type to JSON
+        xhr.responseType = 'json';
+
+        // Define the callback function to handle the AJAX response
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                var response = xhr.response;
+                console.log(response)
+                // Update the HTML elements with the received data
+                /*document.getElementById('project_name').innerHTML = response.project_name;
+                document.getElementById('team_leader_id').innerHTML = response.team_leader;
+                document.getElementById('Progress').innerHTML = response.progress;
+                document.getElementById('startDate').innerHTML = response.start_date;
+                document.getElementById('updateDate').innerHTML = response.update_date;
+                document.getElementById('repo_url').innerHTML = "https://github.com/ccs-tiet-task/" + response.repo_name;
+                document.getElementById('url').href = "https://github.com/ccs-tiet-task/" + response.repo_name;
+                document.getElementById('descripton').innerHTML = response.description;*/
+                $(document).ready(function () { /* code here */
+                    get_contributions(response.repo_name);
+                });
+
+            }
+        };
+
+        // Send the AJAX request
+        xhr.send();
+
+    }
+
+    if (page == 4) {
+        document.getElementById("tasks").style.display = "block";
+        load_my_assigned_tasks();
+    }
+
+    if (page == 7) {
+
+        document.getElementById("add_team").style.display = "block";
+        find_all_users();
+    }
+    if (page == 8) {
+
+        document.getElementById("remove_team").style.display = "block";
+        // find_all_users();
+        find_all_users2();
+    }
+    if (page == 9) {
+
+        document.getElementById("assign_task").style.display = "block";
+        // find_all_users();
+        //find_all_users2();
+        find_all_users3();
+    }
 }
 
 
@@ -503,7 +511,7 @@ function filterFunction2() {
 
 function find_all_users2() {
 
-    fetch('../php/get_project_users.php?id='+project_id)
+    fetch('../php/get_project_users.php?id=' + project_id)
         .then(response => response.json())
         .then(users => {
             users.forEach(user => {
@@ -529,4 +537,106 @@ function delete_user(id, text) {
     document.getElementById("user_id2").value = id.substr(8);
     document.getElementById("project_id2").value = project_id;
     // 
+}
+
+function filterFunction3() {
+    document.getElementById("myDropdown3").classList.toggle("show");
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput3");
+    filter = input.value.toUpperCase();
+    div = document.getElementById("myDropdown3");
+    a = div.getElementsByTagName("a");
+    for (i = 0; i < a.length; i++) {
+        txtValue = a[i].textContent || a[i].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            a[i].style.display = "";
+        } else {
+            a[i].style.display = "none";
+        }
+    }
+}
+
+function find_all_users3() {
+
+    fetch('../php/get_project_users.php?id=' + project_id)
+        .then(response => response.json())
+        .then(users => {
+            users.forEach(user => {
+
+                const card = document.createElement('a');
+                card.setAttribute('id', "lser_id_" + user.user_id);
+                card.onclick = function () {
+                    task_user(card.id, card.innerText);
+                }
+                card.textContent = `${user.f_name} ${user.l_name}`;
+                document.getElementById("myDropdown3").appendChild(card);
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+function task_user(id, text) {
+    filterFunction3();
+    //  alert(id);
+    document.getElementById("myInput3").value = text;
+    document.getElementById("user_id3").value = id.substr(8);
+    document.getElementById("project_id3").value = project_id;
+    document.getElementById("leader_id3").value = JSON.parse(localStorage.getItem("user_data")).user_id;
+    // 
+}
+
+function load_my_assigned_tasks() {
+    const cardHolder1 = document.getElementById('card_holders');
+    console.log(cardHolder1);
+    // Make an API call to retrieve the data
+    fetch('http://localhost/php/get_my_tasks_project.php?user_id=1&project_id=1')
+        .then(response => response.json())
+        .then(responseData => {
+
+
+            for (let i = 0; i < responseData.length; i++) {
+                const task = responseData[i];
+                const card = document.createElement('div');
+                card.classList.add('card');
+                const cardContent1 = document.createElement('div');
+                const cardName = document.createElement('div');
+                cardName.classList.add('card_name');
+                cardName.innerText = task.title;
+                cardContent1.appendChild(cardName);
+                const description = document.createElement('div');
+                description.innerHTML = `<b1>Description:</b1>${task.description}`;
+                cardContent1.appendChild(description);
+                card.appendChild(cardContent1);
+                const cardContent2 = document.createElement('div');
+                const assignedOn = document.createElement('div');
+                assignedOn.innerHTML = `<b1>Assigned On:</b1> <span>${task.assigned_date}</span>`;
+                cardContent2.appendChild(assignedOn);
+                const deadline = document.createElement('div');
+                deadline.innerHTML = `<b1>Deadline:</b1> <span>${task.deadline}</span>`;
+                cardContent2.appendChild(deadline);
+                const assignedBy = document.createElement('div');
+                assignedBy.innerHTML = `<b1>Assigned By:</b1> <span>${task.leader_name}</span>`;
+                cardContent2.appendChild(assignedBy);
+                card.appendChild(cardContent2);
+                const cardContent3 = document.createElement('div');
+                const markTaskDoneLink = document.createElement('a');
+                markTaskDoneLink.href = `../php/mark_task_done.php?id=${task.id}`;
+                const doneButton = document.createElement('button');
+                doneButton.classList.add('done');
+                const icon = document.createElement('i');
+                icon.classList.add('fa', 'fa-check');
+                doneButton.appendChild(icon);
+                markTaskDoneLink.appendChild(doneButton);
+                cardContent3.appendChild(markTaskDoneLink);
+                card.appendChild(cardContent3);
+                cardHolder1.appendChild(card);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+
+
 }
