@@ -167,12 +167,10 @@ h1 {
 }
 
 .container69 {
-    height: 10vh;
-    padding-top: 8.5vh;
     width: 100vw;
+    margin-top: 9vh;
     display: flex;
     align-items: center;
-    padding-bottom: 0.5vh;
     object-fit: scale-down;
     margin-left: 0%;
     font-weight: bold;
