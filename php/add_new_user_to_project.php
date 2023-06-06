@@ -16,7 +16,7 @@ function add_contributor($accessToken)
     $id = $_POST["project_id"];
     $repo = json_decode(get_project_by_id($id))->repo_name;
     $user = get_user_by_id($_POST["user_id"]);
-    // echo $user->github;
+     $user= json_decode(json_encode(json_decode($user)));
 
 
     $url = 'https://api.github.com/repos/ccs-tiet-task/' . $repo . '/collaborators/' . $user->github;
