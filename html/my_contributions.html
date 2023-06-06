@@ -31,7 +31,7 @@
     load_contributions();
     function load_contributions() {
         // Make API request
-        fetch('http://localhost/php/get_project_contributions.php?id=' + JSON.parse(localStorage.getItem("user_data")).user_id)
+        fetch('../php/get_my_contributions.php?id=' + JSON.parse(localStorage.getItem("user_data")).user_id)
             .then(response => response.json())
             .then(data => {
                 // Access the card_holderc div
