@@ -1,3 +1,4 @@
+<?php
 require_once($_SERVER['DOCUMENT_ROOT'] . "/php/database_get_data.php");
 
 $arr = json_decode(json_encode(get_all_user_projects($_GET["id"])));
