@@ -106,7 +106,7 @@ body {
     color: black;
     border-radius: 5px;
 }
-.incomplete_bt :hover{
+.incomplete_bt:hover{
     background-color: rgb(0, 0, 0);
     color: rgb(255, 255, 255);
     cursor: pointer;
