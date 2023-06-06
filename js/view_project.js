@@ -651,7 +651,7 @@ function load_my_assigned_tasks() {
 
 function load_contributions() {
     // Make API request
-    fetch('http://localhost/php/get_project_contributions.php?id=' + JSON.parse(localStorage.getItem("user_data")).user_id)
+    fetch('http://localhost/php/get_project_contributions.php?id=' + project_id)
         .then(response => response.json())
         .then(data => {
             // Access the card_holderc div
