@@ -14,12 +14,11 @@ a{
     text-decoration: none;
     min-width: min-content;
     width: 90vw;
-    height: 12vh;
+    height:10vh;
     max-height: 80px;
     position: absolute;
     left: 0;
     top: 0;
-    box-shadow: 2px 3px rgba(4, 4, 4, 0.571);
     background-color: #000000;
     backdrop-filter: blur(15px);
     padding-top: 1vh;
@@ -33,7 +32,7 @@ a{
 }
 
 .logo_img {
-    height: 100%;
+    height: 90%;
 }
 
 .logo_text {
@@ -61,13 +60,12 @@ a{
 }
 
 .community_btn {
-
-    border: #106409;
+border: #ffffff;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 15px;
     padding: 10px;
-    height: 40px;
-    width: 150px;
+    height: 35px;
+    width: 110px;
     margin-right: 10px;
     border-radius: 25px;
     background: rgb(54, 187, 189);
@@ -75,12 +73,12 @@ a{
 }
 
 .log_in_bt {
-    border: #106409;
+    border: #ffffff;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 15px;
     padding: 10px;
-    height: 40px;
-    width: 150px;
+    height: 35px;
+    width: 110px;
     margin-right: 10px;
     border-radius: 25px;
     background: rgb(54, 187, 189);
@@ -89,12 +87,12 @@ a{
 
 .stock_btn {
 
-    border: #636804;
+    border: #ffffff;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 15px;
     padding: 10px;
-    height: 40px;
-    width: 150px;
+    height: 35px;
+    width: 110px;
     margin-right: 10px;
     border-radius: 25px;
     background: rgb(54, 187, 189);
@@ -102,12 +100,12 @@ a{
 }
 
 .register {
-    border: #636804;
+    border: #ffffff;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 15px;
     padding: 10px;
-    height: 40px;
-    width: 150px;
+    height: 35px;
+    width: 110px;
     margin-right: 10px;
     border-radius: 25px;
     background: rgb(54, 187, 189);
@@ -131,12 +129,12 @@ h1 {
 }
 
 .expense_btn {
-    border: #cbd334;
+    border: #ffffff;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 15px;
     padding: 10px;
-    height: 40px;
-    width: 150px;
+    height: 35px;
+    width: 110px;
     margin-right: 10px;
     border-radius: 25px;
     background: rgb(54, 187, 189);
@@ -169,7 +167,8 @@ h1 {
 }
 
 .container69 {
-    padding-top: 10vh;
+    height: 10vh;
+    padding-top: 8.5vh;
     width: 100vw;
     display: flex;
     align-items: center;
