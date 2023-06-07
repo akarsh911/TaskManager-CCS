@@ -583,6 +583,8 @@ b {
 .card {
     display: flex;
     padding: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
     font-size: 14px;
     min-width: 70%;
     min-height: 80px;
@@ -590,7 +592,7 @@ b {
     margin: 10px;
     border-radius: 15px;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .card.members1 {
