@@ -104,27 +104,31 @@
             <hr>
             <div class="dropdown">
 
-                <form id="add_user" action="../php/add_new_user_to_project.php" method="post">
-                    <div class="tb">
-                        <div class="td">
-                     <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-                        </div> <div class="td" id="s-cover">
-                            <button type="submit">
-                              <div id="s-circle"></div>
-                              <span></span>
-                            </button>
-                          </div>
-                        </div>
+                <form class="form" id="add_user" action="../php/add_new_user_to_project.php" method="post">
+                    <div class="input_holder">
+                        <span>Select a CCS Member</span>
+                        <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                    </div>
 
 
-                    
+
                     <div id="myDropdown" class="dropdown-content"></div>
                     <div id="user_params" style="display: none;">
-                        <input type="text" placeholder="Role" name="role" required>
-                        <input type="text" placeholder="Tech Stack" name="tech_stack" required>
-                        <input type="text" style="visibility: hidden;" name="user_id" id="user_id">
-                        <input type="text" style="visibility: hidden;" name="project_id" id="project_id">
-                        <input type="submit" />
+                        <div class="input_holder">
+                            <span>Enter The Role You Want to Assign (i.e FrontEnd)</span>
+                            <input type="text" class="input_user_name" placeholder="Role" name="role" required>
+                        </div>
+                        <div class="input_holder">
+                            <span>Enter The Tech Stack of person (i.e HRML,NodeJs)</span>
+                            <input type="text" class="input_user_name" placeholder="Tech Stack" name="tech_stack"
+                                required>
+                        </div>
+
+                        <input type="text" style="display: none;" name="user_id" id="user_id">
+                        <input type="text" style="display: none;" name="project_id" id="project_id">
+                        <div class="input_holder">
+                            <input type="submit" class="submit_bt" />
+                        </div>
                     </div>
                 </form>
             </div>

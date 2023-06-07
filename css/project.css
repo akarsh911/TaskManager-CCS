@@ -660,23 +660,23 @@ b1 {
 
 /* The search field */
 #myInput {
-    box-sizing: border-box;
-
-    font-size: 30px;
-    padding: 30px;
-    border: none;
-    border-bottom: 1px solid #ddd;
+    font-size: 18px;
+    padding: 15px;
+    border: 1px solid white;
+    width: 50%;
+    border-bottom: 3px solid #ddd;
 }
 
 /* The search field when it gets focus/clicked on */
 #myInput:focus {
-    outline: 1px solid #ddd;
+    outline: 3px solid #79acff;
 }
 
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
     position: relative;
     display: inline-block;
+    min-width: 100%;
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -684,147 +684,68 @@ b1 {
     display: none;
     position: absolute;
     background-color: #f6f6f6;
-    min-width: 230px;
+    margin-top: 54px;
+    width: 50%;
     border: 1px solid #ddd;
     z-index: 1;
 }
 
-.tb {
-    display: table;
+.dropdown-content a:hover {
+    cursor: pointer;
+    background-color: #ddd;
+}
+
+.form {
     width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-.td {
-    display: table-cell;
-    vertical-align: middle;
-}
-
-input,
-button {
-    color: #fff;
-    font-family: Nunito;
-    padding: 10px;
-    margin: 0;
-    border: 0;
-    background-color: transparent;
-    font-size: 25px;
-}
-
-#cover {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    width: 550px;
-    padding: 35px;
-    margin: -83px auto 0 auto;
-    background-color: rgb(54, 187, 189);
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgb(54, 187, 189), 0 0 0 20px #ffffffeb;
-    transform: scale(0.6);
-}
-
-form {
-    height: 96px;
-}
-
-input[type="text"] {
+#user_params {
     width: 100%;
-    height: 96px;
-    font-size: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.input_user_name {
+    width: 50%;
+    margin: 10px;
+    padding: 15px;
+    font-size: 18px;
     line-height: 1;
+    border: 2px solid white;
+    border-bottom: 3px solid #ddd;
+
 }
 
-input[type="text"]::placeholder {
+.input_user_name::placeholder {
     color: rgb(54, 187, 189);
 }
 
-#s-cover {
-    width: 1px;
-    padding-left: 35px;
+
+.submit_bt {
+    width: 50%;
+    padding: 15px;
+    background-color: #47B5FF;
+    color: white;
+    margin: 10px;
 }
 
-button {
-    position: relative;
-    cursor: pointer;
+.input_holder {
+    margin-top: 15px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
 }
 
-#s-circle {
-    position: relative;
-    top: -8px;
-    left: 0;
-    width: 43px;
-    height: 43px;
-    margin-top: 0;
-    border-width: 15px;
-    border: 15px solid #fff;
-    background-color: transparent;
-    border-radius: 50%;
-    transition: 0.5s ease all;
+.input_holder span {
+    width: 100%;
+    text-align: center;
 }
-
-
-button span {
-    position: absolute;
-    top: 68px;
-    left: 53px;
-    display: block;
-    width: 45px;
-    height: 15px;
-    background-color: transparent;
-    border-radius: 10px;
-    transform: rotateZ(52deg);
-    transition: 0.5s ease all;
-}
-
-button span:before,
-button span:after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 45px;
-    height: 15px;
-    background-color: #fff;
-    border-radius: 10px;
-    transform: rotateZ(0);
-    transition: 0.5s ease all;
-}
-
-#s-cover:hover #s-circle {
-    top: -1px;
-    width: 67px;
-    height: 15px;
-    border-width: 0;
-    background-color: #fff;
-    border-radius: 20px;
-}
-
-#s-cover:hover span {
-    top: 50%;
-    left: 56px;
-    width: 25px;
-    margin-top: -9px;
-    transform: rotateZ(0);
-}
-
-#s-cover:hover button span:before {
-    bottom: 11px;
-    transform: rotateZ(52deg);
-}
-
-#s-cover:hover button span:after {
-    bottom: -11px;
-    transform: rotateZ(-52deg);
-}
-
-#s-cover:hover button span:before,
-#s-cover:hover button span:after {
-    right: -6px;
-    width: 40px;
-    background-color: #fff;
-}
-
 
 /* Links inside the dropdown */
 .dropdown-content a {
