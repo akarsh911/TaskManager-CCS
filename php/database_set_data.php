@@ -68,6 +68,19 @@ function mark_task_complete($id)
         return "Error: " . $sql . "<br>" . $conn->error;
     }
 }
+function change_task_status($id, $status)
+{
+    $conn = openCon();
+
+    $sql = "UPDATE user_tasks SET status = '$status' WHERE id = '$id'";
+
+    if ($conn->query($sql) === TRUE) {
+        return 1;
+    } else {
+        return "Error: " . $sql . "<br>" . $conn->error;
+    }
+}
+
 function delete_task($id)
 {
     $conn = openCon();

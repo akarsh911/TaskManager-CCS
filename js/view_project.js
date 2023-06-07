@@ -340,7 +340,7 @@ function getProjectUsers() {
 
 window.onload = function () {
 
-    for (var i = 1; i <= 10; i++) {
+    for (var i = 1; i <= 11; i++) {
         if (i == 6)
             continue;
         var temp = document.getElementById(i);
@@ -447,6 +447,16 @@ window.onload = function () {
         // find_all_users();
         //find_all_users2();
         find_all_users3();
+    }
+    if (page == 10) {
+
+        document.getElementById("leader_tasks").style.display = "block";
+        load_project_tasks();
+    }
+    if (page == 11) {
+
+        document.getElementById("completed_tasks").style.display = "block";
+        load_project_comp_tasks();
     }
 }
 
@@ -592,6 +602,187 @@ function task_user(id, text) {
     document.getElementById("project_id3").value = project_id;
     document.getElementById("leader_id3").value = JSON.parse(localStorage.getItem("user_data")).user_id;
     // 
+}
+
+function load_project_tasks() {
+
+    // Make an API call to retrieve the data
+    fetch('../php/get_project_pending_tasks.php?project_id=' + project_id)
+        .then(response => response.json())
+        .then(data => {
+            // Get the card holder element
+            const cardHolder = document.getElementById('card_holders_leader');
+
+            // Loop through the data array and create a card for each element
+            data.forEach(task => {
+                // Create a new card element
+                const card = document.createElement('div');
+                card.classList.add('card');
+
+                // Create the card's left section
+                const cardLeft = document.createElement('div');
+                cardLeft.classList.add('card_left');
+
+                // Create the card's avatar image
+                const cardAvatar = document.createElement('img');
+                cardAvatar.classList.add('card_avatar');
+                cardAvatar.src = `${task.avatar}`;
+                cardLeft.appendChild(cardAvatar);
+
+                // Create the card's name block
+                const cardNameBlock = document.createElement('div');
+                cardNameBlock.classList.add('card_name_block');
+
+                // Create the card's name element
+                const cardName = document.createElement('div');
+                cardName.classList.add('card_name');
+                cardName.textContent = task.title;
+                cardNameBlock.appendChild(cardName);
+
+                // Create the card's description element
+                const cardDescription = document.createElement('div');
+                cardDescription.innerHTML = '<b1>Description:</b1>';
+                cardNameBlock.appendChild(cardDescription);
+
+                cardLeft.appendChild(cardNameBlock);
+                card.appendChild(cardLeft);
+
+                // Create the card's right section
+                const cardRight = document.createElement('div');
+
+                // Create the card's assigned on element
+                const assignedOn = document.createElement('div');
+                assignedOn.innerHTML = `<b1>Assigned On:</b1> <span>${task.assigned_date}</span>`;
+                cardRight.appendChild(assignedOn);
+
+                // Create the card's deadline element
+                const deadline = document.createElement('div');
+                deadline.innerHTML = `<b1>Deadline:</b1> <span>${task.deadline}</span>`;
+                cardRight.appendChild(deadline);
+
+                // Create the card's assigned to element
+                const assignedTo = document.createElement('div');
+                assignedTo.innerHTML = `<b1>Assigned To:</b1> <span>${task.user_name}</span>`;
+                cardRight.appendChild(assignedTo);
+
+                card.appendChild(cardRight);
+
+                // Create the card's action buttons
+                const cardActions = document.createElement('div');
+
+                // Create the "mark task done" button
+                const markDoneButton = document.createElement('a');
+                markDoneButton.href = `../php/mark_task_done.php?id=${task.id}`;
+                markDoneButton.innerHTML = '<button class="done"><i class="fa fa-check" aria-hidden="true"></i></button>';
+                cardActions.appendChild(markDoneButton);
+
+                // Create the "delete task" button
+                const deleteTaskButton = document.createElement('a');
+                deleteTaskButton.href = `../php/delete_task.php?id=${task.id}`;
+                deleteTaskButton.innerHTML = '<button class="done not"><i class="fa fa-trash-o" aria-hidden="true"></i></button>';
+                cardActions.appendChild(deleteTaskButton);
+
+                card.appendChild(cardActions);
+
+                // Append the card to the card holder
+                cardHolder.appendChild(card);
+            });
+        })
+        .catch(error => {
+            console.log('An error occurred:', error);
+        });
+
+}
+
+
+function load_project_comp_tasks() {
+
+    // Make an API call to retrieve the data
+    fetch('../php/get_project_completed_tasks.php?project_id=' + project_id)
+        .then(response => response.json())
+        .then(data => {
+            // Get the card holder element
+            const cardHolder = document.getElementById('card_holders_completed');
+
+            // Loop through the data array and create a card for each element
+            data.forEach(task => {
+                // Create a new card element
+                const card = document.createElement('div');
+                card.classList.add('card');
+
+                // Create the card's left section
+                const cardLeft = document.createElement('div');
+                cardLeft.classList.add('card_left');
+
+                // Create the card's avatar image
+                const cardAvatar = document.createElement('img');
+                cardAvatar.classList.add('card_avatar');
+                cardAvatar.src = `${task.avatar}`;
+                cardLeft.appendChild(cardAvatar);
+
+                // Create the card's name block
+                const cardNameBlock = document.createElement('div');
+                cardNameBlock.classList.add('card_name_block');
+
+                // Create the card's name element
+                const cardName = document.createElement('div');
+                cardName.classList.add('card_name');
+                cardName.textContent = task.title;
+                cardNameBlock.appendChild(cardName);
+
+                // Create the card's description element
+                const cardDescription = document.createElement('div');
+                cardDescription.innerHTML = '<b1>Description:</b1>';
+                cardNameBlock.appendChild(cardDescription);
+
+                cardLeft.appendChild(cardNameBlock);
+                card.appendChild(cardLeft);
+
+                // Create the card's right section
+                const cardRight = document.createElement('div');
+
+                // Create the card's assigned on element
+                const assignedOn = document.createElement('div');
+                assignedOn.innerHTML = `<b1>Assigned On:</b1> <span>${task.assigned_date}</span>`;
+                cardRight.appendChild(assignedOn);
+
+                // Create the card's deadline element
+                const deadline = document.createElement('div');
+                deadline.innerHTML = `<b1>Deadline:</b1> <span>${task.deadline}</span>`;
+                cardRight.appendChild(deadline);
+
+                // Create the card's assigned to element
+                const assignedTo = document.createElement('div');
+                assignedTo.innerHTML = `<b1>Assigned To:</b1> <span>${task.user_name}</span>`;
+                cardRight.appendChild(assignedTo);
+
+                card.appendChild(cardRight);
+
+                // Create the card's action buttons
+                const cardActions = document.createElement('div');
+
+                // Create the "mark task done" button
+                const markDoneButton = document.createElement('a');
+                markDoneButton.href = `../php/reassign_task.php?id=${task.id}`;
+                markDoneButton.innerHTML = '<button class="done reas"><i class="fa fa-history" aria-hidden="true"></i></button>';
+                cardActions.appendChild(markDoneButton);
+
+                // Create the "delete task" button
+                const deleteTaskButton = document.createElement('a');
+                deleteTaskButton.href = `../php/delete_task.php?id=${task.id}`;
+                deleteTaskButton.innerHTML = '<button class="done not"><i class="fa fa-trash-o" aria-hidden="true"></i></button>';
+                cardActions.appendChild(deleteTaskButton);
+
+                card.appendChild(cardActions);
+
+                // Append the card to the card holder
+                cardHolder.appendChild(card);
+            });
+        })
+        .catch(error => {
+            console.log('An error occurred:', error);
+        });
+
 }
 
 function load_my_assigned_tasks() {

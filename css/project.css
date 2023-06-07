@@ -653,6 +653,24 @@ b1 {
     text-align: center;
 }
 
+.done.not {
+    background-color: #cb4233;
+}
+
+.done.not:hover {
+    cursor: pointer;
+    background-color: #99372c;
+}
+
+.done.reas {
+    background-color: #cbb433;
+}
+
+.done.reas:hover {
+    cursor: pointer;
+    background-color: #cbb433c2;
+}
+
 .done:hover {
     cursor: pointer;
     background-color: #29592a;
