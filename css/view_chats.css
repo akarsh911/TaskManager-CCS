@@ -42,7 +42,7 @@
 .chat-list {
     border-radius: 15px 0;
     position: relative;
-    height: calc(100% - 170px);
+    height: 100%;
     overflow-y: auto;
 }
 
