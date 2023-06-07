@@ -659,7 +659,7 @@ b1 {
 }
 
 /* The search field */
-#myInput {
+.myInput {
     font-size: 18px;
     padding: 15px;
     border: 1px solid white;
@@ -668,7 +668,7 @@ b1 {
 }
 
 /* The search field when it gets focus/clicked on */
-#myInput:focus {
+.myInput:focus {
     outline: 3px solid #79acff;
 }
 
@@ -763,24 +763,4 @@ b1 {
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {
     display: block;
-}
-
-.Search {
-    margin-left: 125%;
-    width: 225%;
-    border-radius: 25px;
-}
-
-.Search2 {
-    border-top-left-radius: 25px;
-    border-bottom-left-radius: 25px;
-    height: 6%;
-    width: 80%;
-
-}
-
-.Button1 {
-    border-top-right-radius: 25px;
-    border-bottom-right-radius: 25px;
-    height: 60%;
 }

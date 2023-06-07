@@ -107,7 +107,8 @@
                 <form class="form" id="add_user" action="../php/add_new_user_to_project.php" method="post">
                     <div class="input_holder">
                         <span>Select a CCS Member</span>
-                        <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                        <input type="text" placeholder="Search.." id="myInput" class="myInput"
+                            onkeyup="filterFunction()">
                     </div>
 
 
@@ -139,12 +140,18 @@
             <hr>
             <div class="dropdown">
 
-                <form id="add_user" action="../php/remove_user_from_project.php" method="post">
-                    <input class="Search2" type="text" placeholder="Search.." id="myInput2" onkeyup="filterFunction2()">
-                    <input class="Button1" type="submit" />
+                <form class="form" id="add_user" action="../php/remove_user_from_project.php" method="post">
+                    <div class="input_holder">
+                        <span>Select the Member You want to remove</span>
+                        <input class="myInput" type="text" placeholder="Search.." id="myInput2"
+                            onkeyup="filterFunction2()">
+                    </div>
+                    <div class="input_holder">
+                        <input class="submit_bt" type="submit" />
+                    </div>
                     <div id="myDropdown2" class="dropdown-content"></div>
-                    <input type="text" style="visibility: hidden;" name="user_id" id="user_id2">
-                    <input type="text" style="visibility: hidden;" name="project_id" id="project_id2">
+                    <input type="text" style="display:none;" name="user_id" id="user_id2">
+                    <input type="text" style="display:none;" name="project_id" id="project_id2">
 
                 </form>
             </div>
