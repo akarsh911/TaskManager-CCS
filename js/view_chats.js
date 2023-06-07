@@ -211,7 +211,7 @@ function change(id) {
         dataType: 'json',
         success: function (projects) {
             // Iterate over each project
-            var count2 = 0;
+            var count2 = 0; document.getElementById("chat_0").style.display = "none";
             projects.forEach(function (project) {
               document.getElementById("chat_" + project.id).style.display = "none";
                 document.getElementById("chat_" + id).style.display = "block";
