@@ -103,6 +103,7 @@ function load_projects() {
 
 
                 document.getElementById('chats').appendChild(card);
+
             });
 
         },
