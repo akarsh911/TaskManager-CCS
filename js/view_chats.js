@@ -103,12 +103,13 @@ function load_projects() {
 
 
                 document.getElementById('chats').appendChild(card);
-                var message =`  <div class="message-box friend-message">
+                var message = `  <div class="message-box friend-message">
             <p>
               <b1>Admin</b1><br>This is General Chat Server Please be Cautious of your language!<br><span>07:45</span>
             </p>
           </div>`;
-                document.getElementById('chat_' + count).innerHTML+= message;           });
+                document.getElementById('chat_' + count).innerHTML += message;
+            });
 
         },
         error: function (xhr, status, error) {
@@ -124,16 +125,18 @@ function load_admin_message() {
         dataType: 'json',
         success: function (projects) {
             // Iterate over each project
-            var count2=0;
+            var count2 = 0;
             projects.forEach(function (project) {
                 count2++;
                 // Create the HTML content for the project
                 var message = `  <div class="message-box friend-message">
             <p>
-              <b1>Admin</b1><br>Welcome ${JSON.parse(localStorage.getItem("user_data")).f_name}! This is ${project.project_name} Chat Server Please be Cautious of your language! And talk Relevant to Project<br><span>07:45</span>
+              <b1>Admin</b1>(visible only to you)<br>Welcome ${JSON.parse(localStorage.getItem("user_data")).f_name}! This is ${project.project_name} Chat Server Please be Cautious of your language! And keep conversations Relevant to Project<br><span>now</span>
             </p>
           </div>`;
-                document.getElementById('chat_' + count2).innerHTML += message;
+                var chatMessages = document.getElementById('chat_' + count2);
+                chatMessages.innerHTML += message;
+                chatMessages.scrollTop = chatMessages.scrollHeight;
             });
 
         },
@@ -141,6 +144,14 @@ function load_admin_message() {
             console.error(error);
         }
     });
+    var message = `  <div class="message-box friend-message">
+            <p>
+              <b1>Admin</b1>(visible only to you)<br>Welcome ${JSON.parse(localStorage.getItem("user_data")).f_name}! This is General Chat Server Please be Cautious of your language! <br><span>now</span>
+            </p>
+          </div>`;
+    var chatMessages = document.getElementById('chat_0');
+    chatMessages.innerHTML += message;
+    chatMessages.scrollTop = chatMessages.scrollHeight;
 
 }
 function load_chats() {
@@ -189,7 +200,7 @@ function load_chats() {
                     chatMessages.scrollTop = chatMessages.scrollHeight;
                 }
             });
-
+            load_admin_message();
         });
 }
 function load(id) {
