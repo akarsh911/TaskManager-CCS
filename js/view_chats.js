@@ -33,7 +33,7 @@ socket.addEventListener('message', function (event) {
         const chatMessage = document.createElement('div');
         chatMessage.classList.add("message-box", "friend-message");
         const chatMessagep = document.createElement('p');
-        const chatMessageb = document.createElement('b');
+        const chatMessageb = document.createElement('b1');
         chatMessageb.innerText = `${message.user_name}`;
         const chatMessagebr = document.createElement('br');
         const chatMessagebr2 = document.createElement('br');
@@ -125,7 +125,7 @@ function load_admin_message() {
                 // Create the HTML content for the project
                 var message = `  <div class="message-box friend-message">
             <p>
-              <b1>Admin</b1>(visible only to you)<br>Welcome <b>${JSON.parse(localStorage.getItem("user_data")).f_name}</b>! This is <b>${project.project_name}</b> Chat Server Please be Cautious of your language! And keep conversations Relevant to Project<br><span>now</span>
+              <b1>Admin</b1>(visible only to you)<br>Welcome <b1>${JSON.parse(localStorage.getItem("user_data")).f_name}</b1>! This is <b>${project.project_name}</b> Chat Server Please be Cautious of your language! And keep conversations Relevant to Project<br><span>now</span>
             </p>
           </div>`;
                 var chatMessages = document.getElementById('chat_' + count2);
@@ -140,7 +140,7 @@ function load_admin_message() {
     });
     var message = `  <div class="message-box friend-message">
             <p>
-              <b1>Admin</b1>(visible only to you)<br>Welcome <b>${JSON.parse(localStorage.getItem("user_data")).f_name}</b>! This is General Chat Server Please be Cautious of your language! <br><span>now</span>
+              <b1>Admin</b1>(visible only to you)<br>Welcome <b1>${JSON.parse(localStorage.getItem("user_data")).f_name}</b1>! This is General Chat Server Please be Cautious of your language! <br><span>now</span>
             </p>
           </div>`;
     var chatMessages = document.getElementById('chat_0');
@@ -174,7 +174,7 @@ function load_chats() {
                     const chatMessage = document.createElement('div');
                     chatMessage.classList.add("message-box", "friend-message");
                     const chatMessagep = document.createElement('p');
-                    const chatMessageb = document.createElement('b');
+                    const chatMessageb = document.createElement('b1');
                     chatMessageb.innerText = `${message.user_name}`;
                     const chatMessagebr = document.createElement('br');
                     const chatMessagebr2 = document.createElement('br');
