@@ -28,7 +28,7 @@ function load_chart(repoName) {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', apiUrl);
     xhr.setRequestHeader('Accept', 'application/vnd.github+json');
-    xhr.setRequestHeader('Authorization', 'Bearer ' + key);
+    // xhr.setRequestHeader('Authorization', 'Bearer ' + key);
     xhr.setRequestHeader('X-GitHub-Api-Version', '2022-11-28');
     xhr.onreadystatechange = function () {
         if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
@@ -112,7 +112,11 @@ function get_contributions(repo) {
     // const repo = 'taskmanager-ccs';
     const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contributors`;
     fetch(apiUrl, {
-
+        headers: {
+            'Accept': 'application/vnd.github+json',
+            'Authorization': 'Bearer ' + key,
+            'X-GitHub-Api-Version': '2022-11-28'
+        }
     })
         .then(response => response.json())
         .then(data => {
@@ -147,7 +151,14 @@ function get_contributions(repo) {
     const dailyCommitData = Array.from({ length: 14 }, () => 0);
 
     const apiUrl2 = `https://api.github.com/repos/${owner}/${repo}/stats/commit_activity`;
-    fetch(apiUrl2, {})
+    fetch(apiUrl2, {
+        headers: {
+            'Accept': 'application/vnd.github+json',
+            'Authorization': 'Bearer ' + key,
+            'X-GitHub-Api-Version': '2022-11-28'
+        }
+
+    })
         .then(response => response.json())
         .then(data => {
             // Extract week labels and commit counts for the last two weeks
@@ -190,7 +201,11 @@ function get_contributions(repo) {
 
     // Fetch code frequency data
     fetch(apiUrl3, {
-
+        headers: {
+            'Accept': 'application/vnd.github+json',
+            'Authorization': 'Bearer ' + key,
+            'X-GitHub-Api-Version': '2022-11-28'
+        }
     })
         .then(response => response.json())
         .then(data => {
@@ -240,6 +255,7 @@ function get_contributions(repo) {
     fetch(apiUrl4, {
         headers: {
             'Accept': 'application/vnd.github+json',
+            'Authorization': 'Bearer ' + key,
             'X-GitHub-Api-Version': '2022-11-28'
         }
     })

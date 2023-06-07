@@ -12,6 +12,8 @@ body {
     background-attachment: fixed;
 }
 
+
+
 .invis {
     display: none;
 }
@@ -781,4 +783,13 @@ b1 {
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {
     display: block;
+}
+
+.selected {
+    background-color: rgba(54, 187, 189, 0.562);
+
+}
+
+.selected:hover {
+    background-color: rgba(38, 134, 135, 0.562);
 }
