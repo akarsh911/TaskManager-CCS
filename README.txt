@@ -3,11 +3,12 @@ Website is Hosted on Link : http://getnode.xyz:49160/
 # CCS Project Management System
 
 ## Description
-The CCS Project Management System is a web-based platform developed by the tech society at Thapar University. It aims to provide a collaborative environment for managing projects within the society. The system leverages GitHub's APIs for seamless integration and offers a range of features to streamline project collaboration, task management, and communication.
+The CCS Project Management System is a web-based platform developed by team Binary Brain of CCS,a tech society at Thapar University. It aims to provide a collaborative environment for managing projects within the society. The system leverages GitHub's APIs for seamless integration and offers a range of features to streamline project collaboration, task management, and communication.
   
 ## Key Features
- - **Registration and Login**: Users can register using their email addresses linked to GitHub and log in to their accounts for accessing the system's features.
-- **Member**: Provides a comprehensive repository of all registered members within the society, facilitating easy access to member profiles and contact information.
+- **Registration and Login**: Users can register using their email addresses linked to GitHub and log in to their accounts for accessing the system's features.
+Main Button:
+- **Members**: Provides a comprehensive list of all registered members within the society, facilitating easy access to member profiles and contact information.
 - **Projects**: Offers a centralized hub listing ongoing projects in the society, allowing users to explore project details, express interest, and apply for contributions.
 - **Dashboard**: Presents personalized project statistics, enabling users to track their involvement, contributions, and overall progress.
 - **Log In/Log Out**: Ensures secure access to user accounts.
@@ -20,9 +21,17 @@ The CCS Project Management System is a web-based platform developed by the tech 
 - **Chats**: Enables real-time communication through WebSockets, offering general and project-specific channels for team collaboration.
 
 ## Project Management
-- Users can explore ongoing projects within the society, view project details, and apply to contribute their skills.
-- Project-specific pages provide in-depth information, including descriptions, GitHub repository links, and heat maps reflecting project activity levels.
-- The system showcases project team members, assigned tasks, and commit history for effective project monitoring.
+In the Project Management section, the CCS Project Management System offers the following capabilities:
+
+- Projects List: Displays a comprehensive list of projects, allowing users to view project details, apply for contributions, and access the GitHub repository link.
+- Add New Project: Users can create new projects by providing a name, and a corresponding repository with the same name will be automatically created on the CCS GitHub.
+- Project Details: Viewing a specific project provides information about the project and showcases a heat map based on its activity level derived from GitHub's API.
+- Graphical Stats: The system presents graphical statistics, including contributors, commit activity, deletion-addition, and languages used within the project.
+- Project Team Members: Users can see the team members added as contributors in the GitHub repository, facilitating collaboration and communication.
+- Assigned Tasks: The system displays assigned tasks within the project, enabling efficient task management and progress tracking.
+- Commit History: Users can explore the commit history of the project, providing insights into project development and version control.
+
+These features enhance project visibility, facilitate contribution applications, provide in-depth project insights, and foster effective collaboration within the CCS Project Management System.
 
 ### Additional Features for Project Leaders
 - Project leaders have administrative powers, allowing them to manage project contributors, assign tasks, and monitor task completion.
@@ -64,5 +73,5 @@ We would like to express our sincere gratitude to the following mentors for thei
 
 Their mentorship and advice significantly contributed to the success of the project, and we are immensely grateful for their assistance.
 
-## License
-This project is licensed.
+Thank You!
+Enjoy Collaboration!
