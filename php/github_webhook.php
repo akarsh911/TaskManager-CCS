@@ -4,16 +4,15 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/php/database_get_data.php");
 $response = fetch_response($_GET["repo"]);
 $data = json_decode($response);
 
-if (does_commit_exist($data[2]->sha) == false) {
-    echo json_encode($data[2]) . "<br>";
-    echo json_encode($data[2]->author) . "<br>";
-    $user = json_decode(get_user_by_github($data[2]->author->login));
+if (does_commit_exist($data[0]->sha) == false) {
+    echo json_encode($data[0]) . "<br>";
+    echo json_encode($data[0]->author) . "<br>";
+    $user = json_decode(get_user_by_github($data[0]->author->login));
     $project = json_decode(get_project_by_repo_name($_GET["repo"]));
     $user_id = $user->id;
     $repo_id = $project->id;
-    echo $data[2]->sha;
-    $msg = sanitizeText($data[2]->commit->message);
-    create_user_contribution($user_id, $repo_id, $data[2]->sha, $data[2]->author->login, $msg);
+    $msg = sanitizeText($data[0]->commit->message);
+    create_user_contribution($user_id, $repo_id, $data[0]->sha, $data[0]->author->login, $msg);
     echo "Success";
 } else {
     echo "Failed Commit already exists";
