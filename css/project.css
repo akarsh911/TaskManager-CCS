@@ -582,7 +582,9 @@ b {
 
 .card {
     display: flex;
-    padding: 25px;
+    padding: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
     font-size: 14px;
     min-width: 70%;
     min-height: 80px;
@@ -658,7 +660,6 @@ b1 {
 
 .done.not {
     background-color: #cb4233;
-    width: 40px;
 }
 
 .done.not:hover {
@@ -668,7 +669,6 @@ b1 {
 
 .done.reas {
     background-color: #cbb433;
-    width: 40px;
 }
 
 .done.reas:hover {
@@ -758,8 +758,8 @@ b1 {
     width: 50%;
     padding: 15px;
     border-radius: 15px;
-    background-color: rgb(54, 187, 189);
-    color: white;
+    background-color:rgb(54, 187, 189);
+    color:white;
     margin: 10px;
 }
 
