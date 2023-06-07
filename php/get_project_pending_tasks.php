@@ -9,6 +9,7 @@ for ($i = 0; $i < count($arr); $i++) {
     $project = json_decode(get_project_by_id($arr[$i]->project_id));
     $leader = json_decode(get_user_by_id($arr[$i]->leader_id));
     $arr[$i]->user_name = $user->f_name . " " . $user->l_name;
+    $arr[$i]->avatar = $user->avatar;
     $arr[$i]->leader_name = $leader->f_name . " " . $leader->l_name;
     $arr[$i]->project_name = $leader->f_name . " " . $leader->l_name;
     switch ($arr[$i]->status) {
