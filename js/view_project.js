@@ -368,7 +368,7 @@ function getProjectUsers() {
 // Call the function to fetch project users and populate the card holders
 
 window.onload = function () {
-   
+
     for (var i = 1; i <= 11; i++) {
         if (i == 6)
             continue;
@@ -874,7 +874,7 @@ function load_my_assigned_tasks() {
 
 function load_contributions() {
     // Make API request
-    fetch('http://localhost/php/get_project_contributions.php?id=' + project_id)
+    fetch('../php/get_project_contributions.php?id=' + project_id)
         .then(response => response.json())
         .then(data => {
             // Access the card_holderc div

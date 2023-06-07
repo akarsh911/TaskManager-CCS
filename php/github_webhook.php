@@ -3,6 +3,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/php/database_set_data.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/php/database_get_data.php");
 $response = fetch_response($_GET["repo"]);
 $data = json_decode($response);
+echo $response;
 if (does_commit_exist($data[2]->sha) == false) {
     echo json_encode($data[2])."<br>";
     echo json_encode($data[2]->author)."<br>";
