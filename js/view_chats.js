@@ -198,11 +198,31 @@ function load_chats() {
         });
 }
 function load(id) {
-    for (var i = 0; i <= count; i++) {
-        document.getElementById("chat_" + i).style.display = "none";
-    }
-    document.getElementById("chat_" + id).style.display = "block";
-    document.getElementById("tab_" + sel).classList.remove("selected");
-    document.getElementById("tab_" + id).classList.add("selected");
-    sel = id;
+
+change(id);
+
+
+}
+
+function change(id) {
+    $.ajax({
+        url: '../php/get_user_projects.php?id=' + JSON.parse(localStorage.getItem("user_data")).user_id,
+        method: 'GET',
+        dataType: 'json',
+        success: function (projects) {
+            // Iterate over each project
+            var count2 = 0;
+            projects.forEach(function (project) {
+              document.getElementById("chat_" + project.id).style.display = "none";
+                document.getElementById("chat_" + id).style.display = "block";
+                document.getElementById("tab_" + sel).classList.remove("selected");
+                document.getElementById("tab_" + id).classList.add("selected");
+                sel = id;
+            });
+
+        },
+        error: function (xhr, status, error) {
+            console.error(error);
+        }
+    });
 }
