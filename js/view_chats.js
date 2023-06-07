@@ -103,12 +103,6 @@ function load_projects() {
 
 
                 document.getElementById('chats').appendChild(card);
-                var message = `  <div class="message-box friend-message">
-            <p>
-              <b1>Admin</b1><br>This is General Chat Server Please be Cautious of your language!<br><span>07:45</span>
-            </p>
-          </div>`;
-                document.getElementById('chat_' + count).innerHTML += message;
             });
 
         },
