@@ -125,7 +125,7 @@ function load_admin_message() {
                 // Create the HTML content for the project
                 var message = `  <div class="message-box friend-message">
             <p>
-              <b1>Admin</b1>(visible only to you)<br>Welcome ${JSON.parse(localStorage.getItem("user_data")).f_name}! This is ${project.project_name} Chat Server Please be Cautious of your language! And keep conversations Relevant to Project<br><span>now</span>
+              <b1>Admin</b1>(visible only to you)<br>Welcome <b>${JSON.parse(localStorage.getItem("user_data")).f_name}</b>! This is <b>${project.project_name}</b> Chat Server Please be Cautious of your language! And keep conversations Relevant to Project<br><span>now</span>
             </p>
           </div>`;
                 var chatMessages = document.getElementById('chat_' + count2);
@@ -140,7 +140,7 @@ function load_admin_message() {
     });
     var message = `  <div class="message-box friend-message">
             <p>
-              <b1>Admin</b1>(visible only to you)<br>Welcome ${JSON.parse(localStorage.getItem("user_data")).f_name}! This is General Chat Server Please be Cautious of your language! <br><span>now</span>
+              <b1>Admin</b1>(visible only to you)<br>Welcome <b>${JSON.parse(localStorage.getItem("user_data")).f_name}</b>! This is General Chat Server Please be Cautious of your language! <br><span>now</span>
             </p>
           </div>`;
     var chatMessages = document.getElementById('chat_0');
