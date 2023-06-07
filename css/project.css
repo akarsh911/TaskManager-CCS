@@ -658,6 +658,7 @@ b1 {
 
 .done.not {
     background-color: #cb4233;
+    width: 40px;
 }
 
 .done.not:hover {
@@ -667,6 +668,7 @@ b1 {
 
 .done.reas {
     background-color: #cbb433;
+    width: 40px;
 }
 
 .done.reas:hover {
