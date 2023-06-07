@@ -43,8 +43,8 @@ function add_contributor($accessToken)
     require_once($_SERVER['DOCUMENT_ROOT'] . "/php/database_set_data.php");
 
     $id = create_project($_POST["name"], strtolower($_POST["repo_name"]), $_POST["team_leader_id"], $_POST["desc"], date("Y-m-d h:i"), date("Y-m-d h:i"), 1, "Just Started");
-    $user = json_decode(json_encode(get_user_by_id($_POST["team_leader_id"])));
-    // echo $user->github;
+    $user = json_decode(json_encode(json_decode(get_user_by_id($_POST["team_leader_id"]))));
+    echo json_encode($user);
 
 
     $url = 'https://api.github.com/repos/ccs-tiet-task/' . strtolower($_POST["repo_name"]) . '/collaborators/' . $user->github;
