@@ -160,16 +160,31 @@
             <h4 style="width:100%;text-align: center;">Assign Task to Team </h4>
             <hr>
             <div class="dropdown">
-                <form id="add_user" action="../php/assign_new_task.php" method="post">
-                    <input type="text" placeholder="Search Team Member.." id="myInput3" onkeyup="filterFunction3()">
-                    <input type="text" placeholder="Title" name="title" required>
-                    <input type="text" placeholder="Description" name="description" required>
-                    <input type="date" name="deadline" required>
-                    <input type="submit" />
+                <form class="form" id="add_user" action="../php/assign_new_task.php" method="post">
+                    <div class="input_holder">
+                        <span>Select the Member You want to Assign Task</span>
+                        <input class="myInput" type="text" placeholder="Search Team Member.." id="myInput3"
+                            onkeyup="filterFunction3()">
+                    </div>
+                    <div class="input_holder">
+                        <span>Task Title</span>
+                        <input type="text" class="input_user_name" placeholder="Title" name="title" required>
+                    </div>
+                    <div class="input_holder">
+                        <span>Task Description</span><input class="input_user_name" type="text"
+                            placeholder="Description" name="description" required>
+                    </div>
+                    <div class="input_holder">
+                        <span>Select Deadline Date</span>
+                        <input type="date" name="deadline" class="input_user_name" required>
+                    </div>
+                    <div class="input_holder">
+                        <input type="submit" class="submit_bt" />
+                    </div>
                     <div id="myDropdown3" class="dropdown-content"></div>
-                    <input type="text" style="visibility: hidden;" name="user_id" id="user_id3">
-                    <input type="text" style="visibility: hidden;" name="project_id" id="project_id3">
-                    <input type="text" style="visibility: hidden;" name="leader_id" id="leader_id3">
+                    <input type="text" style="display: none;" name="user_id" id="user_id3">
+                    <input type="text" style="display: none;" name="project_id" id="project_id3">
+                    <input type="text" style="display: none;" name="leader_id" id="leader_id3">
 
                 </form>
             </div>
