@@ -166,6 +166,9 @@ function load(id) {
     for (var i = 0; i <= count; i++) {
         document.getElementById("chat_" + i).style.display = "none";
     }
+
     document.getElementById("chat_" + id).style.display = "block";
+    document.getElementById("tab_" + sel).classList.remove("selected");
+    document.getElementById("tab_" + id).classList.add("selected");
     sel = id;
 }

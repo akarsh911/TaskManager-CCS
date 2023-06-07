@@ -1,5 +1,18 @@
 var project_id = getParameterByName('id');
 var page = getParameterByName('page');
+$.ajax({
+    url: "../php/get_project.php?id=" + project_id,
+    type: "GET",
+    success: function (data) {
+        data = JSON.parse(data);
+        project_leader = data.team_leader_id;
+        if (project_leader != JSON.parse(localStorage.getItem("user_data")).user_id) {
+            for (var i = 7; i <= 12; i++) {
+                document.getElementById("tabl_" + i).style.display = "none";
+            }
+        }
+    }
+});
 var key = "";
 $.ajax({
     url: "../php/get_keys.php",
@@ -28,7 +41,7 @@ function load_chart(repoName) {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', apiUrl);
     xhr.setRequestHeader('Accept', 'application/vnd.github+json');
-    xhr.setRequestHeader('Authorization', 'Bearer ' + key);
+    // xhr.setRequestHeader('Authorization', 'Bearer ' + key);
     xhr.setRequestHeader('X-GitHub-Api-Version', '2022-11-28');
     xhr.onreadystatechange = function () {
         if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
@@ -112,7 +125,11 @@ function get_contributions(repo) {
     // const repo = 'taskmanager-ccs';
     const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contributors`;
     fetch(apiUrl, {
-
+        headers: {
+            'Accept': 'application/vnd.github+json',
+            'Authorization': 'Bearer ' + key,
+            'X-GitHub-Api-Version': '2022-11-28'
+        }
     })
         .then(response => response.json())
         .then(data => {
@@ -147,7 +164,14 @@ function get_contributions(repo) {
     const dailyCommitData = Array.from({ length: 14 }, () => 0);
 
     const apiUrl2 = `https://api.github.com/repos/${owner}/${repo}/stats/commit_activity`;
-    fetch(apiUrl2, {})
+    fetch(apiUrl2, {
+        headers: {
+            'Accept': 'application/vnd.github+json',
+            'Authorization': 'Bearer ' + key,
+            'X-GitHub-Api-Version': '2022-11-28'
+        }
+
+    })
         .then(response => response.json())
         .then(data => {
             // Extract week labels and commit counts for the last two weeks
@@ -190,7 +214,11 @@ function get_contributions(repo) {
 
     // Fetch code frequency data
     fetch(apiUrl3, {
-
+        headers: {
+            'Accept': 'application/vnd.github+json',
+            'Authorization': 'Bearer ' + key,
+            'X-GitHub-Api-Version': '2022-11-28'
+        }
     })
         .then(response => response.json())
         .then(data => {
@@ -240,6 +268,7 @@ function get_contributions(repo) {
     fetch(apiUrl4, {
         headers: {
             'Accept': 'application/vnd.github+json',
+            'Authorization': 'Bearer ' + key,
             'X-GitHub-Api-Version': '2022-11-28'
         }
     })
@@ -339,7 +368,7 @@ function getProjectUsers() {
 // Call the function to fetch project users and populate the card holders
 
 window.onload = function () {
-
+   
     for (var i = 1; i <= 11; i++) {
         if (i == 6)
             continue;
