@@ -98,7 +98,7 @@ function load_projects() {
                 $('#chat_list').append(htmlContent);
 
                 var card = document.createElement('div');
-                card.setAttribute('id', "chat_" + count);
+                card.setAttribute('id', "chat_" + project.id);
                 card.classList.add("chat-container", "invis");
 
 
@@ -128,7 +128,7 @@ function load_admin_message() {
               <b1>Admin</b1>(visible only to you)<br>Welcome <b1>${JSON.parse(localStorage.getItem("user_data")).f_name}</b1>! This is <b>${project.project_name}</b> Chat Server Please be Cautious of your language! And keep conversations Relevant to Project<br><span>now</span>
             </p>
           </div>`;
-                var chatMessages = document.getElementById('chat_' + count2);
+                var chatMessages = document.getElementById('chat_' + project.id);
                 chatMessages.innerHTML += message;
                 chatMessages.scrollTop = chatMessages.scrollHeight;
             });
@@ -201,7 +201,6 @@ function load(id) {
     for (var i = 0; i <= count; i++) {
         document.getElementById("chat_" + i).style.display = "none";
     }
-
     document.getElementById("chat_" + id).style.display = "block";
     document.getElementById("tab_" + sel).classList.remove("selected");
     document.getElementById("tab_" + id).classList.add("selected");
