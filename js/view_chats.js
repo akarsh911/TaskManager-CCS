@@ -103,7 +103,37 @@ function load_projects() {
 
 
                 document.getElementById('chats').appendChild(card);
+                var message =`  <div class="message-box friend-message">
+            <p>
+              <b1>Admin</b1><br>This is General Chat Server Please be Cautious of your language!<br><span>07:45</span>
+            </p>
+          </div>`;
+                document.getElementById('chat_' + count).innerHTML+= message;           });
 
+        },
+        error: function (xhr, status, error) {
+            console.error(error);
+        }
+    });
+
+}
+function load_admin_message() {
+    $.ajax({
+        url: '../php/get_user_projects.php?id=' + JSON.parse(localStorage.getItem("user_data")).user_id,
+        method: 'GET',
+        dataType: 'json',
+        success: function (projects) {
+            // Iterate over each project
+            var count2=0;
+            projects.forEach(function (project) {
+                count2++;
+                // Create the HTML content for the project
+                var message = `  <div class="message-box friend-message">
+            <p>
+              <b1>Admin</b1><br>Welcome ${JSON.parse(localStorage.getItem("user_data")).f_name}! This is ${project.project_name} Chat Server Please be Cautious of your language! And talk Relevant to Project<br><span>07:45</span>
+            </p>
+          </div>`;
+                document.getElementById('chat_' + count2).innerHTML += message;
             });
 
         },
@@ -113,7 +143,6 @@ function load_projects() {
     });
 
 }
-
 function load_chats() {
     fetch('../php/chat_backend.php')
         .then(response => response.json())
