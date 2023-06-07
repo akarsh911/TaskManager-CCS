@@ -68,7 +68,7 @@ function get_user_by_id($id)
             return json_encode($row);
         }
     } else {
-        return 0;
+        return null;
     }
     return json_encode($row);
 }

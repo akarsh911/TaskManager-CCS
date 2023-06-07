@@ -3,8 +3,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/php/database_get_data.php");
 $arr = array();
 $arr = json_decode(json_encode(get_user_contributions_by_project_id($_GET["id"])));
 for ($i = 0; $i < count($arr); $i++) {
-    $user = $arr[$i]->user_id;
-    $user = json_decode(get_user_by_id($user));
+   
+    $user2 = $arr[$i]->user_id;
+    $user = json_decode(get_user_by_id($user2));
+    if($user==null)
+    continue;
     $project = json_decode(get_project_by_id($arr[$i]->project_id));
     $arr[$i]->user_name = $user->f_name . " " . $user->l_name;
     $arr[$i]->user_avatar = $user->avatar;
