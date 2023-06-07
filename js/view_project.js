@@ -1,5 +1,18 @@
 var project_id = getParameterByName('id');
 var page = getParameterByName('page');
+$.ajax({
+    url: "../php/get_project.php?id=" + project_id,
+    type: "GET",
+    success: function (data) {
+        data = JSON.parse(data);
+        project_leader = data.team_leader_id;
+        if (project_leader != JSON.parse(localStorage.getItem("user_data")).user_id) {
+            for (var i = 7; i <= 12; i++) {
+                document.getElementById("tabl_" + i).style.display = "none";
+            }
+        }
+    }
+});
 var key = "";
 $.ajax({
     url: "../php/get_keys.php",
@@ -355,7 +368,7 @@ function getProjectUsers() {
 // Call the function to fetch project users and populate the card holders
 
 window.onload = function () {
-
+   
     for (var i = 1; i <= 11; i++) {
         if (i == 6)
             continue;

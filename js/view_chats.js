@@ -33,7 +33,7 @@ socket.addEventListener('message', function (event) {
         const chatMessage = document.createElement('div');
         chatMessage.classList.add("message-box", "friend-message");
         const chatMessagep = document.createElement('p');
-        const chatMessageb = document.createElement('b');
+        const chatMessageb = document.createElement('b1');
         chatMessageb.innerText = `${message.user_name}`;
         const chatMessagebr = document.createElement('br');
         const chatMessagebr2 = document.createElement('br');
@@ -112,7 +112,42 @@ function load_projects() {
     });
 
 }
+function load_admin_message() {
+    $.ajax({
+        url: '../php/get_user_projects.php?id=' + JSON.parse(localStorage.getItem("user_data")).user_id,
+        method: 'GET',
+        dataType: 'json',
+        success: function (projects) {
+            // Iterate over each project
+            var count2 = 0;
+            projects.forEach(function (project) {
+                count2++;
+                // Create the HTML content for the project
+                var message = `  <div class="message-box friend-message">
+            <p>
+              <b1>Admin</b1>(visible only to you)<br>Welcome <b1>${JSON.parse(localStorage.getItem("user_data")).f_name}</b1>! This is <b>${project.project_name}</b> Chat Server Please be Cautious of your language! And keep conversations Relevant to Project<br><span>now</span>
+            </p>
+          </div>`;
+                var chatMessages = document.getElementById('chat_' + count2);
+                chatMessages.innerHTML += message;
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            });
 
+        },
+        error: function (xhr, status, error) {
+            console.error(error);
+        }
+    });
+    var message = `  <div class="message-box friend-message">
+            <p>
+              <b1>Admin</b1>(visible only to you)<br>Welcome <b1>${JSON.parse(localStorage.getItem("user_data")).f_name}</b1>! This is General Chat Server Please be Cautious of your language! <br><span>now</span>
+            </p>
+          </div>`;
+    var chatMessages = document.getElementById('chat_0');
+    chatMessages.innerHTML += message;
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+}
 function load_chats() {
     fetch('../php/chat_backend.php')
         .then(response => response.json())
@@ -139,7 +174,7 @@ function load_chats() {
                     const chatMessage = document.createElement('div');
                     chatMessage.classList.add("message-box", "friend-message");
                     const chatMessagep = document.createElement('p');
-                    const chatMessageb = document.createElement('b');
+                    const chatMessageb = document.createElement('b1');
                     chatMessageb.innerText = `${message.user_name}`;
                     const chatMessagebr = document.createElement('br');
                     const chatMessagebr2 = document.createElement('br');
@@ -159,7 +194,7 @@ function load_chats() {
                     chatMessages.scrollTop = chatMessages.scrollHeight;
                 }
             });
-
+            load_admin_message();
         });
 }
 function load(id) {
