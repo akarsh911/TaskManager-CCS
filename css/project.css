@@ -286,6 +286,7 @@ h2 {
     margin-right: 2%;
     background-color: rgb(54, 187, 189);
     border: 1px solid white;
+    border-radius: 25px;
     color: white;
 
 }
@@ -684,6 +685,7 @@ b1 {
     padding: 15px;
     border: 1px solid white;
     width: 50%;
+    border-radius: 25px;
     border-bottom: 3px solid #ddd;
 }
 
@@ -737,6 +739,7 @@ b1 {
     line-height: 1;
     border: 2px solid white;
     border-bottom: 3px solid #ddd;
+    border-radius: 25px;
 
 }
 
