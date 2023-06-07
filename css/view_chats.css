@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 .main-container {
+    border-radius: 15px;
     margin-left: 10vw;
     width: 80vw;
     max-width: 100%;
@@ -39,6 +40,7 @@
 }
 
 .chat-list {
+    border-radius: 15px 0;
     position: relative;
     height: calc(100% - 170px);
     overflow-y: auto;
