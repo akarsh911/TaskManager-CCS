@@ -2,6 +2,8 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . "/php/database_set_data.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/php/database_get_data.php");
 $response = fetch_response($_GET["repo"]);
+$request_body = file_get_contents('php://input');
+echo $request_body;
 $data = json_decode($response);
 
 if (does_commit_exist($data[2]->sha) == false) {
