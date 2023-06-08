@@ -1,0 +1,227 @@
+{
+"ref": "refs/heads/main",
+"before": "f7cde2a9c4de1b3a66d379787f286f12237f25d1",
+"after": "fa9d3bf3191420f4694ff8c6087eca1d650dc16b",
+"repository": {
+"id": 649750194,
+"node_id": "R_kgDOJrpmsg",
+"name": "project1",
+"full_name": "ccs-tiet-task/project1",
+"private": false,
+"owner": {
+"name": "ccs-tiet-task",
+"email": "135416950+ccs-tiet-task@users.noreply.github.com",
+"login": "ccs-tiet-task",
+"id": 135416950,
+"node_id": "U_kgDOCBJMdg",
+"avatar_url": "https://avatars.githubusercontent.com/u/135416950?v=4",
+"gravatar_id": "",
+"url": "https://api.github.com/users/ccs-tiet-task",
+"html_url": "https://github.com/ccs-tiet-task",
+"followers_url": "https://api.github.com/users/ccs-tiet-task/followers",
+"following_url": "https://api.github.com/users/ccs-tiet-task/following{/other_user}",
+"gists_url": "https://api.github.com/users/ccs-tiet-task/gists{/gist_id}",
+"starred_url": "https://api.github.com/users/ccs-tiet-task/starred{/owner}{/repo}",
+"subscriptions_url": "https://api.github.com/users/ccs-tiet-task/subscriptions",
+"organizations_url": "https://api.github.com/users/ccs-tiet-task/orgs",
+"repos_url": "https://api.github.com/users/ccs-tiet-task/repos",
+"events_url": "https://api.github.com/users/ccs-tiet-task/events{/privacy}",
+"received_events_url": "https://api.github.com/users/ccs-tiet-task/received_events",
+"type": "User",
+"site_admin": false
+},
+"html_url": "https://github.com/ccs-tiet-task/project1",
+"description": "This is a test project for dev purpose",
+"fork": false,
+"url": "https://github.com/ccs-tiet-task/project1",
+"forks_url": "https://api.github.com/repos/ccs-tiet-task/project1/forks",
+"keys_url": "https://api.github.com/repos/ccs-tiet-task/project1/keys{/key_id}",
+"collaborators_url": "https://api.github.com/repos/ccs-tiet-task/project1/collaborators{/collaborator}",
+"teams_url": "https://api.github.com/repos/ccs-tiet-task/project1/teams",
+"hooks_url": "https://api.github.com/repos/ccs-tiet-task/project1/hooks",
+"issue_events_url": "https://api.github.com/repos/ccs-tiet-task/project1/issues/events{/number}",
+"events_url": "https://api.github.com/repos/ccs-tiet-task/project1/events",
+"assignees_url": "https://api.github.com/repos/ccs-tiet-task/project1/assignees{/user}",
+"branches_url": "https://api.github.com/repos/ccs-tiet-task/project1/branches{/branch}",
+"tags_url": "https://api.github.com/repos/ccs-tiet-task/project1/tags",
+"blobs_url": "https://api.github.com/repos/ccs-tiet-task/project1/git/blobs{/sha}",
+"git_tags_url": "https://api.github.com/repos/ccs-tiet-task/project1/git/tags{/sha}",
+"git_refs_url": "https://api.github.com/repos/ccs-tiet-task/project1/git/refs{/sha}",
+"trees_url": "https://api.github.com/repos/ccs-tiet-task/project1/git/trees{/sha}",
+"statuses_url": "https://api.github.com/repos/ccs-tiet-task/project1/statuses/{sha}",
+"languages_url": "https://api.github.com/repos/ccs-tiet-task/project1/languages",
+"stargazers_url": "https://api.github.com/repos/ccs-tiet-task/project1/stargazers",
+"contributors_url": "https://api.github.com/repos/ccs-tiet-task/project1/contributors",
+"subscribers_url": "https://api.github.com/repos/ccs-tiet-task/project1/subscribers",
+"subscription_url": "https://api.github.com/repos/ccs-tiet-task/project1/subscription",
+"commits_url": "https://api.github.com/repos/ccs-tiet-task/project1/commits{/sha}",
+"git_commits_url": "https://api.github.com/repos/ccs-tiet-task/project1/git/commits{/sha}",
+"comments_url": "https://api.github.com/repos/ccs-tiet-task/project1/comments{/number}",
+"issue_comment_url": "https://api.github.com/repos/ccs-tiet-task/project1/issues/comments{/number}",
+"contents_url": "https://api.github.com/repos/ccs-tiet-task/project1/contents/{+path}",
+"compare_url": "https://api.github.com/repos/ccs-tiet-task/project1/compare/{base}...{head}",
+"merges_url": "https://api.github.com/repos/ccs-tiet-task/project1/merges",
+"archive_url": "https://api.github.com/repos/ccs-tiet-task/project1/{archive_format}{/ref}",
+"downloads_url": "https://api.github.com/repos/ccs-tiet-task/project1/downloads",
+"issues_url": "https://api.github.com/repos/ccs-tiet-task/project1/issues{/number}",
+"pulls_url": "https://api.github.com/repos/ccs-tiet-task/project1/pulls{/number}",
+"milestones_url": "https://api.github.com/repos/ccs-tiet-task/project1/milestones{/number}",
+"notifications_url": "https://api.github.com/repos/ccs-tiet-task/project1/notifications{?since,all,participating}",
+"labels_url": "https://api.github.com/repos/ccs-tiet-task/project1/labels{/name}",
+"releases_url": "https://api.github.com/repos/ccs-tiet-task/project1/releases{/id}",
+"deployments_url": "https://api.github.com/repos/ccs-tiet-task/project1/deployments",
+"created_at": 1685976681,
+"updated_at": "2023-06-05T18:29:41Z",
+"pushed_at": 1686157680,
+"git_url": "git://github.com/ccs-tiet-task/project1.git",
+"ssh_url": "git@github.com:ccs-tiet-task/project1.git",
+"clone_url": "https://github.com/ccs-tiet-task/project1.git",
+"svn_url": "https://github.com/ccs-tiet-task/project1",
+"homepage": "https://github.com",
+"size": 10,
+"stargazers_count": 0,
+"watchers_count": 0,
+"language": "HTML",
+"has_issues": true,
+"has_projects": true,
+"has_downloads": true,
+"has_wiki": true,
+"has_pages": false,
+"has_discussions": false,
+"forks_count": 1,
+"mirror_url": null,
+"archived": false,
+"disabled": false,
+"open_issues_count": 0,
+"license": null,
+"allow_forking": true,
+"is_template": false,
+"web_commit_signoff_required": false,
+"topics": [
+
+],
+"visibility": "public",
+"forks": 1,
+"open_issues": 0,
+"watchers": 0,
+"default_branch": "main",
+"stargazers": 0,
+"master_branch": "main"
+},
+"pusher": {
+"name": "akarsh911",
+"email": "107661865+akarsh911@users.noreply.github.com"
+},
+"sender": {
+"login": "akarsh911",
+"id": 107661865,
+"node_id": "U_kgDOBmrKKQ",
+"avatar_url": "https://avatars.githubusercontent.com/u/107661865?v=4",
+"gravatar_id": "",
+"url": "https://api.github.com/users/akarsh911",
+"html_url": "https://github.com/akarsh911",
+"followers_url": "https://api.github.com/users/akarsh911/followers",
+"following_url": "https://api.github.com/users/akarsh911/following{/other_user}",
+"gists_url": "https://api.github.com/users/akarsh911/gists{/gist_id}",
+"starred_url": "https://api.github.com/users/akarsh911/starred{/owner}{/repo}",
+"subscriptions_url": "https://api.github.com/users/akarsh911/subscriptions",
+"organizations_url": "https://api.github.com/users/akarsh911/orgs",
+"repos_url": "https://api.github.com/users/akarsh911/repos",
+"events_url": "https://api.github.com/users/akarsh911/events{/privacy}",
+"received_events_url": "https://api.github.com/users/akarsh911/received_events",
+"type": "User",
+"site_admin": false
+},
+"created": false,
+"deleted": false,
+"forced": false,
+"base_ref": null,
+"compare": "https://github.com/ccs-tiet-task/project1/compare/f7cde2a9c4de...fa9d3bf31914",
+"commits": [
+{
+"id": "662a949045f3bb6d636548d3dfd4f223e1390446",
+"tree_id": "7ee2743017d37b649f5409140791fbf9bda34fb6",
+"distinct": true,
+"message": "this is new",
+"timestamp": "2023-06-07T22:37:35+05:30",
+"url": "https://github.com/ccs-tiet-task/project1/commit/662a949045f3bb6d636548d3dfd4f223e1390446",
+"author": {
+"name": "akarsh",
+"email": "akarsh91140@gmail.com",
+"username": "akarsh911"
+},
+"committer": {
+"name": "akarsh",
+"email": "akarsh91140@gmail.com",
+"username": "akarsh911"
+},
+"added": [
+
+],
+"removed": [
+
+],
+"modified": [
+"new file"
+]
+},
+{
+"id": "fa9d3bf3191420f4694ff8c6087eca1d650dc16b",
+"tree_id": "22b800b8f39ae209db1069ef0b3c4d52fd136469",
+"distinct": true,
+"message": "Merge branch 'main' of https://github.com/ccs-tiet-task/project1",
+"timestamp": "2023-06-07T22:37:46+05:30",
+"url": "https://github.com/ccs-tiet-task/project1/commit/fa9d3bf3191420f4694ff8c6087eca1d650dc16b",
+"author": {
+"name": "akarsh",
+"email": "akarsh91140@gmail.com",
+"username": "akarsh911"
+},
+"committer": {
+"name": "akarsh",
+"email": "akarsh91140@gmail.com",
+"username": "akarsh911"
+},
+"added": [
+"tesst.html",
+"test.css",
+"test1.html"
+],
+"removed": [
+
+],
+"modified": [
+
+]
+}
+],
+"head_commit": {
+"id": "fa9d3bf3191420f4694ff8c6087eca1d650dc16b",
+"tree_id": "22b800b8f39ae209db1069ef0b3c4d52fd136469",
+"distinct": true,
+"message": "Merge branch 'main' of https://github.com/ccs-tiet-task/project1",
+"timestamp": "2023-06-07T22:37:46+05:30",
+"url": "https://github.com/ccs-tiet-task/project1/commit/fa9d3bf3191420f4694ff8c6087eca1d650dc16b",
+"author": {
+"name": "akarsh",
+"email": "akarsh91140@gmail.com",
+"username": "akarsh911"
+},
+"committer": {
+"name": "akarsh",
+"email": "akarsh91140@gmail.com",
+"username": "akarsh911"
+},
+"added": [
+"tesst.html",
+"test.css",
+"test1.html"
+],
+"removed": [
+
+],
+"modified": [
+
+]
+}
+}
